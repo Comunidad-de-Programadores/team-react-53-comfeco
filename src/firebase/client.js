@@ -14,8 +14,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
 
-const mapUserFromFirebaseAuth = (usuario) => {
-  const { user } = usuario;
+const mapUserFromFirebaseAuth = (user) => {
   const { email, displayName, uid } = user;
   return {
     uid,
@@ -23,22 +22,35 @@ const mapUserFromFirebaseAuth = (usuario) => {
     email,
   };
 };
+
 export const onAuthStateChanged = (onchange) => {
   return firebase.auth().onAuthStateChanged((user) => {
     const normalizedUser = mapUserFromFirebaseAuth(user);
+    console.log(normalizedUser)
     onchange(normalizedUser);
   });
 };
+
 export const loginWithGoogle = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(googleProvider);
 };
+
 export const loginWithFacebook = () => {
   const facebookProvider = new firebase.auth.FacebookAuthProvider();
   return firebase
     .auth()
     .signInWithPopup(facebookProvider)
-    .then(user =>{
-      return mapUserFromFirebaseAuth(user)
-    });
+    // .then(user =>{
+    //   return mapUserFromFirebaseAuth(user)
+    // });
 };
+
+export const logOut = (onChangue) =>{
+  return firebase.auth().signOut().then(() => {
+    console.log('Signed Out');
+    onChangue(null);
+  }).catch((error) => {
+    console.error('Sign Out Error', error);
+  });
+}
