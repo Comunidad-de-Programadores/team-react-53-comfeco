@@ -31,6 +31,34 @@ export const onAuthStateChanged = (onchange) => {
   });
 };
 
+export const signInWithEmail =(email, password)=>{
+  return firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((user) => {
+      console.log(user,"logueado")
+      // Signed in
+      // ...
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(error)
+    });
+}
+export const createUserWithEmail = (email, password) => {
+  return firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((user) => {
+      console.log(user, "registrado");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+
 export const loginWithGoogle = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(googleProvider);
@@ -38,9 +66,7 @@ export const loginWithGoogle = () => {
 
 export const loginWithFacebook = () => {
   const facebookProvider = new firebase.auth.FacebookAuthProvider();
-  return firebase
-    .auth()
-    .signInWithPopup(facebookProvider)
+  return firebase.auth().signInWithPopup(facebookProvider)
     // .then(user =>{
     //   return mapUserFromFirebaseAuth(user)
     // });

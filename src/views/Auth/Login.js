@@ -39,18 +39,19 @@ const Login = () => {
 
   return (
     <div>
-      {user === null && (
-        <div>
-          <button onClick={handleClickGoogle}>Login Gmail</button>
-          <button onClick={handleClickFacebook}>Login Facebook</button>
-        </div>
-      )}
-      {user && (
+      {/* <form onSubmit="">
+        <input type="email"/>
+        <input type="password"/>
+        <button type="submit">Iniciar sesión</button>
+      </form> */}
+      <button onClick={handleClickGoogle}>Login Gmail</button>
+      <button onClick={handleClickFacebook}>Login Facebook</button>
+      {/* {user && (
         <div>
           <p>Estas logueado</p>
           <button onClick={handleClick3}>Cerrar Sesión</button>
         </div>
-      )}
+      )}*/}
     </div>
   );
 };
