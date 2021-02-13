@@ -5,7 +5,7 @@ const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserJSPlugn = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -15,29 +15,29 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
     publicPath: 'http://localhost:3001/',
-    chunkFilename: 'js/[id].[chunkhash].js'
+    chunkFilename: 'js/[id].[chunkhash].js',
   },
   optimization: {
     minimizer: [
-        new TerserJSPlugn(),
-        new OptimizeCSSAssetsPlugin()
-    ]
+      new TerserJSPlugn(),
+      new OptimizeCSSAssetsPlugin(),
+    ],
   },
   module: {
     rules: [
       {
         test: /\.js|jsx$/,
         use: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
         use: [
-            {
-                loader: MiniCssExtractPlugin.loader,
-            },
-            'css-loader',
-        ]
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-loader',
+        ],
       },
       {
         test: /\.jpg|jpeg|png|svg|gif|woff|ttf|eot|mp4|webp$/,
@@ -46,30 +46,30 @@ module.exports = {
           options: {
             limit: 1000,
             name: '[hash].[ext]',
-            outputPath: 'assets'
-          }
-        }
-      }
-    ]
+            outputPath: 'assets',
+          },
+        },
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-        filename: 'css/[name].[hash].css',
-        chunkFilename: 'css/[id].[hash].css'
+      filename: 'css/[name].[hash].css',
+      chunkFilename: 'css/[id].[hash].css',
     }),
     new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'public/index.html')
+      template: path.resolve(__dirname, 'public/index.html'),
     }),
     new webpack.DllReferencePlugin({
-        manifest: require('./modules-manifest.json')
+      manifest: require('./modules-manifest.json')
     }),
     new AddAssetHtmlWebpackPlugin({
-        filepath: path.resolve(__dirname, 'dist/js/*.dll.js'),
-        outputPath: 'js',
-        publicPath: 'http://localhost:3001/js'
+      filepath: path.resolve(__dirname, 'dist/js/*.dll.js'),
+      outputPath: 'js',
+      publicPath: 'http://localhost:3001/js',
     }),
     new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: ['**/app.**'],
-    })
-  ]
-}
+      cleanOnceBeforeBuildPatterns: ['**/app.**'],
+    }),
+  ],
+};
