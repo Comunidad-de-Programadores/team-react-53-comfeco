@@ -1,15 +1,15 @@
 import React from 'react';
-import './Login.css';
+import './Registrarse.css';
 
-const Login = () => {
+const Registrarse = () => {
   return (
-    <div className="Login">
-      <div className="Login__container">
-        <h1 className="Login__title">
+    <div className="Register">
+      <div className="Register__container">
+        <h1 className="Register__title">
           <span className="title_hola">Hola,</span>
           <span className="title__message">Inicia Sesión!</span>
         </h1>
-        <form className="Login__form">
+        <form className="Register__form">
           <div className="form__group">
             <label htmlFor="email" className="form__label">
               Email:
@@ -20,19 +20,10 @@ const Login = () => {
             <label htmlFor="password" className="form__label">
               Contraseña:
             </label>
-
             <input name="password" type="password" className="form__input" />
-
-            <div className="form__pass">
-              <a href="#" className="form__link">
-                Recuperar Contraseña
-              </a>
-            </div>
-            <div className="form__check ">
-              <input type="checkbox" />
-
-              <span>Mantenerme conectado</span>
-            </div>
+            <a href="#" className="form__link">
+              Recuperar Contraseña
+            </a>
           </div>
           <div className="form__group">
             <button type="button" className="form__button">
@@ -42,18 +33,10 @@ const Login = () => {
               No tiene cuenta registrate <a href="#">aquí.</a>
             </p>
           </div>
-          <div className="social__group">
-            <button type="button" className="form__button">
-              Ingresar con Facebook
-            </button>
-            <button type="button" className="form__button">
-              Ingresar con Google
-            </button>
-          </div>
         </form>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Registrarse;
