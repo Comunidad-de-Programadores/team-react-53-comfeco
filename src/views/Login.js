@@ -31,7 +31,7 @@ const Login = () => {
             <div className="form__check ">
               <input type="checkbox" />
 
-              <span>Mantenerme conectado</span>
+              <span className="form__check_s">Mantenerme conectado</span>
             </div>
           </div>
           <div className="form__group">
@@ -43,10 +43,10 @@ const Login = () => {
             </p>
           </div>
           <div className="social__group">
-            <button type="button" className="form__button">
+            <button type="button" className="form__button_other">
               Ingresar con Facebook
             </button>
-            <button type="button" className="form__button">
+            <button type="button" className="form__button_other">
               Ingresar con Google
             </button>
           </div>

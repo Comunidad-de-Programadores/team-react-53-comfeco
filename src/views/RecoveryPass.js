@@ -6,31 +6,23 @@ const RecoveryPass = () => {
     <div className="Recovery">
       <div className="Recovery__container">
         <h1 className="Recovery__title">
-          <span className="title_hola">Hola,</span>
-          <span className="title__message">Inicia Sesión!</span>
+          <span className="title_hola_rc">Calma,</span>
+          <span className="title__message_rc"> recuperaremos tu clave!</span>
         </h1>
         <form className="Recovery__form">
-          <div className="form__group">
-            <label htmlFor="email" className="form__label">
-              Email:
+          <div className="form__group_rc">
+            <label htmlFor="email" className="form__label_rc">
+              Ingresa tu correo:
             </label>
-            <input name="email" type="email" className="form__input" />
+            <input name="email" type="email" className="form__input_rc" />
           </div>
-          <div className="form__group">
-            <label htmlFor="password" className="form__label">
-              Contraseña:
-            </label>
-            <input name="password" type="password" className="form__input" />
-            <a href="#" className="form__link">
-              Recuperar Contraseña
-            </a>
-          </div>
-          <div className="form__group">
-            <button type="button" className="form__button">
-              Entrar
+
+          <div className="form__group_rc">
+            <button type="button" className="form__button_rc">
+              Recuperar contraseña
             </button>
-            <p className="form__register">
-              No tiene cuenta registrate <a href="#">aquí.</a>
+            <p className="form__relogin_rc">
+              si ya recordaste tu cuenta, ingresa <a href="#"> aquí.</a>
             </p>
           </div>
         </form>

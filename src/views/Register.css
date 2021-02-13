@@ -12,7 +12,7 @@ html {
 
 /* @media screen and (min-width: 401px) {
   html {
-    background-image: url('../assets/img/bg_.Recovery.jpg');
+    background-image: url('../assets/img/bg_.Register.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -23,13 +23,12 @@ html {
   width: 100%;
 }
 
-/* start css */
-.Recovery {
+.Register {
   width: 100%;
   height: 100vh;
 }
 
-.Recovery__container {
+.Register__container {
   background-color: rgb(32, 120, 180);
   width: 100%;
   max-width: 500px;
@@ -37,31 +36,30 @@ html {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
 }
 
 @media screen and (min-width: 401px) {
-  .Recovery__container {
+  .Register__container {
     width: 400px;
     background-color: rgba(32, 120, 180, 0.7);
   }
 }
 
-.Recovery__title {
+.Register__title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 4rem;
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
-  margin-bottom: 40px;
-  padding: 20px;
+  padding: 10px;
+  margin: 0 auto;
 }
 
-.Recovery__title span {
+.Register__title span {
   display: inline-block;
 }
 
-.Recovery__form {
+.Register__form {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -70,55 +68,68 @@ html {
   margin: 0 auto;
 }
 
-.form__group_rc {
+.form__group_re {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 15px;
   padding: 0 20px;
 }
-.form__check_rc {
+
+.form__check_re {
   margin: 15px;
 }
 
-.form__link_rc {
+.form__link_re {
   text-align: r;
 }
 
-.form__button_rc {
+.form__button_re {
   border-radius: 10px;
+  font-size: 25px;
   width: 100%;
-  margin: 0 auto;
   height: 40px;
-  font-size: 20px;
+  margin: 0 auto;
   background-color: rgb(32, 80, 180);
 }
 
-.form__relogin_rc {
+.form__relogin_re {
   text-align: center;
-  font-size: 13px;
+  font-size: 10px;
 }
 
-.form__input_rc {
-  height: 30px;
+.form__input_re {
+  height: 25px;
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-radius: 5px;
 }
 
-.form__check_rc {
+.form__check_re {
   margin: 0;
   margin-top: 5px;
 }
-.social__group_rc {
+
+.social__group_re {
   display: flex;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
   padding: 0 20px;
 }
 
-.form__label_rc {
-  font-size: 25px;
-  margin-bottom: 6px;
+.form__label_re {
+  font-size: 15px;
+}
+
+.form__button_other_re {
+  border-radius: 10px;
+  font-size: 13px;
+  width: 100%;
+  height: 40px;
+  margin: 0 auto;
+  background-color: rgb(32, 80, 180);
+}
+
+.form__register_re {
+  font-size: 15px;
 }
