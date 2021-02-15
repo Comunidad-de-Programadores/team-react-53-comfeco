@@ -24,7 +24,8 @@ import Header from '../components/Header';
 import Auth from '../views/Auth';
 import RutaPrivada from "./PrivateRoute";
 import Home from "./../views/Home"
-import Login from '../views/Auth/Login'
+import Login from '../views/Auth/Login.jsx'
+
 const App = () => ( <
     BrowserRouter >
     <
