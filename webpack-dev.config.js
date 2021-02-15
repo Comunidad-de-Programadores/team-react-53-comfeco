@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugins = require('html-webpack-plugin');
 const webpack = require('webpack');
-
 module.exports = {
   entry: {
     app: path.resolve(__dirname, './src/index.js'),
@@ -10,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name]-bundle.js',
-    publicPath: 'http://localhost:9000/',
+    publicPath: '/',
     chunkFilename: 'js/[id].[chunckhash].js',
   },
   devServer: {
@@ -18,6 +17,7 @@ module.exports = {
     open: true,
     port: 9000,
     hot: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
