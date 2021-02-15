@@ -6,7 +6,7 @@ const PrivateRoute = ({ component: Component, ...props }) => {
   const [firebaseUser, setFirebaseUser] = React.useState(undefined);
   React.useEffect(() => {
     onAuthStateChanged(setFirebaseUser);
-  }, [firebaseUser]);
+  }, []);
   ///Obteniendo todo el contenido de firebase///
   console.log(firebaseUser, 'ojitos');
   return (
