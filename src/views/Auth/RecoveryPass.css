@@ -1,0 +1,124 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: system-ui, sans-serif;
+}
+
+/* @media screen and (min-width: 401px) {
+  html {
+    background-image: url('../assets/img/bg_.Recovery.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+} */
+
+#App {
+  width: 100%;
+}
+
+/* start css */
+.Recovery {
+  width: 100%;
+  height: 100vh;
+}
+
+.Recovery__container {
+  background-color: rgb(32, 120, 180);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+@media screen and (min-width: 401px) {
+  .Recovery__container {
+    width: 400px;
+    background-color: rgba(32, 120, 180, 0.7);
+  }
+}
+
+.Recovery__title {
+  text-align: center;
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+.Recovery__title span {
+  display: inline-block;
+}
+
+.Recovery__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.form__group_rc {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 0 20px;
+}
+.form__check_rc {
+  margin: 15px;
+}
+
+.form__link_rc {
+  text-align: r;
+}
+
+.form__button_rc {
+  border-radius: 10px;
+  width: 100%;
+  margin: 0 auto;
+  height: 40px;
+  font-size: 20px;
+  background-color: rgb(32, 80, 180);
+}
+
+.form__relogin_rc {
+  text-align: center;
+  font-size: 13px;
+}
+
+.form__input_rc {
+  height: 30px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.form__check_rc {
+  margin: 0;
+  margin-top: 5px;
+}
+.social__group_rc {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 0 20px;
+}
+
+.form__label_rc {
+  font-size: 25px;
+  margin-bottom: 6px;
+}

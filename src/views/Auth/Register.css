@@ -1,0 +1,135 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: system-ui, sans-serif;
+}
+
+/* @media screen and (min-width: 401px) {
+  html {
+    background-image: url('../assets/img/bg_.Register.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+} */
+
+#App {
+  width: 100%;
+}
+
+/* .Register {
+  width: 100%;
+  height: 100vh;
+}
+
+.Register__container {
+  background-color: rgb(32, 120, 180);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+
+/* @media screen and (min-width: 401px) {
+  .Register__container {
+    width: 400px;
+    background-color: rgba(32, 120, 180, 0.7);
+  }
+} */
+
+.Register__title {
+  text-align: center;
+  font-size: 4rem;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.Register__title span {
+  display: inline-block;
+}
+
+.Register__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.form__group_re {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 0 20px;
+}
+
+.form__check_re {
+  margin: 15px;
+}
+
+.form__link_re {
+  text-align: r;
+}
+
+.form__button_re {
+  border-radius: 10px;
+  font-size: 25px;
+  width: 100%;
+  height: 40px;
+  margin: 0 auto;
+  background-color: rgb(32, 80, 180);
+}
+
+.form__relogin_re {
+  text-align: center;
+  font-size: 10px;
+}
+
+.form__input_re {
+  height: 25px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form__check_re {
+  margin: 0;
+  margin-top: 5px;
+}
+
+.social__group_re {
+  display: flex;
+  width: 100%;
+  margin-bottom: 7px;
+  padding: 0 20px;
+}
+
+.form__label_re {
+  font-size: 15px;
+}
+
+.form__button_other_re {
+  border-radius: 10px;
+  font-size: 13px;
+  width: 100%;
+  height: 40px;
+  margin: 0 auto;
+  background-color: rgb(32, 80, 180);
+}
+
+.form__register_re {
+  font-size: 15px;
+}
