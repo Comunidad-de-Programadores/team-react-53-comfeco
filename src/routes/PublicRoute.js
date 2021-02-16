@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const PublicRoute = ({ isAuthenticated, component: Component, ...rest }) => {
   // const autenticado = localStorage.getItem('Autenticado');
-
+  console.log(isAuthenticated, 'ruta publica');
   return (
     <Route
       {...rest}

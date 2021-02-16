@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const PrivateRoute = ({ isAuthenticated, component: Component, ...rest }) => {
   // const autenticado = localStorage.getItem('Autenticado');
-
+  console.log(isAuthenticated, 'ruta privada');
   return (
     <Route
       {...rest}
