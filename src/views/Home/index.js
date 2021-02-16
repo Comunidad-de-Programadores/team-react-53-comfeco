@@ -1,21 +1,32 @@
-import React from 'react';
-import {
-  loginWithGoogle,
-  logOut,
-  onAuthStateChanged,
-  loginWithFacebook,
-} from '../../firebase/client';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import AuthContext from '../../auth/AuthContext';
 
 const Home = () => {
+  // Extraer la i nformación de autentificación
+  const authContext = useContext(AuthContext);
+  const { usuarioAutenticado, usuario, cerrarSesion } = authContext;
 
-  const handleClick3 = () => {
-    logOut(setUser);
-    console.log('hola mundo');
+  const history = useHistory();
+  const handleLogout = () => {
+    cerrarSesion();
+    history.replace('/auth');
   };
+
+  // useEffect(() => {
+  //   usuarioAutenticado();
+  //   // onAuthStateChanged(setUser);
+  // }, []);
+
   return (
     <div>
-      <p>Bienvenido</p>
-      <button onClick={handleClick3}> Cerrar Sesión</button>
+      <p>
+        Bienvenido
+        {usuario ? <span>{usuario.email}</span> : ''}
+      </p>
+      <button onClick={handleLogout} className='btn'>
+        Cerrar Sesión
+      </button>
     </div>
   );
 };

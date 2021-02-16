@@ -31,31 +31,19 @@ export const onAuthStateChanged = (onchange) => {
   });
 };
 
+export const userActive = () => {
+  return firebase.auth().currentUser;
+};
+
 export const signInWithEmail = (email, password) => {
   return firebase
     .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then((user) => {
-      console.log(user, 'logueado');
-      // Signed in
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(error);
-    });
+    .signInWithEmailAndPassword(email, password);
 };
 export const createUserWithEmail = (email, password) => {
   return firebase
     .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then((user) => {
-      console.log(user, 'registrado');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    .createUserWithEmailAndPassword(email, password);
 };
 
 export const loginWithGoogle = () => {
@@ -71,12 +59,18 @@ export const loginWithFacebook = () => {
   // });
 };
 
-export const logOut = (onChangue) => {
+export const logOut = () => {
   return firebase.auth().signOut().then(() => {
     console.log('Signed Out');
-    onChangue(null);
   }).catch((error) => {
     console.error('Sign Out Error', error);
   });
+};
+
+export const createUserProfile = (uid, data) => {
+  return firebase.firestore().collection('usuarios').doc(uid).set(data);
+};
+export const getUserProfile = (uid) => {
+  return firebase.firestore().collection('usuarios').doc(uid).get();
 };
 
