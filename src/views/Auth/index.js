@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Login from "./Login";
-import Register from "./Register";
+import React, { useEffect, useState } from 'react';
+import Login from './Login';
+import Register from './Register';
 
-import "./Auth.css";
+import './Auth.css';
+
 const Auth = () => {
   const [showLogin, setShowLogin] = useState(true);
   const [showRegister, setShowRegister] = useState(false);
@@ -19,9 +20,9 @@ const Auth = () => {
 
   return (
     <>
-      <div className="Auth">
-        <div className="Auth__container">
-          <div className="Auth_box_button">
+      <div className='Auth'>
+        <div className='Auth__container'>
+          <div className='Auth_box_button'>
             <button onClick={handleShowLogin}>Inicia sesión</button>
             <button onClick={handleShowRegister}>Registrate</button>
           </div>
