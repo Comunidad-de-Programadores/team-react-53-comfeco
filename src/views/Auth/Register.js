@@ -7,7 +7,7 @@ const Register = () => {
   //extraer los valores del context
   const authContext = useContext(AuthContext);
   const { mensaje, autenticado, registrarUsuario } = authContext;
-  const [alert, setAlert] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
   const history = useHistory();
   // Statepara iniciar sesión
   const [user, setUser] = useState({
@@ -17,13 +17,13 @@ const Register = () => {
     confirmar: '',
   });
   const { nombre, email, password, confirmar } = user;
-  //En caso que el usuario se haya autenticcado o registrado o sea un registro duplicado
+  //En caso que el usuario se haya autenticado / registrado o sea un registro duplicado
   useEffect(() => {
     if (autenticado) {
       history.push('/');
     }
     if (mensaje) {
-      setAlert(mensaje);
+      setErrorMessage(mensaje);
     }
   }, [mensaje, autenticado, history]);
 
@@ -48,7 +48,7 @@ const Register = () => {
         <span className='title__message'>¡Vamos a registrarte!</span>
       </h1>
       <form className='Register__form' onSubmit={signIn}>
-        {mensaje ? <p>{mensaje}</p> : ''}
+        {errorMessage ? <p>{errorMessage}</p> : ''}
         <div className='form__group_re'>
           <label htmlFor='name' className='form__label_re'>
             Nick:
