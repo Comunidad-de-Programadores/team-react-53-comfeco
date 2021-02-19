@@ -1,15 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react';
-import './Register.css';
+import '../../assets/styles/views/Register.css';
 import { useHistory } from 'react-router-dom';
 import AuthContext from '../../auth/AuthContext';
 
-const Register = () => {
+const Register = ({ changePage }) => {
   //extraer los valores del context
   const authContext = useContext(AuthContext);
   const { mensaje, autenticado, registrarUsuario } = authContext;
   const [errorMessage, setErrorMessage] = useState(null);
   const history = useHistory();
-  // Statepara iniciar sesión
+  // State para iniciar sesión
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -39,6 +39,10 @@ const Register = () => {
       ...user,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleLogin = () => {
+    changePage(true);
   };
 
   return (
@@ -95,10 +99,11 @@ const Register = () => {
           <button type='submit' className='form__button_re'>
             Registrarse
           </button>
-          <p className='form__register_re'>
+          <label className='form__register_re'>
             Ya tienes cuenta? Inicia sesión
-            <a href='#'> aquí.</a>
-          </p>
+            {' '}
+            <button onClick={handleLogin} type='button'>aquí.</button>
+          </label>
         </div>
       </form>
       <div>

@@ -1,33 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import Login from './Login';
+import Login from './Login.jsx';
 import Register from './Register';
-
-import './Auth.css';
+import background from '../../assets/img/backgroundLogin.svg';
+import '../../assets/styles/views/Auth.css';
 
 const Auth = () => {
+
   const [showLogin, setShowLogin] = useState(true);
-  const [showRegister, setShowRegister] = useState(false);
-
-  const handleShowLogin = () => {
-    setShowLogin(true);
-    setShowRegister(false);
-  };
-
-  const handleShowRegister = () => {
-    setShowLogin(false);
-    setShowRegister(true);
-  };
 
   return (
     <>
       <div className='Auth'>
+        <img src={background} alt='background for Login/Register' />
         <div className='Auth__container'>
-          <div className='Auth_box_button'>
-            <button onClick={handleShowLogin}>Inicia sesión</button>
-            <button onClick={handleShowRegister}>Registrate</button>
-          </div>
-          {showLogin && <Login />}
-          {showRegister && <Register />}
+          {showLogin && <Login changePage={setShowLogin} />}
+          {!showLogin && <Register changePage={setShowLogin} />}
         </div>
       </div>
     </>

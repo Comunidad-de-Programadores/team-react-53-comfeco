@@ -8,9 +8,9 @@ import {
 } from '../../firebase/client';
 import AuthContext from '../../auth/AuthContext';
 // import { types } from '../../types/types';
-import './Login.css';
+import '../../assets/styles/views/Login.css';
 
-const Login = () => {
+const Login = ({ changePage }) => {
   const authContext = useContext(AuthContext);
   const { mensaje, autenticado, iniciarSesion } = authContext;
   const [errorMessage, setErrorMessage] = useState(null);
@@ -68,6 +68,10 @@ const Login = () => {
     });
   };
 
+  const handleSignup = () => {
+    changePage(false);
+  };
+
   return (
     <div className='Login'>
       <h1 className='Login__title'>
@@ -119,7 +123,7 @@ const Login = () => {
           <p className='form__register'>
             No tiene cuenta registrate
             {' '}
-            <a href='#'>aquí.</a>
+            <button onClick={handleSignup} type='button'>aquí.</button>
           </p>
         </div>
       </form>

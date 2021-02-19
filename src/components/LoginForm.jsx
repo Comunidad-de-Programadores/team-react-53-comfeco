@@ -1,6 +1,6 @@
 import React from 'react';
-import '../assets/styles/login.css';
-import '../views/Auth/Login.css';
+import '../assets/styles/components/login.css';
+import '../assets/styles/views/Login.css';
 
 const EMAIL_REGEX = new RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
