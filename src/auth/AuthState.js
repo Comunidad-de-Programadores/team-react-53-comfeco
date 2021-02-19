@@ -11,6 +11,7 @@ import {
   createUserProfile,
   getUserProfile,
   signInWithEmail,
+  auth,
 } from '../firebase/client';
 
 import {
@@ -25,7 +26,8 @@ import {
 const AuthState = (props) => {
   const initialState = {
     // token: localStorage.getItem('token'),
-    autenticado: null,
+    authReady: false,
+    autenticado: false,
     usuario: null,
     mensaje: null,
   };
@@ -56,32 +58,37 @@ const AuthState = (props) => {
     }
   };
 
-  //Retorna el usuario registrado
+  // Usuario activo
+
   const usuarioAutenticado = async () => {
-    const user = await userActive();
-    const { email, uid } = user;
-    if (user) {
-      await getUserProfile(user.uid)
-        .then(() => {
-          console.log('Document successfully written!');
-          dispatch({
-            type: OBTENER_USUARIO,
-            payload: {
-              email,
-              uid,
-            },
+    await auth.onAuthStateChanged((user) => {
+      const { email, uid } = user;
+      console.log(user, 'estas autentificado?');
+      if (user) {
+        return getUserProfile(user.uid)
+          .then((snapshot) => {
+            const dbUser = snapshot.data();
+            console.log(dbUser, 'Document successfully written!');
+            dispatch({
+              type: OBTENER_USUARIO,
+              payload: {
+                email,
+                uid,
+              },
+            });
+          })
+          .catch((error) => {
+            console.error('Error writing document: ', error);
           });
-        })
-        .catch((error) => {
-          console.error('Error writing document: ', error);
+      }
+      if (!user) {
+        return dispatch({
+          type: LOGIN_ERROR,
+          payload: 'no estas autentificado',
         });
-    } else {
-      console.log('no estas autentificado');
-      dispatch({
-        type: LOGIN_ERROR,
-        payload: 'no estas autentificado',
-      });
-    }
+      }
+    });
+
   };
 
   const registrarUsuario = async (datos) => {
@@ -133,6 +140,7 @@ const AuthState = (props) => {
     <AuthContext.Provider
       value={{
         // token: state.token,
+        authReady: state.authReady,
         autenticado: state.autenticado,
         usuario: state.usuario,
         mensaje: state.mensaje,
@@ -140,6 +148,7 @@ const AuthState = (props) => {
         iniciarSesion,
         usuarioAutenticado,
         cerrarSesion,
+
       }}
     >
       {props.children}

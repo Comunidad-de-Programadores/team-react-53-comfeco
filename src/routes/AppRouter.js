@@ -1,17 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Auth from '../views/Auth';
+// import RutaPrivada from './PrivateRoute';
 import Home from '../views/Home';
 import AuthContext from '../auth/AuthContext';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
 const AppRouter = () => {
-  const authContext = useContext(AuthContext);
-  const { autenticado } = authContext;
-  console.log(autenticado);
+  const { autenticado, authReady, usuarioAutenticado } = useContext(AuthContext);
+
+  useEffect(() => {
+    usuarioAutenticado();
+  }, []);
 
   return (
     <BrowserRouter>
@@ -23,16 +26,16 @@ const AppRouter = () => {
           component={Auth}
           isAuthenticated={autenticado}
         />
-        <PrivateRoute
-          exact
-          path='/'
-          component={Home}
-          isAuthenticated={autenticado}
-        />
-        {/* <Route exact path="/" component={Autentificar} /> */}
-        {/* <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/recovery_pass" component={RecoveryPass} /> */}
+        {!authReady ? (
+          <p>Loading</p>
+        ) : (
+          <PrivateRoute
+            exact
+            path='/'
+            component={Home}
+            isAuthenticated={autenticado}
+          />
+        )}
       </Switch>
       <Footer />
     </BrowserRouter>

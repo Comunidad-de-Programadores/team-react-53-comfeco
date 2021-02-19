@@ -3,17 +3,22 @@ import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PublicRoute = ({ isAuthenticated, component: Component, ...rest }) => {
-  // const autenticado = localStorage.getItem('Autenticado');
-  console.log(isAuthenticated, 'ruta publica');
+
   return (
     <Route
       {...rest}
       component={(props) => (!isAuthenticated ? <Component {...props} /> : <Redirect to='/' />)}
     />
+    // <Route
+    //   {...rest}
+    //   component={(props) => (
+    //     isAuthReady && (!isAuthenticated ? <Component {...props} /> : <Redirect to='/' />)
+    //   )}
+    // />
   );
 };
 
-PublicRoute.proptype = {
+PublicRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   component: PropTypes.func.isRequired,
 };

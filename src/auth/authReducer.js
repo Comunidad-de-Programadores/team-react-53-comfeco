@@ -39,6 +39,7 @@ export default (state, action) => {
       // localStorage.setItem('token', action.payload.token);
       return {
         ...state,
+        authReady: true,
         autenticado: true,
         mensaje: null,
       };
@@ -46,14 +47,16 @@ export default (state, action) => {
       // localStorage.setItem('token', action.payload.token);
       return {
         ...state,
+        authReady: true,
         autenticado: true,
         mensaje: null,
       };
     case OBTENER_USUARIO:
       return {
         ...state,
-        usuario: action.payload,
+        authReady: true,
         autenticado: true,
+        usuario: action.payload,
       };
     case CERRAR_SESION:
     case LOGIN_ERROR:
@@ -61,6 +64,7 @@ export default (state, action) => {
       return {
         ...state,
         // token:null,
+        authReady: true,
         usuario: null,
         autenticado: false,
         mensaje: action.payload,
