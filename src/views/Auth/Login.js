@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect, Link } from 'react-router-dom';
 import {
   loginWithGoogle,
   logOut,
@@ -68,9 +68,9 @@ const Login = ({ changePage }) => {
     });
   };
 
-  const handleSignup = () => {
-    changePage(false);
-  };
+  if (autenticado) {
+    return <Redirect to='/' />;
+  }
 
   return (
     <div className='Login'>
@@ -123,7 +123,7 @@ const Login = ({ changePage }) => {
           <p className='form__register'>
             No tiene cuenta registrate
             {' '}
-            <button onClick={handleSignup} type='button'>aquí.</button>
+            <Link to='/signup' type='button'>aquí.</Link>
           </p>
         </div>
       </form>
@@ -141,7 +141,7 @@ const Login = ({ changePage }) => {
             className='form__button_other'
             onClick={handleClickGoogle}
           >
-            > Ingresar con Google
+            Ingresar con Google
           </button>
         </div>
       </div>

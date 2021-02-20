@@ -10,7 +10,14 @@ html {
   font-family: system-ui, sans-serif;
 }
 
+body {
+  background-image: url('../img/backgroundLogin.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+}
+
 #App {
   width: 100%;
-  background-color: #f7ede0;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import '../../assets/styles/views/Register.css';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../auth/AuthContext';
 
 const Register = ({ changePage }) => {
@@ -41,9 +41,9 @@ const Register = ({ changePage }) => {
     });
   };
 
-  const handleLogin = () => {
-    changePage(true);
-  };
+  if (autenticado) {
+    return <Redirect to='/' />;
+  }
 
   return (
     <div className='Register'>
@@ -102,7 +102,7 @@ const Register = ({ changePage }) => {
           <label className='form__register_re'>
             Ya tienes cuenta? Inicia sesión
             {' '}
-            <button onClick={handleLogin} type='button'>aquí.</button>
+            <Link to='/login' type='button'>aquí.</Link>
           </label>
         </div>
       </form>

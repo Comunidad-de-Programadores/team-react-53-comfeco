@@ -18,7 +18,7 @@
   left: 0;
   width: auto;
   height: 100vh;
-  z-index: 1;
+  z-index: -1;
 }
 
 .Auth__container {
