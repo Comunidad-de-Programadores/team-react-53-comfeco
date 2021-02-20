@@ -5,7 +5,7 @@ import { onAuthStateChanged, auth } from '../../firebase/client';
 
 ;
 const Home = () => {
-  // Extraer la i nformación de autentificación
+  // Extraer la información de autentificación
   const { authContext, autenticado, cerrarSesion } = useContext(AuthContext);
   // const {
   //   // usuario,
@@ -37,7 +37,7 @@ const Home = () => {
           </span>
         ) : ''} */}
       </p>
-      <button onClick={handleLogout} className='btn'>
+      <button type='button' onClick={handleLogout} className='btn'>
         Cerrar Sesión
       </button>
     </div>

@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Login from './Login';
 import Register from './Register';
-import background from '../../assets/img/backgroundLogin.svg';
 import '../../assets/styles/views/Auth.css';
 import AuthContext from '../../auth/AuthContext';
 
@@ -13,7 +12,6 @@ const Auth = () => {
   return (
     <>
       <div className='Auth'>
-        <img src={background} alt='background for Login/Register' />
         <div className='Auth__container'>
           {showLogin && <Login changePage={setShowLogin} />}
           {!showLogin && <Register changePage={setShowLogin} />}

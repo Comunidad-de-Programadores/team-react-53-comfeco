@@ -4,7 +4,7 @@ import {
   logOut,
   onAuthStateChanged,
   loginWithFacebook,
-} from '../firebase/client';
+  } from '../firebase/client';
 import '../assets/styles/views/Login.css';
 
 const LoginWithSocialNetworks = () => {

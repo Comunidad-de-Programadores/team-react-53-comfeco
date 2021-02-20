@@ -3,7 +3,7 @@ import '../../assets/styles/views/Register.css';
 import { useHistory, Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../auth/AuthContext';
 
-const Register = ({ changePage }) => {
+const Register = () => {
   //extraer los valores del context
   const authContext = useContext(AuthContext);
   const { mensaje, autenticado, registrarUsuario } = authContext;
