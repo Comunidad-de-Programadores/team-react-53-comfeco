@@ -20,21 +20,22 @@ const AppRouter = () => {
     <BrowserRouter>
       <Header />
       <Switch>
-
         <PublicRoute
           exact
           path='/auth'
           component={Auth}
           isAuthenticated={autenticado}
         />
-
-        <PrivateRoute
-          exact
-          path='/'
-          component={Home}
-          isAuthenticated={autenticado}
-        />
-
+        {!authReady ? (
+          <p>Loading</p>
+        ) : (
+          <PrivateRoute
+            exact
+            path='/'
+            component={Home}
+            isAuthenticated={autenticado}
+          />
+        )}
       </Switch>
       <Footer />
     </BrowserRouter>
