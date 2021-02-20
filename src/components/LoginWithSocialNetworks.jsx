@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 import {
   loginWithGoogle,
   logOut,
   onAuthStateChanged,
   loginWithFacebook,
-} from "../firebase/client";
-import '../views/Auth/Login.css'
+  } from '../firebase/client';
+import '../assets/styles/views/Login.css';
 
 const LoginWithSocialNetworks = () => {
-  
+
   const handleClickGoogle = () => {
     loginWithGoogle()
       .then((user) => {
@@ -32,20 +32,19 @@ const LoginWithSocialNetworks = () => {
   return (
     <div>
       <button
-      type='button'
-      className='form__button_other'
-      onClick={handleClickFacebook}
-    >
-      Ingresar con Facebook
-    </button>
-    <button
-      type='button'
-      className='form__button_other'
-      onClick={handleClickGoogle}
-    >
-      Ingresar con Google
-    </button>
-     
+        type='button'
+        className='form__button_other'
+        onClick={handleClickFacebook}
+      >
+        Ingresar con Facebook
+      </button>
+      <button
+        type='button'
+        className='form__button_other'
+        onClick={handleClickGoogle}
+      >
+        Ingresar con Google
+      </button>
     </div>
   );
 };

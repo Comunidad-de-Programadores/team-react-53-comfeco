@@ -1,0 +1,23 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background-image: url('../img/backgroundLogin.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+}
+
+#App {
+  width: 100%;
+}

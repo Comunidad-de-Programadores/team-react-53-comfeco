@@ -1,40 +1,43 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import AuthContext from '../../auth/AuthContext';
 import { onAuthStateChanged, auth } from '../../firebase/client';
 
 ;
 const Home = () => {
-  // Extraer la i nformación de autentificación
-  const authContext = useContext(AuthContext);
-  const {
-    usuarioAutenticado,
-    usuario,
-    cerrarSesion,
-  } = authContext;
+  // Extraer la información de autentificación
+  const { authContext, autenticado, cerrarSesion } = useContext(AuthContext);
+  // const {
+  //   // usuario,
+  //   cerrarSesion,
+  // } = authContext;
 
   const history = useHistory();
 
   const handleLogout = () => {
     cerrarSesion();
-    history.replace('/auth');
+    history.replace('/login');
   };
 
   // useEffect(() => {
   //   usuarioAutenticado();
   // }, []);
 
+  if (!autenticado) {
+    return <Redirect to='/login' />;
+  }
+
   return (
     <div>
       <p>
         Bienvenido :
-        {usuario ? (
+        {/* {usuario ? (
           <span>
             {usuario.email}
           </span>
-        ) : ''}
+        ) : ''} */}
       </p>
-      <button onClick={handleLogout} className='btn'>
+      <button type='button' onClick={handleLogout} className='btn'>
         Cerrar Sesión
       </button>
     </div>

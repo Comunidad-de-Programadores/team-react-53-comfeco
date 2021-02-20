@@ -52,6 +52,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash].css',

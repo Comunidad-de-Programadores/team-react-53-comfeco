@@ -1,12 +1,12 @@
-import React from "react";
-import LoginForm from '../../components/LoginForm.jsx'
-import LoginWithSocialNetworks from '../../components/LoginWithSocialNetworks.jsx'
-
+import React from 'react';
+import LoginForm from '../../components/LoginForm';
+import LoginWithSocialNetworks from '../../components/LoginWithSocialNetworks';
 
 const Login = () => (
-  <div className = "App">
-    <LoginForm/>
-    <LoginWithSocialNetworks/>    
+  <div className='App'>
+    <LoginForm />
+    <LoginWithSocialNetworks />
   </div>
-)
+);
+
 export default Login;
