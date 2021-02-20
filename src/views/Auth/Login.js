@@ -8,7 +8,7 @@ import {
 } from '../../firebase/client';
 import AuthContext from '../../auth/AuthContext';
 // import { types } from '../../types/types';
-import './Login.css';
+import '../../assets/styles/views/Login.css';
 
 const Login = () => {
   const authContext = useContext(AuthContext);
