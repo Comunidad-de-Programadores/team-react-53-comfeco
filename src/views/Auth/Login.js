@@ -13,12 +13,22 @@ import './Login.css';
 const Login = () => {
         const authContext = useContext(AuthContext);
         const { mensaje, autenticado, iniciarSesion } = authContext;
-        const [errorMessage, setErrorMessage] = useState(null);
+        const [errorMessage, setErrorMessage] = useState({
+            message: '',
+            type: ''
+        })
         const [user, setUser] = useState({
             email: '',
             password: '',
         });
-
+        const [formValid, setFormValid] = useState({
+            email: false,
+            password: false,
+        })
+        const initialErrorMessageState = {
+            mesage: '',
+            type: ''
+        };
 
         const history = useHistory();
 
@@ -31,7 +41,10 @@ const Login = () => {
                 history.push('/');
             }
             if (mensaje) {
-                setErrorMessage(mensaje);
+                setErrorMessage({
+                    message: mensaje,
+                    type: 'usuario'
+                });
             }
         }, [mensaje, autenticado, history]);
 
@@ -66,8 +79,21 @@ const Login = () => {
         const validateEmail = (email) => {
             const EMAIL_REGEX = new RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
             const emailIsValid = EMAIL_REGEX.test(email)
-            if (!emailIsValid) {
-                setErrorMessage('Su email es incorrecto')
+            if (emailIsValid) {
+                setFormValid({
+                    ...formValid,
+                    email: true
+                })
+                setErrorMessage({...initialErrorMessageState })
+            } else {
+                setErrorMessage({
+                    message: 'Su email es incorrecto',
+                    type: 'email'
+                })
+                setFormValid({
+                    ...formValid,
+                    email: false
+                })
             }
         }
 
@@ -75,12 +101,35 @@ const Login = () => {
             const { target } = e;
             const { value, name } = target;
             if (value.length === 0) {
-                return setErrorMessage(`Ingrese su ${name}`)
+                if (name === 'email') {
+                    setFormValid({
+                        ...formValid,
+                        email: false
+                    })
+                } else {
+                    setFormValid({
+                        ...formValid,
+                        password: false
+                    })
+                }
+                return setErrorMessage({
+                    message: `Ingrese su ${name}`,
+                    type: name
+                })
             }
-            if (name == 'email') {
+            if (name === 'password') {
+                setFormValid({
+                    ...formValid,
+                    password: true
+                });
+                setErrorMessage({...initialErrorMessageState });
+            }
+            if (name === 'email') {
                 validateEmail(value)
             }
         }
+
+
 
         const Login = (e) => {
             e.preventDefault();
@@ -89,6 +138,7 @@ const Login = () => {
                 password,
             });
         };
+
         return ( <
             div className = 'Login' >
             <
@@ -99,7 +149,7 @@ const Login = () => {
             /h1> <
             form className = 'Login__form'
             onSubmit = { Login } > {
-                errorMessage ? < p > { errorMessage } < /p> : ''} <
+                errorMessage.message ? < p > { errorMessage.message } < /p> : ''} <
                 div className = 'form__group' >
                 <
                 label htmlFor = 'email'
@@ -114,6 +164,7 @@ const Login = () => {
                 className = 'form__input'
                 onChange = { handleInputChange }
                 onBlur = { handleBlur }
+                className = { errorMessage.type === 'email' ? 'error' : '' }
                 /> <
                 /div> <
                 div className = 'form__group' >
@@ -132,6 +183,7 @@ const Login = () => {
                 className = 'form__input'
                 onChange = { handleInputChange }
                 onBlur = { handleBlur }
+                className = { errorMessage.type === 'password' ? 'error' : '' }
                 />
 
                 <
@@ -153,7 +205,8 @@ const Login = () => {
                 div className = 'form__group' >
                 <
                 button type = 'submit'
-                className = 'form__button' >
+                className = 'form__button'
+                disabled = {!(formValid.email && formValid.password) } >
                 Entrar <
                 /button> <
                 p className = 'form__register' >
