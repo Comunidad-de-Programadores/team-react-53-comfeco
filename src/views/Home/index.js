@@ -23,7 +23,9 @@ const Home = () => {
         Bienvenido :
         {usuario ? (
           <span>
-            {usuario.email}
+            name :
+            {' '}
+            {usuario.name}
           </span>
         ) : ''}
       </p>

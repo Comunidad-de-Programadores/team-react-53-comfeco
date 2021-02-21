@@ -1,5 +1,6 @@
 import React from 'react';
-import './RecoveryPass.css';
+// import './RecoveryPass.css';
+
 
 const RecoveryPass = () => {
   return (

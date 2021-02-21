@@ -1,10 +1,19 @@
 .footer{
     background-color: #2E2E2E;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 2rem 0rem ;
+    padding: 2rem 3rem ;
+    color:#fff
 }
 .logo-footer{
-    width: 10%;
+    width: 30%;
+}
+
+.box-redes{
+    display: flex;
+    justify-content: space-around;
+}
+.box-redes div{
+    margin: 1rem;
 }

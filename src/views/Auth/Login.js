@@ -10,7 +10,13 @@ import '../../assets/styles/views/Login.css';
 
 const Login = () => {
   const authContext = useContext(AuthContext);
-  const { mensaje, autenticado, iniciarSesion } = authContext;
+  const {
+    mensaje,
+    autenticado,
+    iniciarSesion,
+    loginGoogle,
+    loginFacebook,
+  } = authContext;
   const [errorMessage, setErrorMessage] = useState({
     message: '',
     type: '',
@@ -47,8 +53,9 @@ const Login = () => {
   }, [mensaje, autenticado, history]);
 
   const handleClickGoogle = () => {
-    loginWithGoogle()
+    loginGoogle()
       .then((user) => {
+        console.log(user);
         history.replace('/');
       })
       .catch((err) => {
@@ -57,7 +64,7 @@ const Login = () => {
   };
 
   const handleClickFacebook = () => {
-    loginWithFacebook()
+    loginFacebook()
       .then((user) => {
         history.replace('/');
       })

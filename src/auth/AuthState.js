@@ -35,17 +35,18 @@ const AuthState = (props) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   //Crear coleccion de perfil de usuario
-  const addUserCollection = () => {
+  const addUserCollection = (datos) => {
     const user = userActive();
-    const { email, uid } = user;
+    const { email, uid, displayName, photoURL } = user;
     if (user) {
       createUserProfile(user.uid, {
+        name: !displayName ? datos.name : displayName,
         email,
         uid,
+        photoUrl: !photoURL ? '' : photoURL,
       })
         .then(() => {
           console.log('Document successfully written!');
-
         })
         .catch((error) => {
           console.error('Error writing document: ', error);
@@ -62,18 +63,18 @@ const AuthState = (props) => {
 
   const usuarioAutenticado = async () => {
     await auth.onAuthStateChanged((user) => {
-      const { email, uid } = user;
-      console.log(user, 'estas autentificado?');
       if (user) {
         return getUserProfile(user.uid)
           .then((snapshot) => {
             const dbUser = snapshot.data();
-            console.log(dbUser, 'Document successfully written!');
+            console.log(dbUser, 'hola este es el usuario');
             dispatch({
               type: OBTENER_USUARIO,
               payload: {
-                email,
-                uid,
+                name: dbUser.name,
+                email: dbUser.email,
+                uid: dbUser.uid,
+                photoUrl: dbUser.photoUrl,
               },
             });
           })
@@ -88,19 +89,16 @@ const AuthState = (props) => {
         });
       }
     });
-
   };
 
   const registrarUsuario = async (datos) => {
-    console.log(datos, 'datitos');
     try {
-      const respuesta = await createUserWithEmail(datos.email, datos.password);
+      await createUserWithEmail(datos.email, datos.password);
       dispatch({
         type: REGISTRO_EXITOSO,
-        payload: respuesta.user,
       });
       //Crear la colección de usuarios
-      addUserCollection();
+      addUserCollection(datos);
       //Obtener el usuario
       usuarioAutenticado();
     } catch (error) {
@@ -115,10 +113,9 @@ const AuthState = (props) => {
   //Cuando el usuario inicia sesión
   const iniciarSesion = async (datos) => {
     try {
-      const respuesta = await signInWithEmail(datos.email, datos.password);
+      await signInWithEmail(datos.email, datos.password);
       dispatch({
         type: LOGIN_EXITOSO,
-        payload: respuesta.user,
       });
       //Obtener el usuario
       usuarioAutenticado();
@@ -128,6 +125,52 @@ const AuthState = (props) => {
         payload: error.message,
       });
     }
+  };
+
+  //Cuando el usuario registra i inicia sesion con google
+  const loginGoogle = async () => {
+    await loginWithGoogle()
+      .then((user) => {
+        console.log(user);
+        dispatch({
+          type: REGISTRO_EXITOSO,
+        });
+        if (user.additionalUserInfo.isNewUser === true) {
+          //Crear la colección de usuarios
+          addUserCollection();
+        }
+        //Obtener el usuario
+        usuarioAutenticado();
+      })
+      .catch((error) => {
+        dispatch({
+          type: REGISTRO_ERROR,
+          payload: error.message,
+        });
+      });
+  };
+
+  //Cuando el usuario registra i inicia sesion con google
+  const loginFacebook = async () => {
+    await loginWithFacebook()
+      .then((user) => {
+        console.log(user);
+        dispatch({
+          type: REGISTRO_EXITOSO,
+        });
+        if (user.additionalUserInfo.isNewUser === true) {
+          //Crear la colección de usuarios
+          addUserCollection();
+        }
+        //Obtener el usuario
+        usuarioAutenticado();
+      })
+      .catch((error) => {
+        dispatch({
+          type: REGISTRO_ERROR,
+          payload: error.message,
+        });
+      });
   };
   //Cierra la sesión del usuario
   const cerrarSesion = () => {
@@ -148,7 +191,8 @@ const AuthState = (props) => {
         iniciarSesion,
         usuarioAutenticado,
         cerrarSesion,
-
+        loginGoogle,
+        loginFacebook,
       }}
     >
       {props.children}

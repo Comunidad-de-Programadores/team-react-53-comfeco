@@ -6,7 +6,12 @@ import AuthContext from '../../auth/AuthContext';
 const Register = () => {
   //extraer los valores del context
   const authContext = useContext(AuthContext);
-  const { mensaje, autenticado, registrarUsuario } = authContext;
+  const {
+    mensaje,
+    autenticado,
+    registrarUsuario,
+    loginGoogle,
+    loginFacebook } = authContext;
   const [errorMessage, setErrorMessage] = useState({
     message: '',
     type: '',
@@ -19,7 +24,7 @@ const Register = () => {
     password: '',
     confirmar: '',
   });
-  const { nombre, email, password, confirmar } = user;
+  const { name, email, password, confirmar } = user;
   const [formValid, setFormValid] = useState({
     name: false,
     email: false,
@@ -46,6 +51,7 @@ const Register = () => {
   const signIn = (e) => {
     e.preventDefault();
     registrarUsuario({
+      name,
       email,
       password,
     });
@@ -166,7 +172,27 @@ const Register = () => {
   if (autenticado) {
     return <Redirect to='/' />;
   }
+  const handleClickGoogle = () => {
+    loginGoogle()
+      .then((user) => {
+        console.log(user);
+        history.replace('/');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  const handleClickFacebook = () => {
+    loginFacebook()
+      .then((user) => {
+        console.log(user);
+        history.replace('/');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className='Register'>
       <h1 className='Register__title'>
@@ -234,23 +260,40 @@ const Register = () => {
           <button
             type='submit'
             className='form__button_re'
-            disabled={!(formValid.name && formValid.email && formValid.password && formValid.confirmar)}
+            disabled={
+              !(
+                formValid.name &&
+                formValid.email &&
+                formValid.password &&
+                formValid.confirmar
+              )
+            }
           >
             Registrarse
           </button>
           <label className='form__register_re'>
             Ya tienes cuenta? Inicia sesión
             {' '}
-            <Link to='/login' type='button'>aquí.</Link>
+            <Link to='/login' type='button'>
+              aquí.
+            </Link>
           </label>
         </div>
       </form>
       <div>
         <div className='social__group_re'>
-          <button type='button' className='form__button_other_re'>
+          <button
+            type='button'
+            className='form__button_other_re'
+            onClick={handleClickFacebook}
+          >
             Ingresar con Facebook
           </button>
-          <button type='onSubmit' className='form__button_other_re'>
+          <button
+            type='button'
+            className='form__button_other_re'
+            onClick={handleClickGoogle}
+          >
             Ingresar con Google
           </button>
         </div>
