@@ -27,6 +27,7 @@
   "homepage": "https://github.com/Comunidad-de-Programadores/team-react-53-comfeco#readme",
   "dependencies": {
     "@babel/runtime": "^7.12.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@popperjs/core": "^2.7.2",
     "bootstrap": "^4.6.0",
     "firebase": "^8.2.7",

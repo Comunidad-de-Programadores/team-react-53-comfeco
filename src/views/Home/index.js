@@ -13,10 +13,6 @@ const Home = () => {
     history.replace('/login');
   };
 
-  // useEffect(() => {
-  //   usuarioAutenticado();
-  // }, []);
-
   if (!autenticado) {
     return <Redirect to='/login' />;
   }

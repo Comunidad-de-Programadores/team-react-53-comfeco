@@ -41,7 +41,7 @@ export default (state, action) => {
         ...state,
         authReady: true,
         autenticado: true,
-        mensaje: null,
+        mensaje_: null,
       };
     case LOGIN_EXITOSO:
       // localStorage.setItem('token', action.payload.token);

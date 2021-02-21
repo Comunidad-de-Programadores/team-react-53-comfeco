@@ -13,6 +13,7 @@ const AppRouter = () => {
   useEffect(() => {
     usuarioAutenticado();
   }, []);
+
   return (
     <BrowserRouter>
       <Header />

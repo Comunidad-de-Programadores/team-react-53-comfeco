@@ -2,8 +2,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   loginWithGoogle,
-  logOut,
-  onAuthStateChanged,
   loginWithFacebook,
 } from '../../firebase/client';
 import AuthContext from '../../auth/AuthContext';
@@ -38,7 +36,7 @@ const Login = () => {
   //En caso de que el password o usuario no exista
   useEffect(() => {
     if (autenticado) {
-      history.push('/');
+      history.replace('/');
     }
     if (mensaje) {
       setErrorMessage({
@@ -51,7 +49,6 @@ const Login = () => {
   const handleClickGoogle = () => {
     loginWithGoogle()
       .then((user) => {
-        setUser(user);
         history.replace('/');
       })
       .catch((err) => {
@@ -62,7 +59,7 @@ const Login = () => {
   const handleClickFacebook = () => {
     loginWithFacebook()
       .then((user) => {
-        setUser(user);
+        history.replace('/');
       })
       .catch((err) => {
         console.log(err);
@@ -89,7 +86,8 @@ const Login = () => {
       setErrorMessage({ ...initialErrorMessageState });
     } else {
       setErrorMessage({
-        message: 'Su email es incorrecto',
+        message:
+          'Su email es incorrecto. Por favor incluya una @ en el correo electrónico',
         type: 'email',
       });
       setFormValid({
@@ -102,6 +100,7 @@ const Login = () => {
   const handleBlur = (e) => {
     const { target } = e;
     const { value, name } = target;
+    console.log(value, 'yo');
     if (value.length === 0) {
       if (name === 'email') {
         setFormValid({
@@ -195,7 +194,7 @@ const Login = () => {
           <button
             type='submit'
             className='form__button'
-            disabled={!(formValid.email && formValid.password)}
+            // disabled={!(formValid.email && formValid.password)}
           >
             Entrar
           </button>
