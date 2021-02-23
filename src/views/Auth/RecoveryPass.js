@@ -5,7 +5,6 @@ import { sendRecoverPassword } from '../../firebase/client';
 const RecoveryPass = () => {
   const [email, setEmail] = useState('');
 
-  console.log(email, 'oijitos');
   const recoverPassword = () => {
     sendRecoverPassword(email)
       .then(() => {
