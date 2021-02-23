@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, Redirect } from 'react-router-dom';
 import AuthContext from '../../auth/AuthContext';
+import Counter from '../../components/counter';
 
 const Home = () => {
   // Extraer la información de autentificación
@@ -29,6 +30,7 @@ const Home = () => {
           </span>
         ) : ''}
       </p>
+      <Counter />
       <button type='button' onClick={handleLogout} className='btn'>
         Cerrar Sesión
       </button>
