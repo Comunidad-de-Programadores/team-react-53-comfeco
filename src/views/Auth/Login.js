@@ -152,14 +152,7 @@ const Login = () => {
         <span className='title__message'> Inicia Sesión! </span>
       </h1>
       <form className='Login__form' onSubmit={Login}>
-
-        {errorMessage.message ? (
-          <p>
-
-            {errorMessage.message}
-
-          </p>
-        ) : ''}
+        {errorMessage.message ? <p>{errorMessage.message}</p> : ''}
         <div className='form__group'>
           <label htmlFor='email' className='form__label'>
             Email :
@@ -188,7 +181,7 @@ const Login = () => {
             className={errorMessage.type === 'password' ? 'error' : ''}
           />
           <div className='form__pass'>
-            <a href='#' className='form__link'>
+            <a href='/recovery-pass' className='form__link'>
               Recuperar Contraseña
             </a>
           </div>
@@ -207,7 +200,6 @@ const Login = () => {
           </button>
           <p className='form__register'>
             No tiene cuenta registrate
-
             <a href='/signup'> aquí. </a>
           </p>
         </div>

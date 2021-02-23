@@ -10,6 +10,7 @@ const firebaseConfig = {
   messagingSenderId: '528449037894',
   appId: '1:528449037894:web:040e77cd09933a55f9cc47',
 };
+
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
 export const auth = firebase.auth();
@@ -74,3 +75,6 @@ export const getUserProfile = (uid) => {
   return firebase.firestore().collection('usuarios').doc(uid).get();
 };
 
+export const sendRecoverPassword = (email) => {
+  return firebase.auth().sendPasswordResetEmail(email);
+};
