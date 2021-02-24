@@ -38,7 +38,8 @@
     "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-select": "^4.1.0"
+    "react-select": "^4.1.0",
+    "react-leaf-carousel": "^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
