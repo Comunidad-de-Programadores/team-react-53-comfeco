@@ -1,0 +1,17 @@
+.container__home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home__communities{
+width: 25%;
+  padding: 2rem 1rem;
+}
+.home__main{
+  width: 50%;
+  padding: 2rem 1rem;
+}
+.home__workshops{
+  width: 25%;
+  padding: 2rem 1rem;
+}
