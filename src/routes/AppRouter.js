@@ -5,15 +5,17 @@ import Header from '../components/Header';
 import Home from '../views/Home';
 import Login from '../views/Auth/Login';
 import Register from '../views/Auth/Register';
+// import CarouselContainer from '../views/Home/CarouselContainer';
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/signup' component={Register} />
+        <Route exact path="/" component={Home} />
+        {/* <Route exact path="/caru" component={CarouselContainer} /> */}
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Register} />
       </Switch>
       <Footer />
     </BrowserRouter>

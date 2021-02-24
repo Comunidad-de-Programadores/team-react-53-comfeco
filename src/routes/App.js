@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import Header from '../components/Header';
 // import Auth from '../views/Auth';
 
-
 // const App = () => (
 //     <BrowserRouter>
 //     <Header/>
@@ -22,33 +21,23 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Auth from '../views/Auth';
-import RutaPrivada from "./PrivateRoute";
-import Home from "./../views/Home"
-import Login from '../views/Auth/Login.jsx'
+import RutaPrivada from './PrivateRoute';
+import Home from './../views/Home';
+import Login from '../views/Auth/Login.jsx';
 
-const App = () => ( <
-    BrowserRouter >
-    <
-    Header / >
-    <
-    Switch >
-    <
-    Route exact path = "/auth"
-    component = { Auth }
-    /> <
-    RutaPrivada exact path = "/"
-    component = { Home }
-    /> { /* <Route exact path="/" component={Autentificar} /> */ } <
-    Route exact path = "/login"
-    component = { Login }
-    /> {
-        /* <Route exact path="/register" component={Register} />
-              <Route exact path="/recovery_pass" component={RecoveryPass} /> */
-    } <
-    /Switch> <
-    Footer / >
-    <
-    /BrowserRouter>
+const App = () => (
+  <BrowserRouter>
+    <Header />
+    <Switch>
+      <Route exact path="/auth" component={Auth} />{' '}
+      <RutaPrivada exact path="/" component={Home} />{' '}
+      {/* <Route exact path="/" component={Autentificar} /> */}{' '}
+      <Route exact path="/login" component={Login} />{' '}
+      {/* <Route exact path="/register" component={Register} />
+              <Route exact path="/recovery_pass" component={RecoveryPass} /> */}{' '}
+    </Switch>{' '}
+    <Footer />
+  </BrowserRouter>
 );
 
 export default App;

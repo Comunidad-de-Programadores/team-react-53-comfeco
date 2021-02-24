@@ -1,31 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useHistory, Redirect } from 'react-router-dom';
-import AuthContext from '../../auth/AuthContext';
+import React from 'react';
 import Carousel from '../../components/Carousel';
-import { onAuthStateChanged, auth } from '../../firebase/client';
 
-const Home = () => {
-  // Extraer la información de autentificación
-  const { authContext, autenticado, cerrarSesion } = useContext(AuthContext);
-  // const {
-  //   // usuario,
-  //   cerrarSesion,
-  // } = authContext;
-
-  const history = useHistory();
-
-  const handleLogout = () => {
-    // cerrarSesion();
-    // history.replace('/login');
-  };
-
-  // useEffect(() => {
-  //   usuarioAutenticado();
-  // }, []);
-
-  if (!autenticado) {
-    // return <Redirect to="/login" />;
-  }
+const CarouselContainer = () => {
   const creadores = [
     {
       id: 0,
@@ -89,92 +65,69 @@ const Home = () => {
     {
       id: 1,
       name: 'Huawei',
-      img: 'https://i.ibb.co/3C6GQ5B/huawei.png',
+      img: '../assets/images/sponsors/huawei.png',
     },
     {
       id: 2,
       name: 'Tekki',
-      img: 'https://i.ibb.co/5rrGtFz/tekki.png',
+      img: '../assets/images/sponsors/tekki.png',
     },
     {
       id: 3,
       name: 'CodelyTV',
-      img: 'https://i.ibb.co/vVxZJKn/CodelyTV.png',
+      img: '../assets/images/sponsors/CodelyTV.png',
     },
     {
       id: 4,
       name: 'codigofacilito',
-      img: 'https://i.ibb.co/BTtcBd4/c-digofacilito.png',
+      img: '../assets/images/sponsors/codigofacilito.webp',
     },
     {
       id: 5,
       name: 'Domini Code',
-      img: 'https://i.ibb.co/d6nVmvY/Domini-Code.jpg',
+      img: '../assets/images/sponsors/Domini Code.jpg',
     },
     {
       id: 6,
       name: 'Egghead',
-      img: 'https://i.ibb.co/5Tv1cV2/Egghead.jpg',
+      img: '../assets/images/sponsors/Egghead.jpg',
     },
     {
       id: 7,
       name: 'Fernando Herrera',
-      img: 'https://i.ibb.co/DrHm0nJ/Fernando-Herrera.jpg',
+      img: '../assets/images/sponsors/Fernando Herrera.jpg',
     },
     {
       id: 8,
       name: 'José Dimas Luján',
-      img: 'https://i.ibb.co/cvnwZy7/Jos-Dimas-Luj-n.jpg',
+      img: '../assets/images/sponsors/José Dimas Luján.jpg',
     },
     {
       id: 9,
       name: 'Latam Dev',
-      img: 'https://i.ibb.co/VYv37Nh/Latam-Dev.jpg',
+      img: '../assets/images/sponsors/Latam Dev.jpg',
     },
     {
       id: 10,
       name: 'Leonidas Esteban',
-      img: 'https://i.ibb.co/B64HzTq/Le-nidas-Esteban.jpg',
+      img: '../assets/images/sponsors/Leónidas Esteban.jpg',
     },
     {
       id: 11,
       name: 'Stackly Code',
-      img: 'https://i.ibb.co/wJJv3Jw/Stackly-Code.png',
+      img: '../assets/images/sponsors/Stackly Code.png',
     },
   ];
+
   return (
-    <div>
-      <p>
-        Bienvenido :
-        {/* {usuario ? (
-          <span>
-          {usuario.email}
-          </span>
-        ) : ''} */}
-      </p>
-      <button type="button" onClick={handleLogout} className="btn">
-        Cerrar Sesión
-      </button>
-      <div className="creadores__content">
-        <Carousel
-          slidesToShow="4"
-          sizeImg="80%"
-          visiblePorcent="0.4"
-          items={creadores}
-          auto
-        />
-      </div>
-      <div className="sponsors__content">
-        <Carousel
-          slidesToShow="5"
-          sizeImg="80%"
-          visiblePorcent="0.2"
-          items={sponsors}
-          auto={false}
-        />
-      </div>
+    <div className="home">
+      <button type="button">Logout</button>
+
+      <h1>Home</h1>
+      <Carousel items={creadores} auto />
+      <Carousel items={sponsors} auto={false} />
     </div>
   );
 };
 
-export default Home;
+export default CarouselContainer;
