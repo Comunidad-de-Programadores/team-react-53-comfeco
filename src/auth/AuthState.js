@@ -35,11 +35,11 @@ const AuthState = (props) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   //Crear coleccion de perfil de usuario
-  const addUserCollection = (datos) => {
-    const user = userActive();
+  const addUserCollection = async (datos) => {
+    const user = await userActive();
     const { email, uid, displayName, photoURL } = user;
     if (user) {
-      createUserProfile(user.uid, {
+      await createUserProfile(user.uid, {
         name: !displayName ? datos.name : displayName,
         email,
         uid,
@@ -67,7 +67,7 @@ const AuthState = (props) => {
         return getUserProfile(user.uid)
           .then((snapshot) => {
             const dbUser = snapshot.data();
-            console.log(dbUser, 'hola este es el usuario');
+            console.log(dbUser, 'hola este es el usuario autenticado');
             dispatch({
               type: OBTENER_USUARIO,
               payload: {
@@ -131,12 +131,13 @@ const AuthState = (props) => {
   const loginGoogle = async () => {
     await loginWithGoogle()
       .then((user) => {
-        console.log(user);
+        console.log(user, 'logueado con google');
         dispatch({
           type: REGISTRO_EXITOSO,
         });
         if (user.additionalUserInfo.isNewUser === true) {
           //Crear la colección de usuarios
+          console.log('hola estoy primera vez logueado');
           addUserCollection();
         }
         //Obtener el usuario
