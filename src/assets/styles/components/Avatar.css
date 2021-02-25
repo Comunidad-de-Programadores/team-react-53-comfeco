@@ -1,0 +1,14 @@
+.avatar{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: blue;
+}
+.avatar span{
+    font-size: .9rem;
+    color: white;
+    font-weight: 400;
+}

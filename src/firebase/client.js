@@ -83,7 +83,7 @@ export const sendRecoverPassword = (email) => {
 export const dateCreateUserProfile = () => {
   return firebase.firestore.Timestamp.fromDate(new Date());
 };
-export const getWorkshops = () => {
+export const getWorkshopsToday = () => {
   return firebase
     .firestore()
     .collection('talleres')
@@ -111,5 +111,32 @@ export const getWorkshops = () => {
       console.log('Error getting documents: ', error);
     });
 
+};
+
+export const getWorkshopsFilterArea = (valueArea) => {
+  return (
+    firebase
+      .firestore()
+      .collection('talleres')
+      .where('area', '==', valueArea)
+      // .orderBy('hora', 'desc')
+      .get()
+      .then((snapshot) => {
+        return snapshot.docs.map((doc) => {
+          const data = doc.data();
+          const { id } = doc;
+          const { hora } = data;
+          const normalizedCreateAt = new Date(hora.seconds * 1000).toString();
+          return {
+            ...data,
+            id,
+            hora: normalizedCreateAt,
+          };
+        });
+      })
+      .catch((error) => {
+        console.log('Error getting documents: ', error);
+      })
+  );
 };
 

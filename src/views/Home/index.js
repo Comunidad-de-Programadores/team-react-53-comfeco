@@ -5,6 +5,7 @@ import Counter from '../../components/Home/counter';
 import Workshops from '../../components/Home/Workshops';
 import Carousel from '../../components/Home/Carousel';
 import '../../assets/styles/views/Home.css';
+import Avatar from "../../components/Avatar"
 
 const Home = () => {
   // Extraer la información de autentificación
@@ -142,6 +143,7 @@ const Home = () => {
     <div className='container__home'>
       <div className='home__communities'>
         <p>kdhfjkdhfk</p>
+        <Avatar/>
       </div>
       <div className='home__main'>
         <p>
