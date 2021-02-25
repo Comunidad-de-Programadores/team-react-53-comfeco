@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  loginWithGoogle,
-  loginWithFacebook,
-} from '../../firebase/client';
+import { loginWithGoogle, loginWithFacebook } from '../../firebase/client';
 import AuthContext from '../../auth/AuthContext';
 // import { types } from '../../types/types';
 import '../../assets/styles/views/Login.css';
+
+import fondo from '../../assets/img/fondo.png';
 
 const Login = () => {
   const authContext = useContext(AuthContext);
@@ -135,7 +134,7 @@ const Login = () => {
     }
     if (name === 'email') {
       validateEmail(value);
-      // setErrorMessage({ ...initialErrorMessageState });
+      setErrorMessage({ ...initialErrorMessageState });
     }
   };
   console.log(mensaje, 'mensaje :)');
@@ -151,80 +150,93 @@ const Login = () => {
   };
 
   return (
-    <div className='Login'>
-      <h1 className='Login__title'>
-        <span className='title_hola'> Hola, </span>
-        <span className='title__message'> Inicia Sesión! </span>
-      </h1>
-      <form className='Login__form' onSubmit={Login}>
-        {errorMessage.message ? <p>{errorMessage.message}</p> : ''}
-        <div className='form__group'>
-          <label htmlFor='email' className='form__label'>
-            Email :
-          </label>
-          <input
-            name='email'
-            type='email'
-            value={user.email}
-            className='form__input'
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            className={errorMessage.type === 'email' ? 'error' : ''}
-          />
-        </div>
-        <div className='form__group'>
-          <label htmlFor='password' className='form__label'>
-            Contraseña:
-          </label>
-          <input
-            name='password'
-            type='password'
-            value={user.password}
-            className='form__input'
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            className={errorMessage.type === 'password' ? 'error' : ''}
-          />
-          <div className='form__pass'>
-            <a href='/recovery-pass' className='form__link'>
-              Recuperar Contraseña
-            </a>
+    <div className='view-login'>
+      <div className='box-login-img'>
+        <div className='box-login'>
+          <div className='Login'>
+            <h1 className='Login__title'>
+              {/* <span className="title_hola"> Hola, </span> */}
+              <span className='title__message'> Iniciar Sesión </span>
+            </h1>
+            <form className='Login__form' onSubmit={Login}>
+              {errorMessage.message ? (
+                <div className='error-msj'>{errorMessage.message}</div>
+              ) : (
+                ''
+              )}
+              <div className='form__group'>
+                <label htmlFor='email' className='form__label'>
+                  Email :
+                </label>
+                <input
+                  name='email'
+                  type='email'
+                  value={user.email}
+                  className='form__input'
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  className={errorMessage.type === 'email' ? 'error' : ''}
+                />
+              </div>
+              <div className='form__group'>
+                <label htmlFor='password' className='form__label'>
+                  Contraseña:
+                </label>
+                <input
+                  name='password'
+                  type='password'
+                  value={user.password}
+                  className='form__input'
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  className={errorMessage.type === 'password' ? 'error' : ''}
+                />
+                <div className='form__pass'>
+                  <a href='/recovery-pass' className='form__link'>
+                    Recuperar Contraseña
+                  </a>
+                </div>
+                <div className='form__check '>
+                  <input type='checkbox' className='w-auto mr-2' />
+                  <span className='form__check_s'> Mantenerme conectado </span>
+                </div>
+              </div>
+              <div className='form__group'>
+                <button
+                  type='submit'
+                  className='form__button'
+                  // disabled={!(formValid.email && formValid.password)}
+                >
+                  Entrar
+                </button>
+                <p className='form__register'>
+                  No tiene cuenta registrate
+                  <a href='/signup'> aquí. </a>
+                </p>
+              </div>
+            </form>
+            <div>
+              <div className='social__group'>
+                <button
+                  type='button'
+                  className='form__button_other loginBtn--facebook'
+                  onClick={handleClickFacebook}
+                >
+                  Ingresar con Facebook
+                </button>
+                <button
+                  type='button'
+                  className='form__button_other loginBtn--google'
+                  onClick={handleClickGoogle}
+                >
+                  Ingresar con Google
+                </button>
+              </div>
+            </div>
           </div>
-          <div className='form__check '>
-            <input type='checkbox' />
-            <span className='form__check_s'> Mantenerme conectado </span>
-          </div>
         </div>
-        <div className='form__group'>
-          <button
-            type='submit'
-            className='form__button'
-            // disabled={!(formValid.email && formValid.password)}
-          >
-            Entrar
-          </button>
-          <p className='form__register'>
-            No tiene cuenta registrate
-            <a href='/signup'> aquí. </a>
-          </p>
-        </div>
-      </form>
-      <div>
-        <div className='social__group'>
-          <button
-            type='button'
-            className='form__button_other'
-            onClick={handleClickFacebook}
-          >
-            Ingresar con Facebook
-          </button>
-          <button
-            type='button'
-            className='form__button_other'
-            onClick={handleClickGoogle}
-          >
-            > Ingresar con Google
-          </button>
+        <div className='box-img'>
+          <img src={fondo} className='' />
         </div>
       </div>
     </div>
