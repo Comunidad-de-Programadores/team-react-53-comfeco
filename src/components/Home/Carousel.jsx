@@ -3,7 +3,7 @@ import InfiniteCarousel from 'react-leaf-carousel';
 
 const CarouselItem = ({ item, size }) => {
   const { name, img } = item;
-  console.log(name, img, 'holitas');
+
   return (
     <div className='carrousel__item'>
       <img

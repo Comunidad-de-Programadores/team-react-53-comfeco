@@ -5,6 +5,8 @@ import Select from 'react-select';
 import { getWorkshops } from '../../firebase/client';
 
 const Workshops = () => {
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [listWorkshops, setListWorkshops] = useState([]);
   const options = [
     {
       value: 'area_1',
@@ -39,8 +41,7 @@ const Workshops = () => {
       label: 'Cloud Computing',
     },
   ];
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [listWorkshops, setListWorkshops] = useState([]);
+
   // const hora = (hora) => {
   //   const date = new Date(hora);
   //   console.log(date);
@@ -59,14 +60,14 @@ const Workshops = () => {
   //   );
   // };
   useEffect(() => {
-    console.log(new Date(), 'la hora');
+
     getWorkshops()
       .then((res) => {
         console.log(res, 'ojitos');
-        setListWorkshops(res)
-          .catch((error) => {
-            console.log(error, 'error');
-          });
+        setListWorkshops(res);
+      })
+      .catch((error) => {
+        console.log(error, 'error :)');
       });
   }, []);
 
@@ -98,7 +99,8 @@ const Workshops = () => {
               <img src='' alt='icono de taller' />
               <div>
                 <h5>{workshop.titulo}</h5>
-                <h6>{workshop.hora.seconds}</h6>
+
+                <h6>{workshop.hora}</h6>
                 <p>
                   <span>By </span>
                   <a href={workshop.redSocial}>{workshop.profesor}</a>
