@@ -41,8 +41,25 @@ const Workshops = () => {
   ];
   const [selectedOption, setSelectedOption] = useState(null);
   const [listWorkshops, setListWorkshops] = useState([]);
-
+  // const hora = (hora) => {
+  //   const date = new Date(hora);
+  //   console.log(date);
+  //   const dia = date.getDate();
+  //   const mes = date.getMonth() + 1;
+  //   const yyy = date.getFullYear();
+  //   // console.log(new Date(hora), 'juliana');
+  //   return (
+  //     <p>
+  //       {dia}
+  //       -
+  //       {mes}
+  //       -
+  //       {yyy}
+  //     </p>
+  //   );
+  // };
   useEffect(() => {
+    console.log(new Date(), 'la hora');
     getWorkshops()
       .then((res) => {
         console.log(res, 'ojitos');

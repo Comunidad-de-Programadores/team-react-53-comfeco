@@ -80,12 +80,17 @@ export const sendRecoverPassword = (email) => {
   return firebase.auth().sendPasswordResetEmail(email);
 };
 
+export const dateCreateUserProfile = () => {
+  return firebase.firestore.Timestamp.fromDate(new Date());
+};
 export const getWorkshops = async () => {
   const listWorkshops = [];
   await firebase
     .firestore()
     .collection('talleres')
-    .orderBy('hora', 'asc')
+    // .where('hora', '>=', 1614124800000)
+    // .where('hora', '<', 1614211200000)
+    .orderBy('hora', 'desc')
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
