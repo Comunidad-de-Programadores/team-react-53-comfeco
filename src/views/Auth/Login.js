@@ -40,6 +40,7 @@ const Login = () => {
   const { email, password } = user;
 
   //En caso de que el password o usuario no exista
+
   useEffect(() => {
     if (autenticado) {
       history.replace('/');
@@ -134,11 +135,15 @@ const Login = () => {
     }
     if (name === 'email') {
       validateEmail(value);
+      setErrorMessage({ ...initialErrorMessageState });
     }
   };
-
+  console.log(mensaje, 'mensaje :)');
+  console.log(errorMessage.message, 'mensaje yo :(');
   const Login = (e) => {
     e.preventDefault();
+    console.log(mensaje, 'mensaje');
+    console.log(errorMessage.message, 'mensaje yo');
     iniciarSesion({
       email,
       password,

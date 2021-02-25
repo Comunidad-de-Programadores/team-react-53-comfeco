@@ -89,7 +89,7 @@ const AuthState = (props) => {
       if (!user) {
         return dispatch({
           type: LOGIN_ERROR,
-          payload: 'no estas autentificado',
+          payload: null,
         });
       }
     });
