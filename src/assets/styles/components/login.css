@@ -1,7 +1,5 @@
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.box-login{
+    height: 80vh;
 }
 
 h1,

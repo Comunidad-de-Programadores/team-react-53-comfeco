@@ -17,7 +17,7 @@ import RecoveryPass from '../views/Auth/RecoveryPass';
 // import CarouselContainer from '../views/Home/CarouselContainer';
 
 const AppRouter = () => {
-  const { usuarioAutenticado } = useContext(AuthContext);
+  const {autenticado, usuarioAutenticado } = useContext(AuthContext);
 
   useEffect(() => {
     usuarioAutenticado();
@@ -25,6 +25,7 @@ const AppRouter = () => {
 
   return (
     <BrowserRouter>
+    
       <Header />
       <Switch>
         <Route exact path='/' component={Home} />

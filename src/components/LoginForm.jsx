@@ -118,7 +118,7 @@ class LoginForm extends React.Component {
     return (
       <div className='Login'>
         <h1 className='Login__title'>
-          <span className='title_hola'>Hola,</span>
+          <span className='title_hola'>Hola</span>
           <span className='title__message'>Inicia Sesión!</span>
         </h1>
         <form
