@@ -1,36 +1,57 @@
 .logo {
-    width: 50%;
+  width: 50%;
 }
 
-nav{
-    padding: 1.5rem 2.5rem!important;
+nav {
+  padding: 1.5rem 2.5rem !important;
 }
 
-.btn-iniciar-sesion{
-   position: relative;
-   margin-left: auto;
+.btn-iniciar-sesion {
+  position: relative;
+  margin-left: auto;
 }
 
-.nickname{
-    margin-left: auto;
-    display: flex;
+.nickname {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+a#basic-nav-dropdown\ {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+}
+.dropdown.nav-item {
+  /* border: 1px solid grey;
+  background-color: grey; */
+  /* border-bottom-left-radius: 100%;
+  border-top-left-radius: 100%; */
+}
+.dropdown-menu {
+  right: 0 !important;
 }
 
-.foto-user{
-    width: 10%;
-    border-radius: 50%;
+.foto-user {
+  width: 15%;
+  border-radius: 50%;
+}
+
+.user-select {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 @media (max-width: 768px) {
-
-    .navbar-collapse{
-        padding-top:  2rem!important;
-    }
-    .btn-iniciar-sesion{
-        position: relative;
-        margin-left: 0;
-     }
-     .nickname{
-        margin-left: 0;
-    }
+  .navbar-collapse {
+    padding-top: 2rem !important;
+  }
+  .btn-iniciar-sesion {
+    position: relative;
+    margin-left: 0;
+  }
+  .nickname {
+    margin-left: 0;
+  }
 }

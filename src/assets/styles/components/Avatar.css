@@ -6,6 +6,7 @@
     align-items: center;
     border-radius: 50%;
     background-color: blue;
+    margin: auto 2rem;
 }
 .avatar span{
     font-size: .9rem;
