@@ -8,7 +8,7 @@ import {
 } from '../../firebase/client';
 
 const Workshops = () => {
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState([]);
   const [listWorkshops, setListWorkshops] = useState([]);
   const options = [
     {
@@ -79,8 +79,8 @@ const Workshops = () => {
   }, []);
 
   useEffect(() => {
-    if (selectedOption !== '') {
-      return getWorkshopsFilterArea(selectedOption.value)
+    if (selectedOption.length !== 0) {
+      getWorkshopsFilterArea(selectedOption.value)
         .then((res) => {
           setListWorkshops(res);
         })
@@ -110,27 +110,33 @@ const Workshops = () => {
         />
       </div>
       <div className='workshops__list'>
-        {selectedOption === '' && (
+        {selectedOption.length === 0 && (
           <div className='list__header'>
             <span>HOY</span>
           </div>
-        ) }
+        )}
 
         <div className='list__body'>
-          {listWorkshops.map((workshop) => (
-            <div className='list__body--group'>
-              <img src='' alt='icono de taller' />
-              <div>
-                <h5>{workshop.titulo}</h5>
+          {listWorkshops.length === 0 ? (
+            <p>No se encontraron resultados</p>
+          ) : (
+            <>
+              {listWorkshops.map((workshop) => (
+                <div className='list__body--group'>
+                  <img src='' alt='icono de taller' />
+                  <div>
+                    <h5>{workshop.titulo}</h5>
 
-                <h6>{workshop.hora}</h6>
-                <p>
-                  <span>By </span>
-                  <a href={workshop.redSocial}>{workshop.profesor}</a>
-                </p>
-              </div>
-            </div>
-          ))}
+                    <h6>{workshop.hora}</h6>
+                    <p>
+                      <span>By </span>
+                      <a href={workshop.redSocial}>{workshop.profesor}</a>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </aside>
