@@ -3,12 +3,22 @@
 }
 
 nav{
-    padding: 1.5rem 2rem!important;
+    padding: 1.5rem 2.5rem!important;
 }
 
 .btn-iniciar-sesion{
    position: relative;
    margin-left: auto;
+}
+
+.nickname{
+    margin-left: auto;
+    display: flex;
+}
+
+.foto-user{
+    width: 10%;
+    border-radius: 50%;
 }
 
 @media (max-width: 768px) {
@@ -20,4 +30,7 @@ nav{
         position: relative;
         margin-left: 0;
      }
+     .nickname{
+        margin-left: 0;
+    }
 }
