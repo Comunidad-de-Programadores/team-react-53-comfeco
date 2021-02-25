@@ -15,7 +15,6 @@ import Avatar from "../components/Avatar";
 const Header = () => {
   const { usuario, autenticado, cerrarSesion } = useContext(AuthContext);
   const location = useLocation();
-
   const history = useHistory();
 
   const handleLogout = () => {

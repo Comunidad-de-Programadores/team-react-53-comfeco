@@ -2,46 +2,53 @@ import React, { useEffect, useState } from 'react';
 import '../../assets/styles/components/workshops.css';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
-import { getWorkshops } from '../../firebase/client';
+import {
+  getWorkshopsToday,
+  getWorkshopsFilterArea,
+} from '../../firebase/client';
 
 const Workshops = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState([]);
   const [listWorkshops, setListWorkshops] = useState([]);
   const options = [
     {
-      value: 'area_1',
+      value: 'frontend',
       label: 'frontend',
     },
     {
-      value: 'area_2',
+      value: 'backend',
       label: 'backend',
     },
     {
-      value: 'area_3',
+      value: 'DevOps',
       label: 'DevOps',
     },
     {
-      value: 'area_4',
+      value: 'Video Game',
       label: 'Video Game',
     },
     {
-      value: 'area_5',
+      value: 'Developers',
       label: 'Developers',
     },
     {
-      value: 'area_6',
+      value: 'UI/UX',
       label: 'UI/UX',
     },
     {
-      value: 'area_7',
+      value: 'Database Developer',
       label: 'Database Developer',
     },
     {
-      value: 'area_8',
+      value: 'Cloud Computing',
       label: 'Cloud Computing',
     },
   ];
 
+  const handleChange = (selectedOption) => {
+    setSelectedOption(selectedOption);
+    console.log(selectedOption.value);
+  };
   // const hora = (hora) => {
   //   const date = new Date(hora);
   //   console.log(date);
@@ -60,8 +67,7 @@ const Workshops = () => {
   //   );
   // };
   useEffect(() => {
-
-    getWorkshops()
+    getWorkshopsToday()
       .then((res) => {
         console.log(res, 'ojitos');
         setListWorkshops(res);
@@ -69,7 +75,21 @@ const Workshops = () => {
       .catch((error) => {
         console.log(error, 'error :)');
       });
+
   }, []);
+
+  useEffect(() => {
+    if (selectedOption.length !== 0) {
+      getWorkshopsFilterArea(selectedOption.value)
+        .then((res) => {
+          setListWorkshops(res);
+        })
+        .catch((error) => {
+          console.log(error, 'error :) del filtro');
+        });
+    }
+
+  }, [selectedOption]);
 
   return (
     <aside className='workshops'>
@@ -79,9 +99,9 @@ const Workshops = () => {
       </div>
       <div className='workshops__filter'>
         <Select
-          // value={selectedOption}
-          // onChange={handleChange}
-          // name="marca"
+          value={selectedOption}
+          onChange={handleChange}
+          name='area'
           options={options}
           className='select-marca'
           placeholder='Selecciona una marca'
@@ -90,24 +110,33 @@ const Workshops = () => {
         />
       </div>
       <div className='workshops__list'>
-        <div className='list__header'>
-          <span>HOY</span>
-        </div>
-        <div className='list__body'>
-          {listWorkshops.map((workshop) => (
-            <div className='list__body--group'>
-              <img src='' alt='icono de taller' />
-              <div>
-                <h5>{workshop.titulo}</h5>
+        {selectedOption.length === 0 && (
+          <div className='list__header'>
+            <span>HOY</span>
+          </div>
+        )}
 
-                <h6>{workshop.hora}</h6>
-                <p>
-                  <span>By </span>
-                  <a href={workshop.redSocial}>{workshop.profesor}</a>
-                </p>
-              </div>
-            </div>
-          ))}
+        <div className='list__body'>
+          {listWorkshops.length === 0 ? (
+            <p>No se encontraron resultados</p>
+          ) : (
+            <>
+              {listWorkshops.map((workshop) => (
+                <div className='list__body--group'>
+                  <img src='' alt='icono de taller' />
+                  <div>
+                    <h5>{workshop.titulo}</h5>
+
+                    <h6>{workshop.hora}</h6>
+                    <p>
+                      <span>By </span>
+                      <a href={workshop.redSocial}>{workshop.profesor}</a>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </aside>
