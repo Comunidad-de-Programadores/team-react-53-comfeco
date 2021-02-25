@@ -13,6 +13,12 @@ nav{
 
 .nickname{
     margin-left: auto;
+    display: flex;
+}
+
+.foto-user{
+    width: 10%;
+    border-radius: 50%;
 }
 
 @media (max-width: 768px) {
