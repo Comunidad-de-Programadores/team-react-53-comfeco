@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useHistory, Redirect } from 'react-router-dom';
-import AuthContext from '../../auth/AuthContext';
-import Counter from '../../components/counter';
+import React, { useContext, useEffect, useState } from "react";
+import { useHistory, Redirect } from "react-router-dom";
+import AuthContext from "../../auth/AuthContext";
+import Counter from "../../components/counter";
 
 const Home = () => {
   // Extraer la información de autentificación
@@ -9,29 +9,21 @@ const Home = () => {
 
   const history = useHistory();
 
+  console.log("aquiiiii",usuario);
   const handleLogout = () => {
     cerrarSesion();
-    history.replace('/login');
+    history.replace("/login");
   };
 
   if (!autenticado) {
-    return <Redirect to='/login' />;
+    return <Redirect to="/login" />;
   }
 
   return (
     <div>
-      <p>
-        Bienvenido :
-        {usuario ? (
-          <span>
-            name :
-            {' '}
-            {usuario.name}
-          </span>
-        ) : ''}
-      </p>
+      <p>BIENVENIDO: {usuario ? <span> {usuario.name.toUpperCase() }</span> : ""}</p>
       <Counter />
-      <button type='button' onClick={handleLogout} className='btn'>
+      <button type="button" onClick={handleLogout} className="btn">
         Cerrar Sesión
       </button>
     </div>

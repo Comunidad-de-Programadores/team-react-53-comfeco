@@ -17,3 +17,11 @@
 .box-redes div{
     margin: 1rem;
 }
+
+@media (max-width: 768px) {
+    .footer{
+        background-color: #2E2E2E;
+        flex-direction: column;
+        text-align: center;
+    }
+}
