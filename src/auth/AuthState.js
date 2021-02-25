@@ -12,6 +12,7 @@ import {
   getUserProfile,
   signInWithEmail,
   auth,
+  dateCreateUserProfile,
 } from '../firebase/client';
 
 import {
@@ -44,6 +45,7 @@ const AuthState = (props) => {
         email,
         uid,
         photoUrl: !photoURL ? '' : photoURL,
+        createdAt: dateCreateUserProfile(),
       })
         .then(() => {
           console.log('Document successfully written!');
@@ -75,6 +77,7 @@ const AuthState = (props) => {
                 email: dbUser.email,
                 uid: dbUser.uid,
                 photoUrl: dbUser.photoUrl,
+                createdAt: dbUser.createdAt,
               },
             });
           })

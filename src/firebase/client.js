@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+// import { firestore } from '@firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD6qcYOpfYtaQ6jN-Lgib90VAkFCFxShcM',
@@ -78,3 +79,69 @@ export const getUserProfile = (uid) => {
 export const sendRecoverPassword = (email) => {
   return firebase.auth().sendPasswordResetEmail(email);
 };
+
+export const dateCreateUserProfile = () => {
+  return firebase.firestore.Timestamp.fromDate(new Date());
+};
+export const getWorkshops = async () => {
+  const listWorkshops = [];
+  await firebase
+    .firestore()
+    .collection('talleres')
+    // .where('hora', '>=', 1614124800000)
+    // .where('hora', '<', 1614211200000)
+    .orderBy('hora', 'desc')
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, ' => ', doc.data());
+        listWorkshops.push(doc.data());
+      });
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
+
+  // .snapshotChanges()
+  // .pipe(
+  //   map((response) => {
+  //     return response.map((element) => {
+  //       const { id } = element.payload.doc;
+  //       const data = element.payload.doc.data();
+  //       return { id, ...data };
+  //     });
+  //   }),
+  // );
+  // .then((querySnapshot) => {
+  //   querySnapshot.forEach((doc) => {
+  //     console.log(doc.id, ' => ', doc.data());
+  //     options.push({
+  //       value: doc.data().title.replace(/( )/g, ''),
+  //       label: `${doc.data().title} - ABS ${doc.id}`,
+  //     });
+  //   });
+  // });
+
+  // return listWorkshops;
+  // .snapshotChanges()
+  // .pipe(
+  //   map((response) => {
+  //     return response.map((element) => {
+  //       const { id } = element.payload.doc;
+  //       const data = element.payload.doc.data();
+  //       return { id, ...data };
+  //     });
+  //   }),
+  // );
+  return listWorkshops;
+};
+
+//  ngOnInit() {
+//   this.db.collection('123').snapshotChanges().map(actions => {
+//   return actions.map(a => {
+//     const data = a.payload.doc.data();
+//     const id = a.payload.doc.id;
+//     return { id, ...data };
+//   });
+// });

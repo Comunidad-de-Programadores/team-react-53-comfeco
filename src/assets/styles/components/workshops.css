@@ -1,0 +1,26 @@
+.workshops{
+  padding: 1rem;
+  width: 100%;
+  background-color: rgb(34, 76, 114);
+}
+.workshops__header{
+  display: flex;
+  justify-content: space-between;
+}
+.workshops__header h5{
+  color: #fff;
+}
+.workshops__list{
+  margin-top: 1rem;
+}
+.workshops__list .list__header{
+  background: #fff;
+  padding: 0.5rem;
+  font-weight: 500;
+}
+.list__body--group{
+  display: flex;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  background: #fff;
+}

@@ -1,9 +1,5 @@
-import React, { useContext } from "react";
-import { useHistory, useParams, useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
-import logo from "../assets/img/logo1.png";
-import "../assets/styles/components/Header.css";
-import AuthContext from "../auth/AuthContext";
+import React, { useContext } from 'react';
+import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
 
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,7 +7,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 const Header = () => {
   const { usuario, autenticado, cerrarSesion } = useContext(AuthContext);
   const location = useLocation();
-  console.log(location.pathname, "aa");
+  console.log(location.pathname, 'aa');
 
   return (
     <>
@@ -35,12 +31,12 @@ const Header = () => {
         </div>
       </nav> */}
 
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="/">
-          {" "}
-          <img src={logo} width="180" alt="Logo de COMFECO" />
+      <Navbar bg='light' expand='lg'>
+        <Navbar.Brand href='/'>
+          {' '}
+          <img src={logo} width='180' alt='Logo de COMFECO' />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
         {autenticado == true ? (
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-5 w-100">
