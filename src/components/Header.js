@@ -65,7 +65,9 @@ const Header = () => {
                     {" "}
                     <b>:)</b> {usuario.name.toUpperCase() }
                   </span>} id="basic-nav-dropdown" className="nickname">
-                <NavDropdown.Item href="#action/3.1">{usuario.photoUrl}</NavDropdown.Item>
+                    <img src={usuario.photoUrl}></img>
+
+                <NavDropdown.Item href="#action/3.1">perfil</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
                 </NavDropdown.Item>
