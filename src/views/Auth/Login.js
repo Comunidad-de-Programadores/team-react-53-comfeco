@@ -135,7 +135,7 @@ const Login = () => {
     }
     if (name === 'email') {
       validateEmail(value);
-      setErrorMessage({ ...initialErrorMessageState });
+      // setErrorMessage({ ...initialErrorMessageState });
     }
   };
   console.log(mensaje, 'mensaje :)');
