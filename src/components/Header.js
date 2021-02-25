@@ -12,7 +12,6 @@ import AuthContext from '../auth/AuthContext';
 const Header = () => {
   const { usuario, autenticado, cerrarSesion } = useContext(AuthContext);
   const location = useLocation();
-  console.log(location.pathname, 'aa');
 
   const handleLogout = () => {
     cerrarSesion();

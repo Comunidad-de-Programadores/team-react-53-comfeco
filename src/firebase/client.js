@@ -87,8 +87,8 @@ export const getWorkshops = () => {
   return firebase
     .firestore()
     .collection('talleres')
-    .where('hora', '>=', 1614124800000)
-    .where('hora', '<', 161411200000)
+    // .where('hora', '>=', 1614124800000)
+    // .where('hora', '<', 161411200000)
     .orderBy('hora', 'desc')
     .get()
     .then((snapshot) => {
