@@ -18,10 +18,7 @@ module.exports = {
     chunkFilename: 'js/[id].[chunkhash].js',
   },
   optimization: {
-    minimizer: [
-      new TerserJSPlugn(),
-      new OptimizeCSSAssetsPlugin(),
-    ],
+    minimizer: [new TerserJSPlugn(), new OptimizeCSSAssetsPlugin()],
   },
   module: {
     rules: [
@@ -40,7 +37,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.jpg|jpeg|png|svg|gif|woff|ttf|eot|mp4|webp$/,
+        test: /\.jpg|jpeg|png|svg|gif|woff|woff2|ttf|eot|mp4|webp$/,
         use: {
           loader: 'url-loader',
           options: {
@@ -64,7 +61,7 @@ module.exports = {
       template: path.resolve(__dirname, 'public/index.html'),
     }),
     new webpack.DllReferencePlugin({
-      manifest: require('./modules-manifest.json')
+      manifest: require('./modules-manifest.json'),
     }),
     new AddAssetHtmlWebpackPlugin({
       filepath: path.resolve(__dirname, 'dist/js/*.dll.js'),

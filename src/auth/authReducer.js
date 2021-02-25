@@ -57,6 +57,7 @@ export default (state, action) => {
         authReady: true,
         autenticado: true,
         usuario: action.payload,
+        mensaje: null,
       };
     case CERRAR_SESION:
     case LOGIN_ERROR:
