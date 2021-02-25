@@ -39,6 +39,7 @@ const AuthState = (props) => {
   const addUserCollection = async (datos) => {
     const user = await userActive();
     const { email, uid, displayName, photoURL } = user;
+    console.log(user, 'google');
     if (user) {
       await createUserProfile(user.uid, {
         name: !displayName ? datos.name : displayName,
@@ -48,7 +49,7 @@ const AuthState = (props) => {
         createdAt: dateCreateUserProfile(),
       })
         .then(() => {
-          console.log('Document successfully written!');
+          console.log('Document successfully written! Judith');
         })
         .catch((error) => {
           console.error('Error writing document: ', error);
@@ -97,13 +98,13 @@ const AuthState = (props) => {
   const registrarUsuario = async (datos) => {
     try {
       await createUserWithEmail(datos.email, datos.password);
-      dispatch({
-        type: REGISTRO_EXITOSO,
-      });
       //Crear la colección de usuarios
       addUserCollection(datos);
       //Obtener el usuario
       usuarioAutenticado();
+      // dispatch({
+      //   type: REGISTRO_EXITOSO,
+      // });
     } catch (error) {
       console.log(error);
       dispatch({
@@ -117,11 +118,11 @@ const AuthState = (props) => {
   const iniciarSesion = async (datos) => {
     try {
       await signInWithEmail(datos.email, datos.password);
-      dispatch({
-        type: LOGIN_EXITOSO,
-      });
       //Obtener el usuario
       usuarioAutenticado();
+      // dispatch({
+      //   type: LOGIN_EXITOSO,
+      // });
     } catch (error) {
       dispatch({
         type: LOGIN_ERROR,
@@ -135,16 +136,16 @@ const AuthState = (props) => {
     await loginWithGoogle()
       .then((user) => {
         console.log(user, 'logueado con google');
-        dispatch({
-          type: REGISTRO_EXITOSO,
-        });
         if (user.additionalUserInfo.isNewUser === true) {
           //Crear la colección de usuarios
-          console.log('hola estoy primera vez logueado');
+          console.log('hola estoy primera vez logueado,  "agrega collecion');
           addUserCollection();
         }
         //Obtener el usuario
         usuarioAutenticado();
+        // dispatch({
+        //   type: REGISTRO_EXITOSO,
+        // });
       })
       .catch((error) => {
         dispatch({

@@ -87,17 +87,22 @@ export const getWorkshops = () => {
   return firebase
     .firestore()
     .collection('talleres')
-    // .where('hora', '>=', 1614124800000)
-    // .where('hora', '<', 1614211200000)
+    .where('hora', '>=', 1614124800000)
+    .where('hora', '<', 161411200000)
     .orderBy('hora', 'desc')
     .get()
     .then((snapshot) => {
       return snapshot.docs.map((doc) => {
         const data = doc.data();
         const { id } = doc;
+        const { hora } = data;
+        // const date = new Date(hora.seconds * 1000);
+        // const normalizedCreateAt = new Intl.DateTimeFormat('es-ES').format(date);
+        const normalizedCreateAt = new Date(hora.seconds * 1000).toString();
         return {
-          id,
           ...data,
+          id,
+          hora: normalizedCreateAt,
         };
 
       });

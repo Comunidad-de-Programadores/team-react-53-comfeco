@@ -100,7 +100,7 @@ const Workshops = () => {
               <div>
                 <h5>{workshop.titulo}</h5>
 
-                <h6>{workshop.hora.seconds}</h6>
+                <h6>{workshop.hora}</h6>
                 <p>
                   <span>By </span>
                   <a href={workshop.redSocial}>{workshop.profesor}</a>
