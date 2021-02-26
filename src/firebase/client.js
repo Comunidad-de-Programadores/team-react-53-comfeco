@@ -80,6 +80,10 @@ export const sendRecoverPassword = (email) => {
   return firebase.auth().sendPasswordResetEmail(email);
 };
 
+export const recoveryPass = (code, newPassword) => {
+  return firebase.auth().confirmPasswordReset(code, newPassword);
+};
+
 export const dateCreateUserProfile = () => {
   return firebase.firestore.Timestamp.fromDate(new Date());
 };

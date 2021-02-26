@@ -8,7 +8,7 @@ const RecoveryPass = () => {
   const recoverPassword = () => {
     sendRecoverPassword(email)
       .then(() => {
-        console.log('tu correo ha sido enviado');
+        alert('¡Ya enviamos un correo para recuperar tu contraseña, revisa tu bandeja de entrada!');
       })
       .catch((error) => {
         console.log(error, 'error al enviar password');
@@ -47,7 +47,7 @@ const RecoveryPass = () => {
         </form>
         <p className='form__relogin_rc'>
           si ya recordaste tu cuenta, ingresa
-          <a href='#'> aquí.</a>
+          <a href='/login'> aquí.</a>
         </p>
       </div>
     </div>

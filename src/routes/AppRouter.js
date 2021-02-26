@@ -14,6 +14,7 @@ import Login from '../views/Auth/Login';
 import Register from '../views/Auth/Register';
 import AuthContext from '../auth/AuthContext';
 import RecoveryPass from '../views/Auth/RecoveryPass';
+import NewPassword from '../views/Auth/NewPassword';
 // import CarouselContainer from '../views/Home/CarouselContainer';
 
 const AppRouter = () => {
@@ -32,6 +33,7 @@ const AppRouter = () => {
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={Register} />
         <Route exact path='/recovery-pass' component={RecoveryPass} />
+        <Route exact path='/new-pass' component={NewPassword} />
         {/* <Route exact path="/caru" component={CarouselContainer} /> */}
 
       </Switch>
