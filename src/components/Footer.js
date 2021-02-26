@@ -1,8 +1,6 @@
 import React from 'react';
-import logo from '../assets/img/Logo2.png';
 import '../assets/styles/components/Footer.css';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faHeart } from '@fortawesome/fontawesome-free-regular';
+import logo from '../assets/img/Logo2.png';
 
 const Footer = () => {
   return (
@@ -14,7 +12,7 @@ const Footer = () => {
       <div className='box-redes'>
         <div>
           {' '}
-          {/* <FontAwesomeIcon icon={faHeart} /> */}
+        <i className="fas fa-heart"></i>
         </div>
         <div>y</div>
         <div>g</div>

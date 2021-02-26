@@ -28,12 +28,7 @@
   "dependencies": {
     "@babel/runtime": "^7.12.13",
     "@firebase/firestore": "^2.1.7",
-    "@fortawesome/fontawesome-free-regular": "^5.0.13",
-    "@fortawesome/fontawesome-svg-core": "^1.2.34",
-    "@fortawesome/free-brands-svg-icons": "^5.15.2",
-    "@fortawesome/free-regular-svg-icons": "^5.15.2",
-    "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@fortawesome/fontawesome-free": "^5.15.2",
     "@popperjs/core": "^2.7.2",
     "bootstrap": "^4.6.0",
     "firebase": "^8.2.7",
