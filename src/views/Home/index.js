@@ -3,6 +3,7 @@ import { useHistory, Redirect } from 'react-router-dom';
 import AuthContext from '../../auth/AuthContext';
 import Counter from '../../components/Home/counter';
 import Workshops from '../../components/Home/Workshops';
+import Communities from '../../components/Home/Communities'
 import Carousel from '../../components/Home/Carousel';
 import '../../assets/styles/views/Home.css';
 import Avatar from "../../components/Avatar"
@@ -142,7 +143,7 @@ const Home = () => {
   return (
     <div className='container__home'>
       <div className='home__communities'>
-        <p>kdhfjkdhfk</p>
+        <Communities/>
         <Avatar/>
       </div>
       <div className='home__main'>

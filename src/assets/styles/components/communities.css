@@ -1,0 +1,35 @@
+.communities {
+    padding: 1rem;
+    width: 100%;
+    background-color: rgb(34, 76, 114);
+}
+
+.communities__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.communities__header h5 {
+    color: #fff;
+}
+
+.communities__list {
+    margin-top: 1rem;
+}
+
+.communities__list .list__header {
+    background: #fff;
+    padding: 0.5rem;
+    font-weight: 500;
+}
+
+.list__body--group {
+    display: flex;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    background: #fff;
+}
+
+.list__body--group img {
+    height: 2rem;
+}
