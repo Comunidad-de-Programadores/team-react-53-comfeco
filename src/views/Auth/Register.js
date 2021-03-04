@@ -37,9 +37,9 @@ const Register = () => {
   };
   //En caso que el usuario se haya autenticado / registrado o sea un registro duplicado
   useEffect(() => {
-    if (autenticado) {
-      history.push('/');
-    }
+    // if (autenticado) {
+    //   history.push('/');
+    // }
     if (mensaje) {
       setErrorMessage({
         message: mensaje,

@@ -40,9 +40,9 @@ const Login = () => {
 
   //En caso de que el password o usuario no exista
   useEffect(() => {
-    if (autenticado) {
-      history.replace('/');
-    }
+    // if (autenticado) {
+    //   history.replace('/');
+    // }
     if (mensaje) {
       setErrorMessage({
         message: mensaje,
