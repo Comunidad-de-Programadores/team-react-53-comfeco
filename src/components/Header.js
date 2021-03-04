@@ -42,7 +42,7 @@ const Header = () => {
               </Nav.Link>
              
               <div className="nickname">
-                <b>:) </b>
+                <span className="notification"><i class="far fa-bell"></i></span>
                 <NavDropdown
                   title={
                     <div className="user-select">
@@ -62,9 +62,7 @@ const Header = () => {
                   id="basic-nav-dropdown "
                 >
                   <NavDropdown.Item href="#action/3.1">Perfil</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Notificaciones
-                  </NavDropdown.Item>
+             
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={handleLogout}>
                     cerrar sesión
