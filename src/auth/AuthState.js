@@ -107,10 +107,18 @@ const AuthState = (props) => {
       // });
     } catch (error) {
       console.log(error);
-      dispatch({
-        type: REGISTRO_ERROR,
-        payload: error.message,
-      });
+      if (error.message === 'Password should be at least 6 characters') {
+        dispatch({
+          type: REGISTRO_ERROR,
+          payload: 'La contraseña debe tener al menos 6 caracteres',
+        });
+      } else {
+        dispatch({
+          type: REGISTRO_ERROR,
+          payload: error.message,
+        });
+      }
+
     }
   };
 
@@ -140,7 +148,6 @@ const AuthState = (props) => {
           payload: 'El acceso a esta cuenta se ha desactivado temporalmente debido a muchos intentos fallidos de inicio de sesión. Puede restaurarlo inmediatamente restableciendo su contraseña o puede intentarlo de nuevo más tarde.',
         });
       }
-      console.log(error, 'error');
     }
 
   };

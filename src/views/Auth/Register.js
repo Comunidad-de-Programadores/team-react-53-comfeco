@@ -220,12 +220,14 @@ const Register = () => {
             Email:
           </label>
           <input
+            // style={{ opacity: 0, position: absolute }}
             name='email'
             type='email'
             value={user.email}
             className='form__input_re'
             onChange={handleInputChange}
             onBlur={handleBlur}
+            autoComplete='new-password'
             className={errorMessage.type === 'email' ? 'error' : ''}
           />
         </div>
@@ -240,6 +242,7 @@ const Register = () => {
             className='form__input_re'
             onChange={handleInputChange}
             onBlur={handleBlur}
+            autoComplete='new-password'
             className={errorMessage.type === 'password' ? 'error' : ''}
           />
         </div>
