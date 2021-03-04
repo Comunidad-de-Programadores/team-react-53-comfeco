@@ -124,11 +124,25 @@ const AuthState = (props) => {
       //   type: LOGIN_EXITOSO,
       // });
     } catch (error) {
-      dispatch({
-        type: LOGIN_ERROR,
-        payload: error.message,
-      });
+      if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
+        dispatch({
+          type: LOGIN_ERROR,
+          payload: 'No hay ningún registro de usuario que corresponda a este identificador. Es posible que se haya eliminado al usuario.',
+        });
+      } else if (error.message === 'The password is invalid or the user does not have a password.') {
+        dispatch({
+          type: LOGIN_ERROR,
+          payload: 'La contraseña no es válida o el usuario no tiene contraseña.',
+        });
+      } else if (error.message === 'Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.') {
+        dispatch({
+          type: LOGIN_ERROR,
+          payload: 'El acceso a esta cuenta se ha desactivado temporalmente debido a muchos intentos fallidos de inicio de sesión. Puede restaurarlo inmediatamente restableciendo su contraseña o puede intentarlo de nuevo más tarde.',
+        });
+      }
+      console.log(error, 'error');
     }
+
   };
 
   //Cuando el usuario registra i inicia sesion con google
