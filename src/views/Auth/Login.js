@@ -203,7 +203,7 @@ const Login = () => {
                 <button
                   type='submit'
                   className='form__button'
-                  disabled={!(formValid.email && formValid.password)}
+                  disabled={formValid.email === false && formValid.password === false}
                 >
                   Entrar
                 </button>

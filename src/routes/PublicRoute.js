@@ -10,10 +10,11 @@ const PublicRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       component={(props) => (
-        (authReady === false) ? <p>Loading</p> :
+        authReady &&
+        ((autenticado === false) ?
+          <Component {...props} /> : <Redirect to='/' />)
 
-          ((autenticado === false) ?
-            <Component {...props} /> : <Redirect to='/' />)
+        // (authReady === false) ? <p>Loading</p>
 
       )}
     />
