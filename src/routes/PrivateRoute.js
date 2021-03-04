@@ -4,14 +4,17 @@ import PropTypes from 'prop-types';
 import AuthContext from '../auth/AuthContext';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { autenticado } = useContext(AuthContext);
+  const { autenticado, authReady } = useContext(AuthContext);
+  console.log(authReady, 'ahi estoy');
   return (
     <Route
       {...rest}
       component={(props) => (
-        (autenticado === true) ?
-          <Component {...props} /> :
-          <Redirect to='/login' />
+        (authReady === false) ? <p>Loading</p> :
+
+          ((autenticado === true) ?
+            <Component {...props} /> :
+            <Redirect to='/login' />)
       )}
     />
   );

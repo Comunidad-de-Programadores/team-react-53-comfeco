@@ -4,12 +4,18 @@ import PropTypes from 'prop-types';
 import AuthContext from '../auth/AuthContext';
 
 const PublicRoute = ({ component: Component, ...rest }) => {
-  const { autenticado } = useContext(AuthContext);
-
+  const { autenticado, authReady } = useContext(AuthContext);
+  console.log(authReady, 'ahi estoy publico');
   return (
     <Route
       {...rest}
-      component={(props) => (autenticado === false ? <Component {...props} /> : <Redirect to='/' />)}
+      component={(props) => (
+        (authReady === false) ? <p>Loading</p> :
+
+          ((autenticado === false) ?
+            <Component {...props} /> : <Redirect to='/' />)
+
+      )}
     />
   );
 };
