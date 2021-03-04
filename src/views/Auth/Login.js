@@ -171,6 +171,7 @@ const Login = () => {
                   className='form__input'
                   onChange={handleInputChange}
                   onBlur={handleBlur}
+                  autoComplete='new-password'
                   className={errorMessage.type === 'email' ? 'error' : ''}
                 />
               </div>
@@ -185,6 +186,7 @@ const Login = () => {
                   className='form__input'
                   onChange={handleInputChange}
                   onBlur={handleBlur}
+                  autoComplete='new-password'
                   className={errorMessage.type === 'password' ? 'error' : ''}
                 />
                 <div className='form__pass'>
@@ -201,7 +203,7 @@ const Login = () => {
                 <button
                   type='submit'
                   className='form__button'
-                  // disabled={!(formValid.email && formValid.password)}
+                  disabled={!(formValid.email && formValid.password)}
                 >
                   Entrar
                 </button>
