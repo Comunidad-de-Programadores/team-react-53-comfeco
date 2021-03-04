@@ -17,6 +17,7 @@ import RecoveryPass from '../views/Auth/RecoveryPass';
 import NewPassword from '../views/Auth/NewPassword';
 import RutaPrivada from './PrivateRoute';
 import RutaPublica from './PublicRoute';
+import Perfil from "../views/Perfil"
 // import CarouselContainer from '../views/Home/CarouselContainer';
 
 const AppRouter = () => {
@@ -36,6 +37,7 @@ const AppRouter = () => {
         <RutaPublica exact path='/signup' component={Register} />
         <RutaPublica exact path='/recovery-pass' component={RecoveryPass} />
         <RutaPublica exact path='/new-pass' component={NewPassword} />
+        <RutaPrivada exact path='/perfil' component={Perfil} />
         {/* <Route exact path="/caru" component={CarouselContainer} /> */}
 
       </Switch>

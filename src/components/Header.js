@@ -61,7 +61,8 @@ const Header = () => {
                   }
                   id="basic-nav-dropdown "
                 >
-                  <NavDropdown.Item href="#action/3.1">Perfil</NavDropdown.Item>
+                  
+                  <NavDropdown.Item href="/perfil">Perfil</NavDropdown.Item>
              
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={handleLogout}>
