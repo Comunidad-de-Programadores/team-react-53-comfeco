@@ -1,17 +1,44 @@
 import React, { useState } from 'react';
 import '../../assets/styles/views/RecoveryPass.css';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { sendRecoverPassword } from '../../firebase/client';
 
 const RecoveryPass = () => {
   const [email, setEmail] = useState('');
-
-  const recoverPassword = () => {
+  const MySwal = withReactContent(Swal);
+  const recoverPassword = (e) => {
+    e.preventDefault();
     sendRecoverPassword(email)
       .then(() => {
-        alert('¡Ya enviamos un correo para recuperar tu contraseña, revisa tu bandeja de entrada!');
+        MySwal.fire({
+          title: '¡Ya enviamos un correo para recuperar tu contraseña, revisa tu bandeja de entrada!',
+          icon: 'success',
+          // text: "Una vez eliminado, ¡no podrás recuperar esta promoción",
+          showConfirmButton: false,
+          timer: 3500,
+        });
       })
       .catch((error) => {
-        console.log(error, 'error al enviar password');
+        if (error.message === 'We have blocked all requests from this device due to unusual activity. Try again later.') {
+          Swal.fire({
+            icon: 'error',
+            title: '¡Algo salió mal!',
+            text: 'Hemos bloqueado todas las solicitudes de este dispositivo debido a una actividad inusual. Vuelve a intentarlo más tarde.',
+          });
+        } else if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
+          Swal.fire({
+            icon: 'error',
+            title: '¡Algo salió mal!',
+            text: 'No hay ningún registro de usuario que corresponda a este identificador. Es posible que se haya eliminado al usuario.',
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: '¡Algo salió mal!',
+            text: error.message,
+          });
+        }
       });
   };
 
