@@ -96,3 +96,11 @@
   font-size: 25px;
   margin-bottom: 6px;
 }
+
+.Recovery__error {
+  text-align: center;
+  color:#fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 1rem;
+}

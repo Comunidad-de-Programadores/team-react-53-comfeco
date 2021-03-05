@@ -14,10 +14,10 @@ const RecoveryPass = () => {
         MySwal.fire({
           title: '¡Ya enviamos un correo para recuperar tu contraseña, revisa tu bandeja de entrada!',
           icon: 'success',
-          // text: "Una vez eliminado, ¡no podrás recuperar esta promoción",
           showConfirmButton: false,
           timer: 3500,
         });
+        setEmail('');
       })
       .catch((error) => {
         if (error.message === 'We have blocked all requests from this device due to unusual activity. Try again later.') {
@@ -39,6 +39,7 @@ const RecoveryPass = () => {
             text: error.message,
           });
         }
+        setEmail('');
       });
   };
 
@@ -67,7 +68,7 @@ const RecoveryPass = () => {
           </div>
 
           <div className='form__group_rc'>
-            <button type='submit' className='form__button_rc'>
+            <button type='submit' className='form__button_rc' disabled={email === ''}>
               Recuperar contraseña
             </button>
           </div>
