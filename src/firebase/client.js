@@ -91,21 +91,25 @@ export const dateCreateUserProfile = () => {
   return firebase.firestore.Timestamp.fromDate(new Date());
 };
 export const getWorkshopsToday = () => {
+  console.log(new Date(1612900000000), 'fecha 1');
+  console.log(new Date(1612939300000), 'fecha 2');
   return firebase
     .firestore()
     .collection('talleres')
-  // .where('hora', '>=', 1614124800000)
-  // .where('hora', '<', 161411200000)
-    .orderBy('hora', 'desc')
+    .where('hora', '>=', new Date(1612900000000))
+    .where('hora', '<', new Date(1612939300000))
+    // .orderBy('hora', 'desc')
     .get()
     .then((snapshot) => {
       return snapshot.docs.map((doc) => {
         const data = doc.data();
         const { id } = doc;
         const { hora } = data;
+        console.log(hora, 'horas');
         // const date = new Date(hora.seconds * 1000);
         // const normalizedCreateAt = new Intl.DateTimeFormat('es-ES').format(date);
         const normalizedCreateAt = new Date(hora.seconds * 1000).toString();
+        console.log(normalizedCreateAt, 'horitas');
         return {
           ...data,
           id,
