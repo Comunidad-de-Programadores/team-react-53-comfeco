@@ -5,6 +5,9 @@
 nav {
   padding: 1.5rem 2.5rem !important;
 }
+.navbar-expand-lg .navbar-nav{
+  align-items: center!important;
+}
 
 .btn-iniciar-sesion {
   position: relative;
@@ -33,7 +36,7 @@ a#basic-nav-dropdown\ {
 }
 
 .foto-user {
-  width: 15%;
+  width: 25%;
   border-radius: 50%;
 }
 

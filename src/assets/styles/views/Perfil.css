@@ -1,5 +1,35 @@
 .submenu{
-    height: 10rem;
+    height: auto;
     background: rgba(255, 255, 255, 0.363);
     padding: 3rem 2rem;
+}
+
+
+.box-perfil{
+    display: flex;
+}
+.box-user{
+    width: 20%;
+    margin: auto;
+    text-align: center;
+    margin: .5rem;
+}
+.box-centro{
+    width: 60%;
+    padding: 1rem;
+    margin: .5rem;
+    background-color: rgb(226, 225, 225);
+}
+
+.box-info-user{
+    border: 1px solid rgb(226, 225, 225);
+background-color: rgb(226, 225, 225);
+}
+.circle-user{
+    margin: auto;
+}
+.user-img{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 100%;
 }

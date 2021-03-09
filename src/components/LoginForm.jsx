@@ -1,15 +1,17 @@
-import React from 'react';
-import '../assets/styles/components/login.css';
-import '../assets/styles/views/Login.css';
+import React from "react";
+import "../assets/styles/components/login.css";
+import "../assets/styles/views/Login.css";
 
-const EMAIL_REGEX = new RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+const EMAIL_REGEX = new RegExp(
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
 
 class LoginForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      email: '',
+      name: "",
+      email: "",
       touched: {
         name: false,
         email: false,
@@ -70,7 +72,7 @@ class LoginForm extends React.Component {
       return;
     }
 
-    if (name === 'email') {
+    if (name === "email") {
       this.validateEmail(value);
     }
   }
@@ -87,14 +89,21 @@ class LoginForm extends React.Component {
   }
 
   hasError(field) {
-    return (this.state.errors.required[field] || !this.state.errors.valid[field]) && this.state.touched[field];
+    return (
+      (this.state.errors.required[field] || !this.state.errors.valid[field]) &&
+      this.state.touched[field]
+    );
   }
 
   isFormInvalid() {
     const { email, name, errors } = this.state;
     const { required, valid } = errors;
-    const isSomeFieldRequired = Object.keys(required).some((error) => required[error]);
-    const isSomeFieldInvalid = Object.keys(valid).some((error) => !valid[error]);
+    const isSomeFieldRequired = Object.keys(required).some(
+      (error) => required[error]
+    );
+    const isSomeFieldInvalid = Object.keys(valid).some(
+      (error) => !valid[error]
+    );
 
     return isSomeFieldInvalid || isSomeFieldRequired;
   }
@@ -116,69 +125,80 @@ class LoginForm extends React.Component {
     const { email, name, errors } = this.state;
 
     return (
-      <div className='Login'>
-        <h1 className='Login__title'>
-          <span className='title_hola'>Hola</span>
-          <span className='title__message'>Inicia Sesión!</span>
-        </h1>
-        <form
-          className='Login__form'
-          onSubmit={this.handleSubmit}
-        >
-          <div className='form__group'>
-            <input
-              placeholder='Correo Electronico'
-              type='email'
-              value={email}
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
-              className='form__input'
-              className={this.hasError('email') ? 'error' : ''}
-              name='email'
-            />
-            <p className={this.hasError('email') ? 'error-message__visible' : 'error-message'}>
-              {this.displayError('email')}
-            </p>
-          </div>
-          <div className='form__group'>
-            <input
-              placeholder='Contraseña'
-              type='password'
-              value={name}
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
-              className='form__input'
-              className={this.hasError('name') ? 'error' : ''}
-              name='name'
-            />
-            <p className={this.hasError('name') ? 'error-message__visible' : 'error-message'}>
-              {this.displayError('password')}
-            </p>
-          </div>
-          <div className='form__pass'>
-            <a href='#' className='form__link'>
-              Recuperar Contraseña
-            </a>
-          </div>
-          <div className='form__check '>
-            <input type='checkbox' />
+      <div className="bg-login">
+        <div className="Login">
+          <h1 className="Login__title">
+            <span className="title_hola">Hola</span>
+            <span className="title__message">Inicia Sesión!</span>
+          </h1>
+          <form className="Login__form" onSubmit={this.handleSubmit}>
+            <div className="form__group">
+              <input
+                placeholder="Correo Electronico"
+                type="email"
+                value={email}
+                onChange={this.handleChange}
+                onBlur={this.handleBlur}
+                className="form__input"
+                className={this.hasError("email") ? "error" : ""}
+                name="email"
+              />
+              <p
+                className={
+                  this.hasError("email")
+                    ? "error-message__visible"
+                    : "error-message"
+                }
+              >
+                {this.displayError("email")}
+              </p>
+            </div>
+            <div className="form__group">
+              <input
+                placeholder="Contraseña"
+                type="password"
+                value={name}
+                onChange={this.handleChange}
+                onBlur={this.handleBlur}
+                className="form__input"
+                className={this.hasError("name") ? "error" : ""}
+                name="name"
+              />
+              <p
+                className={
+                  this.hasError("name")
+                    ? "error-message__visible"
+                    : "error-message"
+                }
+              >
+                {this.displayError("password")}
+              </p>
+            </div>
+            <div className="form__pass">
+              <a href="#" className="form__link">
+                Recuperar Contraseña
+              </a>
+            </div>
+            <div className="form__check ">
+              <input type="checkbox" />
 
-            <span className='form__check_s'>Mantenerme conectado</span>
-          </div>
-          <div className='submit-button-container'>
-            <button
-              type='submit'
-              disabled={this.isFormInvalid()}
-              className='form__button'
-            >
-              Entrar
-            </button>
-            <p className='form__register'>
-              No tiene cuenta registrate
-              <a href='#'>aquí.</a>
-            </p>
-          </div>
-        </form>
+              <span className="form__check_s">Mantenerme conectado</span>
+            </div>
+            <div className="submit-button-container">
+              <button
+                type="submit"
+                disabled={this.isFormInvalid()}
+                className="form__button"
+              >
+                Entrar
+              </button>
+              <p className="form__register">
+                No tiene cuenta registrate
+                <a href="#">aquí.</a>
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

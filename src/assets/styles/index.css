@@ -12,14 +12,6 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
-#App{
-  background-image: url('https://www.comfeco.com/images/hero-background@2x.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  object-fit: cover;
-  width: auto;
-}
 #App {
   width: 100%;
 } 
