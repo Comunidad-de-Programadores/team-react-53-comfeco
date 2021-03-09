@@ -6,6 +6,14 @@
   }
 }
 
+
+.bg-login{
+  background-image: url('https://www.comfeco.com/images/hero-background@2x.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+}
 .view-login {
   height: 89vh;
 }
