@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../../assets/styles/components/workshops.css';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
+import iconCheck from '../../assets/img/icon/check_circular.svg';
+// import iconPoints from '../../assets/img/icon/points_circular.svg';
 import {
   getWorkshopsToday,
   getWorkshopsFilterArea,
@@ -123,7 +125,8 @@ const Workshops = () => {
             <>
               {listWorkshops.map((workshop) => (
                 <div className='list__body--group'>
-                  <img src='' alt='icono de taller' />
+                  <img src={iconCheck} alt='icono de taller' />
+                  {/* <img src={iconPoints} alt='icono de taller' /> */}
                   <div>
                     <h5>{workshop.titulo}</h5>
 
