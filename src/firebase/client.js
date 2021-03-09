@@ -90,15 +90,13 @@ export const verifyPasswordResetCode = (code) => {
 export const dateCreateUserProfile = () => {
   return firebase.firestore.Timestamp.fromDate(new Date());
 };
-export const getWorkshopsToday = () => {
-  console.log(new Date(1612900000000), 'fecha 1');
-  console.log(new Date(1612939300000), 'fecha 2');
+export const getWorkshopsToday = (startDay, endDay) => {
   return firebase
     .firestore()
     .collection('talleres')
-    .where('hora', '>=', new Date(1612900000000))
-    .where('hora', '<', new Date(1612939300000))
-    // .orderBy('hora', 'desc')
+    .where('hora', '>=', startDay)
+    .where('hora', '<', endDay)
+    .orderBy('hora', 'desc')
     .get()
     .then((snapshot) => {
       return snapshot.docs.map((doc) => {
@@ -177,4 +175,9 @@ export const getCommunities = () => {
       console.log('Error getting documents: ', error);
     });
 
+};
+export const setWorkshopStatus = (idWorkshop, estadoWorkshop) => {
+  return firebase.firestore().collection('talleres').doc(idWorkshop).set({
+    estado: estadoWorkshop,
+  }, { merge: true });
 };

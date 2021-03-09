@@ -144,7 +144,6 @@ const Home = () => {
     <div className='container__home'>
       <div className='home__communities'>
         <Communities />
-        <Avatar />
       </div>
       <div className='home__main'>
         <p>
@@ -170,9 +169,7 @@ const Home = () => {
           />
         </div>
         <Counter />
-        <button type='button' onClick={handleLogout} className='btn'>
-          Cerrar Sesión
-        </button>
+
       </div>
       <div className='home__workshops'>
         <Workshops />

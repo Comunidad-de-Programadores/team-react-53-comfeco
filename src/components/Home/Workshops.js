@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import '../../assets/styles/components/workshops.css';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
-import iconCheck from '../../assets/img/icon/check_circular.svg';
-// import iconPoints from '../../assets/img/icon/points_circular.svg';
 import CardListWorkshops from './CardListWorkshops';
 import {
   getWorkshopsToday,
@@ -48,29 +46,19 @@ const Workshops = () => {
     },
   ];
 
+  const currentDay = new Date();
+  const years = currentDay.getFullYear();
+  const month = currentDay.getMonth();
+  const date = currentDay.getDate();
+  const startCurrentDay = new Date(years, month, date, 0, 0, 0);
+  const endCurrentDay = new Date(years, month, date, 23, 59, 59);
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
     console.log(selectedOption.value);
   };
-  // const hora = (hora) => {
-  //   const date = new Date(hora);
-  //   console.log(date);
-  //   const dia = date.getDate();
-  //   const mes = date.getMonth() + 1;
-  //   const yyy = date.getFullYear();
-  //   // console.log(new Date(hora), 'juliana');
-  //   return (
-  //     <p>
-  //       {dia}
-  //       -
-  //       {mes}
-  //       -
-  //       {yyy}
-  //     </p>
-  //   );
-  // };
+
   useEffect(() => {
-    getWorkshopsToday()
+    getWorkshopsToday(startCurrentDay, endCurrentDay)
       .then((res) => {
         console.log(res, 'ojitos');
         setListWorkshops(res);
