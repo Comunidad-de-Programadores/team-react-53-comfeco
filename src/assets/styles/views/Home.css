@@ -1,36 +1,47 @@
-.container__home{
+.container__home {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 90vh;
+  /* margin-top: 1rem; */
 }
-.home__communities{
-width: 25%;
+.home__communities {
+  width: 25%;
   padding: 2rem 1rem;
+  /* margin-top: 5rem; */
 }
-.home__main{
+.home__main {
   width: 50%;
   padding: 2rem 1rem;
 }
-.home__workshops{
+.home__workshops {
   width: 25%;
   padding: 2rem 1rem;
+  /* margin-top: 5rem; */
+}
+
+.creadores__content {
+  margin: 3rem auto;
+}
+
+.sponsors__content {
+  margin: 5rem auto;
 }
 
 @media (max-width: 768px) {
-
-  .container__home{
+  .container__home {
     display: flex;
     flex-direction: column;
   }
-  .home__communities{
-  width: 100%;
-    padding: 2rem 1rem;
-  }
-  .home__main{
+  .home__communities {
     width: 100%;
     padding: 2rem 1rem;
   }
-  .home__workshops{
+  .home__main {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+  .home__workshops {
     width: 100%;
     padding: 2rem 1rem;
   }
