@@ -1,36 +1,36 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Nav from "react-bootstrap/Nav";
-import Tabs from "react-bootstrap/Tabs";
-import Tab from "react-bootstrap/Tab";
-import Perfil from "../Perfil/Perfil"
-import Insignias from "../Perfil/Insignias"
-import Grupos from "../Perfil/Grupos"
-import Eventos from "../Perfil/Eventos"
+import Nav from 'react-bootstrap/Nav';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import Perfil from './Perfil';
+import Insignias from './Insignias';
+import Grupos from './Grupos';
+import Eventos from './Eventos';
 
-import "../../assets/styles/views/Perfil.css";
+import '../../assets/styles/views/Perfil.css';
 
 const index = () => {
-  const [key, setKey] = useState("perfil");
+  const [key, setKey] = useState('perfil');
   return (
-    <div className="submenu">
+    <div className='submenu'>
       <Tabs
         justify
-        id="controlled-tab-example"
+        id='controlled-tab-example'
         activeKey={key}
         onSelect={(k) => setKey(k)}
       >
-        <Tab eventKey="perfil" title={<i class="far fa-bell"> Mi Perfil</i> }>
-          <Perfil/>
+        <Tab eventKey='perfil' title={<i className='far fa-bell'> Mi Perfil</i>}>
+          <Perfil />
         </Tab>
-        <Tab eventKey="insignia" title={<i class="far fa-bell"> Insignias</i> }>
-         <Insignias/>
+        <Tab eventKey='insignia' title={<i className='far fa-bell'> Insignias</i>}>
+          <Insignias />
         </Tab>
-        <Tab eventKey="grupos" title={<i class="far fa-bell"> Grupos</i> } >
-        <Grupos/>
+        <Tab eventKey='grupos' title={<i className='far fa-bell'> Grupos</i>}>
+          <Grupos />
         </Tab>
-        <Tab eventKey="eventos" title={<i class="far fa-bell"> Eventos</i> } >
-        <Eventos/>
+        <Tab eventKey='eventos' title={<i className='far fa-bell'> Eventos</i>}>
+          <Eventos />
         </Tab>
       </Tabs>
     </div>
