@@ -26,14 +26,16 @@ const Header = () => {
   return (
     <>
       <Navbar bg="light" expand="lg">
+        <div>
         <Navbar.Brand href="/">
           {" "}
-          <img src={logo} width="180" alt="Logo de COMFECO" />
+          <img src={logo} width="180" alt="Logo de COMFECO" className="logo"/>
         </Navbar.Brand>
+        </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         {autenticado == true ? (
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-5 w-100">
+            <Nav className=" w-100">
               <Nav.Link href="/">Inicio</Nav.Link>
               <Nav.Link href="/comunidades">Comunidades</Nav.Link>
               <Nav.Link href="/talleres">Talleres</Nav.Link>

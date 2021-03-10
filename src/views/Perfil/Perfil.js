@@ -9,6 +9,7 @@ const Perfil = () => {
     <div className="box-perfil">
       <div className="box-user">
         <div className="box-info-user">
+          <a className="link-edit">Editar perfil</a>
           <div className="circle-user">
             {" "}
             {usuario.photoUrl === "" ? (
