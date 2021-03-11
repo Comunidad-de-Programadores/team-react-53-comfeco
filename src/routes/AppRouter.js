@@ -17,7 +17,7 @@ import RecoveryPass from '../views/Auth/RecoveryPass';
 import NewPassword from '../views/Auth/NewPassword';
 import RutaPrivada from './PrivateRoute';
 import RutaPublica from './PublicRoute';
-import Perfil from "../views/Perfil"
+import Perfil from '../views/Perfil';
 // import CarouselContainer from '../views/Home/CarouselContainer';
 
 const AppRouter = () => {

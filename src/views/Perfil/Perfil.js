@@ -50,6 +50,7 @@ const Perfil = () => {
                 <h4>{usuario.name}</h4>
                 <span />
                 <p>lksjlkdj lkdkldjlkdj lkdjlksdjlskjdflsk jfdsklppppppppppp</p>
+
                 <hr />
               </div>
             </div>

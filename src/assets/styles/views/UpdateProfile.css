@@ -1,0 +1,41 @@
+.container__profile{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+}
+
+.updateProfile__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 250px;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.updatePassword__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 250px;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+@media screen and (min-width: 769px) {
+
+  .container__profile{
+    width: 50%;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .updateProfile__form, .updatePassword__form {
+    width: 100%;
+    max-width: 500px;
+
+  }
+}

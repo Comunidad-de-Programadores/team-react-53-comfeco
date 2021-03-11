@@ -6,6 +6,7 @@
 
 .box-perfil {
   display: flex;
+  justify-content: center;
 }
 .box-user {
   width: 20%;

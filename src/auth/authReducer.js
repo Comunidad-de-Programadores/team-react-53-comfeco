@@ -1,28 +1,3 @@
-// import { types } from '../types/types';
-
-// // const state = {
-// //     name: 'Fernando',
-// //     logged: true
-// // }
-
-// const authReducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case types.login:
-//       return {
-//         ...action.payload,
-//         logged: true,
-//       };
-
-//     case types.logout:
-//       return {
-//         logged: false,
-//       };
-//     default:
-//       return state;
-//   }
-// };
-
-// export default authReducer;
 
 import {
   REGISTRO_EXITOSO,
@@ -33,12 +8,14 @@ import {
   CERRAR_SESION,
   VALIDATE_PASSWORD_ERROR,
   VALIDATE_PASSWORD_EXITOSO,
+  UPDATE_PASSWORD_EXITOSO,
+  UPDATE_PASSWORD_ERROR,
+
 } from '../types/types';
 
 export default (state, action) => {
   switch (action.type) {
     case REGISTRO_EXITOSO:
-      // localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         authReady: true,
@@ -48,7 +25,6 @@ export default (state, action) => {
       };
     case LOGIN_EXITOSO:
     case VALIDATE_PASSWORD_EXITOSO:
-      // localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         authReady: true,
@@ -76,7 +52,16 @@ export default (state, action) => {
         mensaje: action.payload,
         updateProfile: false,
       };
+    case UPDATE_PASSWORD_EXITOSO:
+      return {
+        ...state,
+        authReady: true,
+        autenticado: true,
+        updateProfile: true,
+        mensaje: null,
+      };
     case VALIDATE_PASSWORD_ERROR:
+    case UPDATE_PASSWORD_ERROR:
       return {
         ...state,
         authReady: true,

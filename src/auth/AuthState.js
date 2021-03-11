@@ -13,6 +13,7 @@ import {
   signInWithEmail,
   auth,
   dateCreateUserProfile,
+  updatePasword,
 } from '../firebase/client';
 
 import {
@@ -24,10 +25,12 @@ import {
   CERRAR_SESION,
   VALIDATE_PASSWORD_ERROR,
   VALIDATE_PASSWORD_EXITOSO,
+  UPDATE_PASSWORD_EXITOSO,
+  UPDATE_PASSWORD_ERROR,
 
 } from '../types/types';
 
-const AuthState = (props) => {
+const AuthState = ({ children }) => {
   const initialState = {
     // token: localStorage.getItem('token'),
     authReady: false,
@@ -169,6 +172,7 @@ const AuthState = (props) => {
         type: VALIDATE_PASSWORD_EXITOSO,
       });
     } catch (error) {
+      console.log(error);
       if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
         dispatch({
           type: VALIDATE_PASSWORD_ERROR,
@@ -241,6 +245,29 @@ const AuthState = (props) => {
         });
       });
   };
+
+  const updatePasswordFirebase = async (newPassword) => {
+    await updatePasword(newPassword)
+      .then((user) => {
+        dispatch({
+          type: UPDATE_PASSWORD_EXITOSO,
+        });
+        alert('password editado');
+      })
+      .catch((error) => {
+        if (error.message === 'Password should be at least 6 characters') {
+          dispatch({
+            type: UPDATE_PASSWORD_ERROR,
+            payload: 'La contraseña debe tener al menos 6 caracteres',
+          });
+        } else {
+          dispatch({
+            type: UPDATE_PASSWORD_ERROR,
+            payload: error.message,
+          });
+        }
+      });
+  };
   //Cierra la sesión del usuario
   const cerrarSesion = () => {
     logOut();
@@ -264,9 +291,10 @@ const AuthState = (props) => {
         cerrarSesion,
         loginGoogle,
         loginFacebook,
+        updatePasswordFirebase,
       }}
     >
-      {props.children}
+      {children}
     </AuthContext.Provider>
   );
 };

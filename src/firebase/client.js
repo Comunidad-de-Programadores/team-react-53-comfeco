@@ -181,3 +181,8 @@ export const setWorkshopStatus = (idWorkshop, estadoWorkshop) => {
     estado: estadoWorkshop,
   }, { merge: true });
 };
+
+export const updatePasword = (newPassword) => {
+  const user = firebase.auth().currentUser;
+  return user.updatePassword(newPassword);
+};
