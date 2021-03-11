@@ -6,6 +6,7 @@ import AuthContext from '../auth/AuthContext';
 const PublicRoute = ({ component: Component, ...rest }) => {
   const { autenticado, authReady } = useContext(AuthContext);
   console.log(authReady, 'ahi estoy publico');
+  console.log(autenticado, 'autenticado publico');
   return (
     <Route
       {...rest}

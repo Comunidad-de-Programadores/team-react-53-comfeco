@@ -22,6 +22,9 @@ import {
   LOGIN_EXITOSO,
   LOGIN_ERROR,
   CERRAR_SESION,
+  VALIDATE_PASSWORD_ERROR,
+  VALIDATE_PASSWORD_EXITOSO,
+
 } from '../types/types';
 
 const AuthState = (props) => {
@@ -31,6 +34,7 @@ const AuthState = (props) => {
     autenticado: false,
     usuario: null,
     mensaje: null,
+    updateProfile: false,
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -66,6 +70,7 @@ const AuthState = (props) => {
 
   const usuarioAutenticado = async () => {
     await auth.onAuthStateChanged((user) => {
+      console.log(user, 'usuario click al recuperar password');
       if (user) {
         return getUserProfile(user.uid)
           .then((snapshot) => {
@@ -80,6 +85,9 @@ const AuthState = (props) => {
                 photoUrl: dbUser.photoUrl,
                 createdAt: dbUser.createdAt,
               },
+            });
+            dispatch({
+              type: REGISTRO_EXITOSO,
             });
           })
           .catch((error) => {
@@ -102,9 +110,9 @@ const AuthState = (props) => {
       addUserCollection(datos);
       //Obtener el usuario
       usuarioAutenticado();
-      // dispatch({
-      //   type: REGISTRO_EXITOSO,
-      // });
+      dispatch({
+        type: REGISTRO_EXITOSO,
+      });
     } catch (error) {
       console.log(error);
       if (error.message === 'Password should be at least 6 characters') {
@@ -128,9 +136,9 @@ const AuthState = (props) => {
       await signInWithEmail(datos.email, datos.password);
       //Obtener el usuario
       usuarioAutenticado();
-      // dispatch({
-      //   type: LOGIN_EXITOSO,
-      // });
+      dispatch({
+        type: LOGIN_EXITOSO,
+      });
     } catch (error) {
       if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
         dispatch({
@@ -147,11 +155,45 @@ const AuthState = (props) => {
           type: LOGIN_ERROR,
           payload: 'El acceso a esta cuenta se ha desactivado temporalmente debido a muchos intentos fallidos de inicio de sesión. Puede restaurarlo inmediatamente restableciendo su contraseña o puede intentarlo de nuevo más tarde.',
         });
+      } else {
+        console.log(error.message);
       }
     }
 
   };
 
+  const validateCurrentPassword = async (email, password) => {
+    try {
+      await signInWithEmail(email, password);
+      dispatch({
+        type: VALIDATE_PASSWORD_EXITOSO,
+      });
+    } catch (error) {
+      if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
+        dispatch({
+          type: VALIDATE_PASSWORD_ERROR,
+          payload: 'No hay ningún registro de usuario que corresponda a este identificador. Es posible que se haya eliminado al usuario.',
+        });
+      } else if (error.message === 'The password is invalid or the user does not have a password.') {
+        dispatch({
+          type: VALIDATE_PASSWORD_ERROR,
+          payload: 'La contraseña no es válida o el usuario no tiene contraseña.',
+        });
+      } else if (error.message === 'Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.') {
+        dispatch({
+          type: VALIDATE_PASSWORD_ERROR,
+          payload: 'El acceso a esta cuenta se ha desactivado temporalmente debido a muchos intentos fallidos de inicio de sesión. Puede restaurarlo inmediatamente restableciendo su contraseña o puede intentarlo de nuevo más tarde.',
+        });
+      } else {
+        dispatch({
+          type: VALIDATE_PASSWORD_ERROR,
+          payload: error.message,
+        });
+
+      }
+    }
+
+  };
   //Cuando el usuario registra i inicia sesion con google
   const loginGoogle = async () => {
     await loginWithGoogle()
@@ -164,9 +206,10 @@ const AuthState = (props) => {
         }
         //Obtener el usuario
         usuarioAutenticado();
-        // dispatch({
-        //   type: REGISTRO_EXITOSO,
-        // });
+        dispatch({
+          type: REGISTRO_EXITOSO,
+        });
+
       })
       .catch((error) => {
         dispatch({
@@ -213,8 +256,10 @@ const AuthState = (props) => {
         autenticado: state.autenticado,
         usuario: state.usuario,
         mensaje: state.mensaje,
+        updateProfile: state.updateProfile,
         registrarUsuario,
         iniciarSesion,
+        validateCurrentPassword,
         usuarioAutenticado,
         cerrarSesion,
         loginGoogle,

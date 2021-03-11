@@ -54,7 +54,6 @@ const Login = () => {
   const handleClickGoogle = () => {
     loginGoogle()
       .then((user) => {
-        console.log(user);
         history.replace('/');
       })
       .catch((err) => {

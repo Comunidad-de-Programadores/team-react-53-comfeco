@@ -5,20 +5,22 @@ import Avatar from '../../components/Avatar';
 import UpdateProfile from '../../components/perfil/UpdateProfile';
 
 const Perfil = () => {
-  const { usuario } = useContext(AuthContext);
+  const { usuario, updateProfile } = useContext(AuthContext);
   const [showUpdateProfile, setShowUpdateProfile] = useState(false);
-
-  const updateProfile = () => {
-    setShowUpdateProfile(true);
+  console.log(showUpdateProfile, 'vistas');
+  console.log(updateProfile, ':s');
+  const functionUpdateProfile = (show) => {
+    setShowUpdateProfile(show);
   };
+  console.log(showUpdateProfile, 'vistas ii');
   return (
     <div className='box-perfil'>
       {
-        !showUpdateProfile ? (
+        showUpdateProfile === false && updateProfile === false ? (
           <>
             <div className='box-user'>
               <div className='box-info-user'>
-                <button onClick={updateProfile}> Editar Perfil</button>
+                <button onClick={() => functionUpdateProfile(true)}> Editar Perfil</button>
                 <div className='circle-user'>
                   {usuario.photoUrl === '' ? (
                     <Avatar />
@@ -53,7 +55,7 @@ const Perfil = () => {
             </div>
           </>
         ) :
-          <UpdateProfile />
+          <UpdateProfile updateProfile={functionUpdateProfile} showUpdateProfile={showUpdateProfile} />
       }
     </div>
   );

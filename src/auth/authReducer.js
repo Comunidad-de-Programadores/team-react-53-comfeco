@@ -31,6 +31,8 @@ import {
   LOGIN_EXITOSO,
   LOGIN_ERROR,
   CERRAR_SESION,
+  VALIDATE_PASSWORD_ERROR,
+  VALIDATE_PASSWORD_EXITOSO,
 } from '../types/types';
 
 export default (state, action) => {
@@ -42,8 +44,10 @@ export default (state, action) => {
         authReady: true,
         autenticado: true,
         mensaje: null,
+        updateProfile: false,
       };
     case LOGIN_EXITOSO:
+    case VALIDATE_PASSWORD_EXITOSO:
       // localStorage.setItem('token', action.payload.token);
       return {
         ...state,
@@ -58,6 +62,7 @@ export default (state, action) => {
         autenticado: true,
         usuario: action.payload,
         mensaje: null,
+        updateProfile: false,
       };
     case CERRAR_SESION:
     case LOGIN_ERROR:
@@ -68,6 +73,15 @@ export default (state, action) => {
         authReady: true,
         usuario: null,
         autenticado: false,
+        mensaje: action.payload,
+        updateProfile: false,
+      };
+    case VALIDATE_PASSWORD_ERROR:
+      return {
+        ...state,
+        authReady: true,
+        autenticado: true,
+        updateProfile: true,
         mensaje: action.payload,
       };
     default:
