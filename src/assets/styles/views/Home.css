@@ -2,8 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: 80vh;
   /* margin-top: 1rem; */
+  max-width: 1800px;
+  max-height: 100%;
+  margin: auto;
 }
 .home__communities {
   width: 25%;
@@ -26,6 +29,9 @@
 
 .sponsors__content {
   margin: 5rem auto;
+}
+.InfiniteCarouselDots{
+  top: 105%!important;
 }
 
 @media (max-width: 768px) {

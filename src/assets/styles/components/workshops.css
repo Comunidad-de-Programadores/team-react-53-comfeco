@@ -1,6 +1,7 @@
 .workshops{
-  padding: 1rem;
-  width: 100%;
+  padding: 2rem;
+  width: 90%;
+  margin: auto;
   background-color: #380f63;
 }
 .workshops__header{
