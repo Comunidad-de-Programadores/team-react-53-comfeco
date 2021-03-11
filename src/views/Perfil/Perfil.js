@@ -55,7 +55,7 @@ const Perfil = () => {
             </div>
           </>
         ) :
-          <UpdateProfile updateProfile={functionUpdateProfile} showUpdateProfile={showUpdateProfile} />
+          <UpdateProfile />
       }
     </div>
   );
