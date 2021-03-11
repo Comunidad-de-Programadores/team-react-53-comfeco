@@ -1,6 +1,6 @@
 .Counter {
     position: relative;
-    width: 30vw;
+    width: 100%;
     min-width: 300px;
     min-height: 100px;
     left: 50%;
@@ -12,6 +12,7 @@
     background: linear-gradient(110deg, #ffffff50 0%, #ffffff1a 100%);
     backdrop-filter: blur(5px);
     box-shadow: 0px 4px 24px -1px #00000041;
+    padding: 2rem 0;
 }
 
 .Counter__inner {
@@ -27,7 +28,7 @@
 }
 
 .Counter__inner div h1 {
-    font-size: 3em;
+    font-size: 6rem;
 }
 
 .Counter__inner div small {

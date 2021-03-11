@@ -1,9 +1,18 @@
 .communities {
-    padding: 1rem;
-    width: 100%;
+    padding: 2rem;
+    width: 90%;
+    margin: auto;
     background-color: #380f63;
 }
+.box-name{
+    display: flex;
+    width: 70%;
+}
 
+.link-unirme{
+    position: relative;
+    right: -10%;
+}
 .communities__header {
     display: flex;
     justify-content: space-between;
@@ -33,3 +42,4 @@
 .list__body--group img {
     height: 2rem;
 }
+
