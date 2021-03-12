@@ -5,6 +5,14 @@
   justify-content: center;
   padding: 1.5rem 1rem;
 }
+.container__profile h2{
+  text-align: center;
+  font-size: 2.5rem ;
+  font-weight: 700;
+  color:#380f63;
+  margin-top: 2rem;
+
+}
 
 .updateProfile__form {
   display: flex;
@@ -13,6 +21,7 @@
   min-width: 250px;
   margin: 0 auto;
   margin-bottom: 3rem;
+
 }
 .container__updatePassword{
   border-top: 0.2rem solid #380f63;
@@ -31,8 +40,9 @@
 }
 .form__label {
   font-size: 1.4rem;
-  color: #757575;
+  color: #555;
   margin-top: 1.5rem;
+  font-weight: 700;
   /* text-align: left; */
 }
 .form__input, .form__select{
@@ -79,6 +89,11 @@
   margin-top: 2rem;
 }
 
+.container__updateProfileImg-flex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 @media screen and (min-width: 769px) {
 
   .container__profile{

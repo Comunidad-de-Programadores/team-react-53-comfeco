@@ -34,7 +34,7 @@ const UpdateProfile = () => {
   return (
     <div className='container__profile'>
       <div className='container__updateProfile'>
-        <h3>Editar perfil</h3>
+        <h2>Editar perfil</h2>
         <form className='updateProfile__form' onSubmit={updateAllProfile}>
           <div className='container__updateProfileImg-flex'>
             {usuario.photoUrl === '' ? (
@@ -61,7 +61,7 @@ const UpdateProfile = () => {
           <div className='container__updateProfile-flex'>
             <div>
               <label htmlFor='gender' className='form__label'>
-                Género
+                Género:
               </label>
               <select name='gender' id='gender' className='form__select'>
                 <option value=''>Hombre</option>
@@ -71,7 +71,7 @@ const UpdateProfile = () => {
             </div>
             <div>
               <label htmlFor='birth' className='form__label'>
-                Fecha de Nacimiento
+                Fecha de Nacimiento:
               </label>
               <input type='date' id='birth' name='birth' className='form__input' />
             </div>
@@ -79,7 +79,7 @@ const UpdateProfile = () => {
           <div className='container__updateProfile-flex'>
             <div>
               <label htmlFor='country' className='form__label'>
-                País
+                País:
               </label>
               <select name='country' id='country' className='form__select'>
                 <option value=''>Perú</option>
@@ -92,7 +92,7 @@ const UpdateProfile = () => {
             </div>
             <div>
               <label htmlFor='area' className='form__label'>
-                Área de Conocimiento
+                Área de Conocimiento:
               </label>
               <select name='area' id='area' className='form__select'>
                 <option value=''>Frontend</option>
@@ -134,7 +134,7 @@ const UpdateProfile = () => {
         </form>
       </div>
       <div className='container__updatePassword'>
-        <h3>Cambiar Contraseña</h3>
+        <h2>Cambiar Contraseña</h2>
         <form className='updatePassword__form' onSubmit={updatePassword}>
           <p>
             {errorMessage.message && errorMessage.type === 'password' ? <p>{errorMessage.message}</p> : ''}
