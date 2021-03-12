@@ -23,7 +23,7 @@ const Perfil = () => {
                 <button onClick={() => functionUpdateProfile(true)}> Editar Perfil</button>
                 <div className='circle-user'>
                   {usuario.photoUrl === '' ? (
-                    <Avatar />
+                    <Avatar size='large' />
                   ) : (
                     <img src={usuario.photoUrl} className='user-img' />
                   )}
@@ -39,14 +39,7 @@ const Perfil = () => {
             </div>
             <div className='box-user'>
               <div className='box-info-user'>
-                <div className='circle-user'>
-                  {' '}
-                  {usuario.photoUrl === '' ? (
-                    <Avatar />
-                  ) : (
-                    <img src={usuario.photoUrl} className='user-img ' />
-                  )}
-                </div>
+
                 <h4>{usuario.name}</h4>
                 <span />
                 <p>lksjlkdj lkdkldjlkdj lkdjlksdjlskjdflsk jfdsklppppppppppp</p>

@@ -90,10 +90,40 @@
 }
 
 .container__updateProfileImg-flex{
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.fa-camera{
+  font-size: 3.5rem;
+  color:  #fff;
+  position: absolute;
+  top: 40%;
+}
+input#inputFile {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  z-index: 20;
+  opacity: 0;
+  width: 8rem;
+  height: 8rem;
+  overflow: hidden;
+}
+
+input#inputFile:hover {
+  cursor: pointer;
+}
+
+/* .cargar-img{
+  position: absolute;
+  height: 6rem;
+  width: 14rem;
+  top:45%;
+  background-color: bisque;
+  border-radius: 0% 0% 70% 70% ;
+} */
 @media screen and (min-width: 769px) {
 
   .container__profile{
@@ -119,4 +149,9 @@
   .margin-top{
     margin-top: 2.5rem;
   }
+  input#inputFile {
+    top: 20%;
+    left: 45%;
+  }
+
 }

@@ -1,6 +1,4 @@
 .avatar{
-    width: 2rem;
-    height: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,8 +6,26 @@
     background-color: blue;
     margin: auto 2rem;
 }
-.avatar span{
-    font-size: .9rem;
+
+
+.small{
+    width: 4rem;
+    height: 4rem;
+}
+.small span{
+    font-size: 2rem;
     color: white;
-    font-weight: 400;
+    font-weight: 500;
+}
+.large{
+    width: 14rem;
+    height: 14rem;
+}
+.large span{
+    font-size: 9rem;
+    color: white;
+    font-weight: 500;
+}
+.opacity{
+    filter:brightness(0.5);
 }

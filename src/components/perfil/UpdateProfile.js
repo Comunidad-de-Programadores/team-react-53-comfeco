@@ -8,7 +8,10 @@ const UpdateProfile = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [repeatNewPassword, setRepeatNewPassword] = useState('');
-
+  const [selectedFile, setSelectedFile] = useState({
+    imgProfile: '',
+    imgProfilePantalla: usuario.photoUrl === '' ? '' : usuario.photoUrl,
+  });
   const [errorMessage, setErrorMessage] = useState({
     message: mensaje,
     type: 'password',
@@ -24,6 +27,29 @@ const UpdateProfile = () => {
     e.preventDefault();
   };
 
+  const handleFileChange = (event) => {
+    event.preventDefault();
+    const input = event.target;
+    if (input.files && input.files[0]) {
+      const sizeByte = input.files[0].size;
+      const sizeMegaByte = parseFloat(sizeByte / (1024 * 1024)).toFixed(2);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (sizeMegaByte > 1) {
+          // setAlertError('El tamaño máximo es de 1mb');
+        } else {
+          // setAlertError(null);
+          setSelectedFile({
+            imgProfile: input.files[0],
+            imgProfilePantalla: e.target.result,
+          });
+        }
+
+      };
+      reader.readAsDataURL(input.files[0]);
+
+    }
+  };
   // const handleInputChangePassword = (e) => {
   //   e.preventDefault();
   //   setChanguePassword({
@@ -38,11 +64,34 @@ const UpdateProfile = () => {
         <form className='updateProfile__form' onSubmit={updateAllProfile}>
           <div className='container__updateProfileImg-flex'>
             {usuario.photoUrl === '' ? (
-              <Avatar />
+              <>
+                {
+                  selectedFile.imgProfilePantalla === '' ?
+                    <Avatar size='large' opacity='opacity' /> : (
+                      <img
+                        id='imagenPromocion'
+                        src={selectedFile.imgProfilePantalla}
+                        alt='imagen de perfil'
+                        className='user-img opacity'
+                      />
+                    )
+                }
+                <i className='fas fa-camera' />
+              </>
             ) : (
-              <img src={usuario.photoUrl} className='user-img' />
+              <>
+                <img src={selectedFile.imgProfilePantalla} className='user-img opacity' />
+                <i className='fas fa-camera' />
+              </>
             )}
-            <input type='file' />
+            <input
+              type='file'
+              id='inputFile'
+              name='imgProfile'
+              accept='image/png, image/jpeg, image/jpg'
+              onChange={handleFileChange}
+              required
+            />
           </div>
           <div className='container__updateProfile-flex'>
             <div>
@@ -139,8 +188,8 @@ const UpdateProfile = () => {
           <p>
             {errorMessage.message && errorMessage.type === 'password' ? <p>{errorMessage.message}</p> : ''}
           </p>
-          <label>
-            Correo electrónico
+          <label className='form__label'>
+            Correo electrónico:
           </label>
           <div>{usuario.email}</div>
           {/* <input

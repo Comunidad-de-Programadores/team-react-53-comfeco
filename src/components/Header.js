@@ -50,7 +50,7 @@ const Header = () => {
                     <div className='user-select'>
                       {' '}
                       {usuario.photoUrl === '' ? (
-                        <Avatar />
+                        <Avatar size='small' />
                       ) : (
                         <img src={usuario.photoUrl} className='foto-user' />
                       )}

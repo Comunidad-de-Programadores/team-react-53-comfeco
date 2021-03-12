@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import '../assets/styles/components/Avatar.css';
 import AuthContext from '../auth/AuthContext';
 
-const Avatar = () => {
+const Avatar = ({ size, opacity }) => {
   const { usuario } = useContext(AuthContext);
 
   const nombre = usuario.name;
@@ -18,7 +18,7 @@ const Avatar = () => {
   };
 
   return (
-    <div className='avatar'>
+    <div className={`avatar ${size} ${opacity}`}>
       <span>{nickName()}</span>
     </div>
   );
