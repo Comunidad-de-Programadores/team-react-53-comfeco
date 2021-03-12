@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/storage';
 // import { firestore } from '@firebase/firestore';
 
 const firebaseConfig = {
@@ -185,4 +186,14 @@ export const setWorkshopStatus = (idWorkshop, estadoWorkshop) => {
 export const updatePasword = (newPassword) => {
   const user = firebase.auth().currentUser;
   return user.updatePassword(newPassword);
+};
+
+export const uploadProfilePicture = (imagenFile, setUrlProfile) => {
+  const storageRef = firebase.storage().ref(`images/${imagenFile.name}`).put(imagenFile);
+  return storageRef.on('state_changed', console.log, console.error, () => {
+    firebase.storage().ref('images').child(imagenFile.name).getDownloadURL()
+      .then((url) => {
+        setUrlProfile(url);
+      });
+  });
 };

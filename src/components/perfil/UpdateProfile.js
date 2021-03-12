@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../../auth/AuthContext';
 import Avatar from '../Avatar';
+import { uploadProfilePicture } from '../../firebase/client';
 import '../../assets/styles/views/UpdateProfile.css';
 
 const UpdateProfile = () => {
@@ -12,11 +13,12 @@ const UpdateProfile = () => {
     imgProfile: '',
     imgProfilePantalla: usuario.photoUrl === '' ? '' : usuario.photoUrl,
   });
+  const [urlProfile, setUrlProfile] = useState('');
   const [errorMessage, setErrorMessage] = useState({
     message: mensaje,
     type: 'password',
   });
-
+  console.log(selectedFile.imgProfile, 'url :)');
   const updatePassword = (e) => {
     e.preventDefault();
     if (newPassword === repeatNewPassword) { updatePasswordFirebase(newPassword); }
@@ -25,8 +27,9 @@ const UpdateProfile = () => {
   };
   const updateAllProfile = (e) => {
     e.preventDefault();
+    uploadProfilePicture(selectedFile.imgProfile, setUrlProfile);
   };
-
+  console.log(urlProfile, 'url firebase');
   const handleFileChange = (event) => {
     event.preventDefault();
     const input = event.target;
