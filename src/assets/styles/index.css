@@ -20,7 +20,7 @@ html {
 
 #App {
   width: 100%;
-  background-color: #ffe4999c;
+  
 } 
 
 .title{
@@ -35,4 +35,5 @@ html {
     .container-comfeco{
       max-width: 1800px;
       margin: auto;
+      background-color: #ffe4999c;
     }

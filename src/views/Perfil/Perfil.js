@@ -14,6 +14,7 @@ const Perfil = () => {
   };
   console.log(showUpdateProfile, 'vistas ii');
   return (
+    <div className="container-comfeco">
     <div className='box-perfil'>
       {
         showUpdateProfile === false && updateProfile === false ? (
@@ -51,6 +52,7 @@ const Perfil = () => {
         ) :
           <UpdateProfile />
       }
+    </div>
     </div>
   );
 };
