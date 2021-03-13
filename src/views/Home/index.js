@@ -138,11 +138,11 @@ const Home = () => {
         <Communities />
       </div>
       <div className='home__main text-center'>
-        <h1 className=''>
-          Bienvenidos al Comunity Fast and Code
+        <h1 className='title color-morado'>
+          <b>Bienvenidos al Comunity Fast and Code</b>
           {/* {usuario ? <span>{usuario.name}</span> : ''} */}
         </h1>
-        <h5>Conoce gente, aprende y gana!</h5>
+        <h5 className="title">Conoce gente, aprende y gana!</h5>
         <p className='mt-5'>
           Lorem ipsum dolor sit amet consectetur adipiscing elit aenean est
           quis, aliquet iaculis dictum magnis convallis tortor curae malesuada
@@ -150,11 +150,11 @@ const Home = () => {
           vulputate libero
         </p>
         <div className='creadores__content'>
-          <h3 className='mb-4'>Ellos ya creen en nuestra iniciativa</h3>
+          <h3 className='mb-4 title'>Ellos ya creen en nuestra iniciativa</h3>
           <div>
             <Carousel
               slidesToShow='4'
-              sizeImg='90%'
+              sizeImg='100%'
               visiblePorcent='0'
               items={creadores}
               auto
@@ -163,7 +163,7 @@ const Home = () => {
           </div>
         </div>
         <div className='sponsors__content'>
-          <h3 className='mb-4 text-left'>Sponsors</h3>
+          <h3 className='mb-4 text-left title'>Sponsors</h3>
           <Carousel
             slidesToShow='6'
             sizeImg='50%'
@@ -173,7 +173,7 @@ const Home = () => {
           />
         </div>
         <div>
-          <h3 className='mb-4'>Prepárate lo bueno está por venir</h3>
+          <h3 className='mb-4 title'>Prepárate lo bueno está por venir</h3>
           <Counter />
         </div>
       </div>

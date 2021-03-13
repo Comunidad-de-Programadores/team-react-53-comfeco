@@ -1,11 +1,11 @@
-import React from 'react';
-import InfiniteCarousel from 'react-leaf-carousel';
+import React from "react";
+import InfiniteCarousel from "react-leaf-carousel";
 
 const CarouselItem = ({ item, size }) => {
   const { name, img } = item;
 
   return (
-    <div className='carrousel__item'>
+    <div className="carrousel__item">
       <img
         style={{ width: `${size}`, height: `${size}` }}
         alt={name}
@@ -22,7 +22,7 @@ const Carousel = ({
   sizeImg,
   slidesToShow,
 }) => {
-  console.log(sizeImg, 'tamaño');
+  console.log(sizeImg, "tamaño");
   if (items.length === 0) {
     return <></>;
   }
@@ -43,8 +43,6 @@ const Carousel = ({
             slidesToShow: 3,
             slidesToScroll: 3,
           },
-
-        
         },
       ]}
       dots
@@ -57,7 +55,10 @@ const Carousel = ({
       autoCycle={autoCycle}
     >
       {items.map((item) => (
-        <CarouselItem key={item.id} item={item} size={sizeImg} />
+        <>
+          <CarouselItem key={item.id} item={item} size={sizeImg} />
+          <div className="item-name">{item.name}</div>
+        </>
       ))}
     </InfiniteCarousel>
   );
