@@ -142,7 +142,7 @@ const Home = () => {
           <b>Bienvenidos al Comunity Fast and Code</b>
           {/* {usuario ? <span>{usuario.name}</span> : ''} */}
         </h1>
-        <h5 className="title">Conoce gente, aprende y gana!</h5>
+        <h5>Conoce gente, aprende y gana!</h5>
         <p className='mt-5'>
           Lorem ipsum dolor sit amet consectetur adipiscing elit aenean est
           quis, aliquet iaculis dictum magnis convallis tortor curae malesuada

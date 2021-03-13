@@ -60,6 +60,13 @@
  color: #380f63
 }
 
+.home__main h5{
+  font-size: 2rem;
+}
+
+.home__main p{
+  font-size: 1.4rem;
+}
 @media (max-width: 768px) {
   .container__home {
     display: flex;

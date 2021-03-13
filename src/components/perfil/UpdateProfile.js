@@ -47,6 +47,7 @@ const UpdateProfile = () => {
     uploadProfilePicture(selectedFile.imgProfile, setUrlProfile);
   };
   console.log(urlProfile, 'url firebase');
+
   const handleFileChange = (event) => {
     event.preventDefault();
     const input = event.target;
@@ -139,7 +140,7 @@ const UpdateProfile = () => {
               <label htmlFor='gender' className='form__label'>
                 Género:
               </label>
-              <select name='gender' id='gender' className='form__select'>
+              <select name='gender' id='gender' className='form__select' value={dataEditProfile.gender} onChange={handleInputChangeProfile}>
                 <option value=''>Hombre</option>
                 <option value=''>Mujer</option>
                 <option value=''>Otro</option>
@@ -149,7 +150,7 @@ const UpdateProfile = () => {
               <label htmlFor='birth' className='form__label'>
                 Fecha de Nacimiento:
               </label>
-              <input type='date' id='birth' name='birth' className='form__input' />
+              <input type='date' id='birth' name='birth' className='form__input' value={dataEditProfile.birth} onChange={handleInputChangeProfile} />
             </div>
           </div>
           <div className='container__updateProfile-flex'>
