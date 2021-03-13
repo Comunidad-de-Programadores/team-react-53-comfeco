@@ -133,7 +133,8 @@ const Home = () => {
   // }
 
   return (
-    <div className='container__home'>
+    <div className="container-comfeco">
+      <div className='container__home'>
       <div className='home__communities'>
         <Communities />
       </div>
@@ -180,6 +181,7 @@ const Home = () => {
       <div className='home__workshops'>
         <Workshops />
       </div>
+    </div>
     </div>
   );
 };
