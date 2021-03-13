@@ -13,12 +13,29 @@ const UpdateProfile = () => {
     imgProfile: '',
     imgProfilePantalla: usuario.photoUrl === '' ? '' : usuario.photoUrl,
   });
+  const [dataEditProfile, setDataEditProfile] = useState({
+    uid: usuario.uid,
+    name: usuario.name,
+    email: usuario.email,
+    photoUrl: usuario.photoUrl,
+    gender: usuario.gender,
+    birth: usuario.birth,
+    country: usuario.country,
+    area: usuario.area,
+    facebook: usuario.facebook,
+    github: usuario.github,
+    linkedin: usuario.linkedin,
+    twitter: usuario.twitter,
+    bibliography: usuario.bibliography,
+    createdAt: usuario.createdAt,
+  });
   const [urlProfile, setUrlProfile] = useState('');
   const [errorMessage, setErrorMessage] = useState({
     message: mensaje,
     type: 'password',
   });
   console.log(selectedFile.imgProfile, 'url :)');
+  console.log(dataEditProfile, 'objeto perfil');
   const updatePassword = (e) => {
     e.preventDefault();
     if (newPassword === repeatNewPassword) { updatePasswordFirebase(newPassword); }
@@ -52,6 +69,13 @@ const UpdateProfile = () => {
       reader.readAsDataURL(input.files[0]);
 
     }
+  };
+  const handleInputChangeProfile = (e) => {
+    e.preventDefault();
+    setDataEditProfile({
+      ...dataEditProfile,
+      [e.target.name]: e.target.value,
+    });
   };
   // const handleInputChangePassword = (e) => {
   //   e.preventDefault();
@@ -101,13 +125,13 @@ const UpdateProfile = () => {
               <label htmlFor='name' className='form__label'>
                 Nick de Usuario :
               </label>
-              <input type='text' id='name' name='name' placeholder='Nick de usuario' className='form__input' />
+              <input type='text' id='name' name='name' placeholder='Nick de usuario' className='form__input' value={dataEditProfile.name} onChange={handleInputChangeProfile} />
             </div>
             <div>
               <label htmlFor='email' className='form__label'>
                 Correo Electrónico:
               </label>
-              <input type='email' id='email' name='email' placeholder='example@gmail.com' className='form__input' />
+              <input type='email' id='email' name='email' placeholder='example@gmail.com' className='form__input' value={dataEditProfile.email} onChange={handleInputChangeProfile} />
             </div>
           </div>
           <div className='container__updateProfile-flex'>
@@ -161,27 +185,27 @@ const UpdateProfile = () => {
             <label htmlFor='facebook' className='form__label'>
               Facebook
             </label>
-            <input type='text' id='facebook' name='facebook' placeholder='facebook' className='form__input' />
+            <input type='text' id='facebook' name='facebook' placeholder='facebook' className='form__input' value={dataEditProfile.facebook} onChange={handleInputChangeProfile} />
             <label htmlFor='github' className='form__label'>
               Github
             </label>
-            <input type='text' id='github' name='github' placeholder='github' className='form__input' />
+            <input type='text' id='github' name='github' placeholder='github' className='form__input' value={dataEditProfile.github} onChange={handleInputChangeProfile} />
           </div>
           <div className='container__updateProfile-flex margin-top'>
             <label htmlFor='linkedin' className='form__label'>
               Linkedin
             </label>
-            <input type='text' id='linkedin' name='linkedin' placeholder='linkedin' className='form__input' />
+            <input type='text' id='linkedin' name='linkedin' placeholder='linkedin' className='form__input' value={dataEditProfile.linkedin} onChange={handleInputChangeProfile} />
             <label htmlFor='twitter' className='form__label'>
               Twitter
             </label>
-            <input type='text' id='twitter' name='twitter' placeholder='twitter' className='form__input' />
+            <input type='text' id='twitter' name='twitter' placeholder='twitter' className='form__input' value={dataEditProfile.twitter} onChange={handleInputChangeProfile} />
           </div>
 
           <label htmlFor='bibliography' className='form__label'>
             Bibliografía
           </label>
-          <textarea name='bibliography' id='bibliography' cols='30' rows='10' maxLength='120' className='form__textarea' />
+          <textarea name='bibliography' id='bibliography' cols='30' rows='10' maxLength='120' className='form__textarea' value={dataEditProfile.bibliography} onChange={handleInputChangeProfile} />
           <button type='submit' className='form__button'>Editar Perfil</button>
         </form>
       </div>

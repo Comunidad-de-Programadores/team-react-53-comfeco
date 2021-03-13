@@ -53,6 +53,15 @@ const AuthState = ({ children }) => {
         email,
         uid,
         photoUrl: !photoURL ? '' : photoURL,
+        gender: '',
+        birth: '',
+        country: '',
+        area: '',
+        facebook: '',
+        github: '',
+        linkedin: '',
+        twitter: '',
+        bibliography: '',
         createdAt: dateCreateUserProfile(),
       })
         .then(() => {
@@ -73,19 +82,26 @@ const AuthState = ({ children }) => {
 
   const usuarioAutenticado = async () => {
     await auth.onAuthStateChanged((user) => {
-      console.log(user, 'usuario click al recuperar password');
       if (user) {
         return getUserProfile(user.uid)
           .then((snapshot) => {
             const dbUser = snapshot.data();
-            console.log(dbUser, 'hola este es el usuario autenticado');
             dispatch({
               type: OBTENER_USUARIO,
               payload: {
+                uid: dbUser.uid,
                 name: dbUser.name,
                 email: dbUser.email,
-                uid: dbUser.uid,
                 photoUrl: dbUser.photoUrl,
+                gender: dbUser.gender,
+                birth: dbUser.birth,
+                country: dbUser.country,
+                area: dbUser.area,
+                facebook: dbUser.facebook,
+                github: dbUser.github,
+                linkedin: dbUser.linkedin,
+                twitter: dbUser.twitter,
+                bibliography: dbUser.bibliography,
                 createdAt: dbUser.createdAt,
               },
             });
