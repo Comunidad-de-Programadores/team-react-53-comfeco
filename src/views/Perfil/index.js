@@ -20,7 +20,7 @@ const index = () => {
         activeKey={key}
         onSelect={(k) => setKey(k)}
       >
-        <Tab eventKey='perfil' title={<i className='far fa-bell'> <span className="title color-morado">Mi Perfil</span></i>}>
+        <Tab eventKey='perfil' title={<i className='far fa-bell'> <span className="title">Mi Perfil</span></i>}>
           <Perfil />
         </Tab>
         <Tab eventKey='insignia' title={<i className='far fa-bell'> <span className="title">Insignias</span></i>}>

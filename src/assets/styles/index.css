@@ -11,6 +11,7 @@
 
 html {
   font-size: 62.5%;
+
   
   font-family: 'Roboto', sans-serif;
   font-family: 'Noto Sans JP', sans-serif;
@@ -25,3 +26,13 @@ html {
 .title{
   font-family: 'Montserrat', sans-serif;
 }
+    @media (max-width: 768px) {
+      /* html { */
+        /* font-size: 62.5%; */
+        /* font-size: 3.3vw;} */
+    }
+
+    .container-comfeco{
+      max-width: 1800px;
+      margin: auto;
+    }
