@@ -60,7 +60,6 @@ const Workshops = () => {
   useEffect(() => {
     getWorkshopsToday(startCurrentDay, endCurrentDay)
       .then((res) => {
-        console.log(res, 'ojitos');
         setListWorkshops(res);
       })
       .catch((error) => {

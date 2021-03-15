@@ -24,7 +24,7 @@ const Header = () => {
   console.log('naaaaaaardada', usuario);
 
   return (
-    <>
+    <div className="container-comfeco">
       <Navbar bg='light' expand='lg'>
         <div>
           <Navbar.Brand href='/'>
@@ -85,7 +85,7 @@ const Header = () => {
           <></>
         )}
       </Navbar>
-    </>
+    </div>
   );
 };
 

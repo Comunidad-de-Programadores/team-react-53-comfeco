@@ -13,7 +13,8 @@ import '../../assets/styles/views/Perfil.css';
 const index = () => {
   const [key, setKey] = useState('perfil');
   return (
-    <div className='submenu'>
+  <div className="container-comfeco">
+      <div className='submenu'>
       <Tabs
         justify
         id='controlled-tab-example'
@@ -66,6 +67,7 @@ const index = () => {
         </Tab>
       </Tabs>
     </div>
+  </div>
   );
 };
 
