@@ -25,6 +25,8 @@ html {
   margin: auto;
   background-color: #ffe4999c;
 }
+
+
     @media (max-width: 768px) {
       /* html { */
         /* font-size: 62.5%; */

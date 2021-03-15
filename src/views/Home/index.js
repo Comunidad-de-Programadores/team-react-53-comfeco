@@ -154,27 +154,29 @@ const Home = () => {
             <h3 className='mb-4'>Ellos ya creen en nuestra iniciativa</h3>
             <div>
               <Carousel
-                slidesToShow='4'
+                slidesToShow='3'
                 sizeImg='100%'
                 visiblePorcent='0'
                 items={creadores}
-                auto
+                auto={true}
+                carousel='creadores'
               />
               <div />
             </div>
           </div>
           <div className='sponsors__content'>
-            <h3 className='mb-4 text-left title'>Sponsors</h3>
+            <h3 className='mb-4 text-left'>Sponsors:</h3>
             <Carousel
               slidesToShow='6'
-              sizeImg='50%'
-              visiblePorcent='0.2'
+              sizeImg='80%'
+              visiblePorcent='0'
               items={sponsors}
               auto={false}
+              carousel='sponsors'
             />
           </div>
-          <div>
-            <h3 className='mb-4 title'>Prepárate lo bueno está por venir</h3>
+          <div className='counter__content'>
+            <h3 className='mb-4'>¡Prepárate lo bueno está por venir!</h3>
             <Counter />
           </div>
         </div>

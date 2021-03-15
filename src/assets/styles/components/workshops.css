@@ -2,7 +2,8 @@
   padding: 2rem;
   width: 90%;
   margin: auto;
-  background-color: #380f63;
+  background-color: #521f88;
+  border-radius: 1.5rem;
   font-family: 'Montserrat', sans-serif;
 }
 .workshops__header{
@@ -29,4 +30,20 @@
 }
 .list__body--group img {
   margin: 0.5rem;
+  border-radius: 50%;
+}
+.workshops__header a{
+  color:#fff;
+  font-weight: 700;
+}
+.workshops__header a:hover{
+  font-weight: 800;
+      color:#fff;
+}
+
+@media screen and (min-width: 769px) {
+  .workshops__header h5{
+    color: #fff;
+    font-size: 1.5rem;
+  }
 }
