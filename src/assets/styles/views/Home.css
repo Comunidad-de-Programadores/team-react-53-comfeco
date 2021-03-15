@@ -7,6 +7,7 @@
   max-width: 1800px;
   max-height: 100%;
   margin: auto;
+  padding: 4rem 0rem;
 }
 .home__communities {
   width: 25%;
@@ -36,12 +37,16 @@
 .InfiniteCarouselDots{
   top: 105%!important;
 }
-
+.creadores__content h3{
+font-size: 2rem;
+font-weight: 600;
+padding-bottom: 2rem;
+}
 .creadores__content  .item-name{
   width: 100%;
   background-color: #380f63d1;
   color: #fff;
-  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
   padding: .3rem;
   height: 4rem;
   text-align: center;
@@ -50,7 +55,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .9rem;
+  font-size: 1rem;
 }
 .sponsors__content  .item-name{
   display: none;
@@ -61,7 +66,7 @@
 }
 
 .home__main h5{
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 
 .home__main p{
