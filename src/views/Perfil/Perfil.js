@@ -42,14 +42,6 @@ const Perfil = () => {
                 <h5>Insignias</h5>
               </div>
               <div className='box-user'>
-                <div className='box-info-user'>
-
-                  <h4>{usuario.name}</h4>
-                  <span />
-                  <p>lksjlkdj lkdkldjlkdj lkdjlksdjlskjdflsk jfdsklppppppppppp</p>
-
-                  <hr />
-                </div>
                 <EventsProfile />
               </div>
             </>

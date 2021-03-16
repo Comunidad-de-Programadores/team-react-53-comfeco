@@ -17,7 +17,7 @@ const EventsProfile = () => {
       });
   }, []);
 
-  console.log(events);
+  console.log(events, 'jujuju');
 
   return (
     <div className='box-info-user'>
