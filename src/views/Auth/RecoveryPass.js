@@ -47,7 +47,7 @@ const RecoveryPass = () => {
     setEmail(e.target.value);
   };
   return (
-    <div className='Recovery'>
+    <div className='Recovery container-comfeco'>
       <div className='Recovery__container'>
         <h1 className='Recovery__title'>
           <span className='title_hola_rc'>Calma,</span>

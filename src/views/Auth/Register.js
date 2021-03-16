@@ -194,7 +194,7 @@ const Register = () => {
       });
   };
   return (
-    <div className='Register'>
+    <div className='Register container-comfeco'>
       <h1 className='Register__title'>
         <span className='title_hola'>Bienvenido,</span>
         <span className='title__message'>¡Vamos a registrarte!</span>

@@ -1,11 +1,11 @@
-import React from "react";
-import InfiniteCarousel from "react-leaf-carousel";
+import React from 'react';
+import InfiniteCarousel from 'react-leaf-carousel';
 
 const CarouselItem = ({ item, size }) => {
   const { name, img } = item;
-
+  console.log(name, img, item, size);
   return (
-    <div className="carrousel__item">
+    <div className='carrousel__item'>
       <img
         style={{ width: `${size}`, height: `${size}` }}
         alt={name}
@@ -17,12 +17,13 @@ const CarouselItem = ({ item, size }) => {
 
 const Carousel = ({
   items,
-  auto: autoCycle,
+  auto,
   visiblePorcent,
   sizeImg,
   slidesToShow,
+  carousel,
 }) => {
-  console.log(sizeImg, "tamaño");
+  console.log(sizeImg, 'tamaño');
   if (items.length === 0) {
     return <></>;
   }
@@ -33,31 +34,34 @@ const Carousel = ({
         {
           breakpoint: 500,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: carousel === 'creadores' ? 2 : 3,
+            slidesToScroll: carousel === 'creadores' ? 2 : 3,
           },
         },
         {
           breakpoint: 768,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: carousel === 'creadores' ? 3 : 4,
+            slidesToScroll: carousel === 'creadores' ? 3 : 4,
           },
         },
       ]}
-      dots
-      showSides
+      dots={true}
+      showSides={true}
       sidesOpacity={0.5}
       sideSize={Number(visiblePorcent)}
-      slidesToScroll={4}
+      slidesToScroll={3}
       slidesToShow={Number(slidesToShow)}
-      scrollOnDevice
-      autoCycle={autoCycle}
+      // scrollOnDevice
+      autoCycle={auto}
+      animationDuration={500}
+      cycleInterval={3000}
+      slidesSpacing={10}
     >
       {items.map((item) => (
         <>
           <CarouselItem key={item.id} item={item} size={sizeImg} />
-          <div className="item-name">{item.name}</div>
+          <div className='item-name'>{item.name}</div>
         </>
       ))}
     </InfiniteCarousel>

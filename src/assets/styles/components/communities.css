@@ -2,7 +2,8 @@
     padding: 2rem;
     width: 90%;
     margin: auto;
-    background-color: #380f63;
+    background-color: #521f88;
+    border-radius: 1.5rem;
     font-family: 'Montserrat', sans-serif;
 }
 .box-name{
@@ -43,4 +44,18 @@
 .list__body--group img {
     height: 2rem;
 }
+.communities__header a{
+  color:#fff;
+  font-weight: 700;
+}
+.communities__header a:hover{
+  font-weight: 800;
+      color:#fff;
+}
 
+@media screen and (min-width: 769px) {
+    .communities__header  h5{
+    color: #fff;
+    font-size: 1.5rem;
+  }
+}

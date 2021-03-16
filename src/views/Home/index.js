@@ -23,7 +23,7 @@ const Home = () => {
       id: 1,
       name: 'Guillermo Rodas',
       img:
-        'https://pbs.twimg.com/profile_images/1363066378303979524/8pLRmvui_400x400.jpg',
+        'https://pbs.twimg.com/profile_images/1365912494712254466/EFyaBE0w_400x400.jpg',
       url: 'https://twitter.com/glrodasz',
     },
     {
@@ -58,7 +58,7 @@ const Home = () => {
       id: 6,
       name: 'Carlos Azaustre',
       img:
-        'https://pbs.twimg.com/profile_images/1347163287352438786/AWpMVA_8_400x400.jpg',
+        'https://pbs.twimg.com/profile_images/1365556611314552834/_IvdVw9P_400x400.jpg',
       url: 'https://twitter.com/carlosazaustre',
     },
     {
@@ -133,55 +133,57 @@ const Home = () => {
   // }
 
   return (
-    <div className="container-comfeco">
+    <div className='container-comfeco'>
       <div className='container__home'>
-      <div className='home__communities'>
-        <Communities />
-      </div>
-      <div className='home__main text-center'>
-        <h1 className='title color-morado'>
-          <b>Bienvenidos al Comunity Fast and Code</b>
-          {/* {usuario ? <span>{usuario.name}</span> : ''} */}
-        </h1>
-        <h5 className="title">Conoce gente, aprende y gana!</h5>
-        <p className='mt-5'>
-          Lorem ipsum dolor sit amet consectetur adipiscing elit aenean est
-          quis, aliquet iaculis dictum magnis convallis tortor curae malesuada
-          primis. Nibh et proin sagittis vulputate libero Nibh et proin sagittis
-          vulputate libero
-        </p>
-        <div className='creadores__content'>
-          <h3 className='mb-4 title'>Ellos ya creen en nuestra iniciativa</h3>
-          <div>
+        <div className='home__communities'>
+          <Communities />
+        </div>
+        <div className='home__main text-center'>
+          <h1 className='title color-morado'>
+            <b>Bienvenidos al Comunity Fast and Code</b>
+            {/* {usuario ? <span>{usuario.name}</span> : ''} */}
+          </h1>
+          <h5>Conoce gente, aprende y gana!</h5>
+          <p className='mt-5'>
+            Lorem ipsum dolor sit amet consectetur adipiscing elit aenean est
+            quis, aliquet iaculis dictum magnis convallis tortor curae malesuada
+            primis. Nibh et proin sagittis vulputate libero Nibh et proin sagittis
+            vulputate libero
+          </p>
+          <div className='creadores__content'>
+            <h3 className='mb-4'>Ellos ya creen en nuestra iniciativa</h3>
+            <div>
+              <Carousel
+                slidesToShow='3'
+                sizeImg='100%'
+                visiblePorcent='0'
+                items={creadores}
+                auto={true}
+                carousel='creadores'
+              />
+              <div />
+            </div>
+          </div>
+          <div className='sponsors__content'>
+            <h3 className='mb-4 text-left'>Sponsors:</h3>
             <Carousel
-              slidesToShow='4'
-              sizeImg='100%'
+              slidesToShow='6'
+              sizeImg='80%'
               visiblePorcent='0'
-              items={creadores}
-              auto
+              items={sponsors}
+              auto={false}
+              carousel='sponsors'
             />
-            <div />
+          </div>
+          <div className='counter__content'>
+            <h3 className='mb-4'>¡Prepárate lo bueno está por venir!</h3>
+            <Counter />
           </div>
         </div>
-        <div className='sponsors__content'>
-          <h3 className='mb-4 text-left title'>Sponsors</h3>
-          <Carousel
-            slidesToShow='6'
-            sizeImg='50%'
-            visiblePorcent='0.2'
-            items={sponsors}
-            auto={false}
-          />
-        </div>
-        <div>
-          <h3 className='mb-4 title'>Prepárate lo bueno está por venir</h3>
-          <Counter />
+        <div className='home__workshops'>
+          <Workshops />
         </div>
       </div>
-      <div className='home__workshops'>
-        <Workshops />
-      </div>
-    </div>
     </div>
   );
 };

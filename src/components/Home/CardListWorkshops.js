@@ -9,9 +9,9 @@ const CardListWorkshops = ({ workshop }) => {
   const workshopStatus = () => {
     const currentDate = new Date().getTime();
     const workshopStartDate = new Date(workshop.hora).getTime();
-    if (currentDate >= workshopStartDate && workshop.estado === undefined) {
+    if (currentDate >= workshopStartDate && workshop.estado !== '') {
       setWorkshopStatus(workshop.id, 'Empezó');
-    } else if (currentDate < workshopStartDate && workshop.estado === undefined) {
+    } else if (currentDate < workshopStartDate && workshop.estado !== '') {
       setWorkshopStatus(workshop.id, 'Por empezar');
     }
 

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useHistory, useParams, useLocation, Link } from 'react-router-dom';
+import { useHistory, useParams, useLocation, Link, NavLink } from 'react-router-dom';
 
 import logo from '../assets/img/logo1.png';
 import '../assets/styles/components/Header.css';
@@ -24,7 +24,7 @@ const Header = () => {
   console.log('naaaaaaardada', usuario);
 
   return (
-    <div className="container-comfeco">
+    <div className='container-comfeco'>
       <Navbar bg='light' expand='lg'>
         <div>
           <Navbar.Brand href='/'>
@@ -36,12 +36,12 @@ const Header = () => {
         {autenticado === true && usuario !== null ? (
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className=' w-100'>
-              <Nav.Link href='/'>Inicio</Nav.Link>
-              <Nav.Link href='/comunidades'>Comunidades</Nav.Link>
-              <Nav.Link href='/talleres'>Talleres</Nav.Link>
-              <Nav.Link href='/creadores-de-contenido'>
+              <NavLink exact to='/' activeClassName='active'>Inicio</NavLink>
+              <NavLink exact to='/comunidades' activeClassName='active'>Comunidades</NavLink>
+              <NavLink exact to='/talleres' activeClassName='active'>Talleres</NavLink>
+              <NavLink exact to='/creadores-de-contenido' activeClassName='active'>
                 Creadores de contenido
-              </Nav.Link>
+              </NavLink>
 
               <div className='nickname'>
                 <span className='notification'><i className='far fa-bell' /></span>
