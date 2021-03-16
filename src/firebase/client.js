@@ -91,6 +91,28 @@ export const verifyPasswordResetCode = (code) => {
 export const dateCreateUserProfile = () => {
   return firebase.firestore.Timestamp.fromDate(new Date());
 };
+
+export const getEvents = (id) => {
+  return firebase
+    .firestore()
+    .collection('eventos')
+    .where('enrolled', 'array-contains', id)
+    .get()
+    .then((snapshot) => {
+      return snapshot.docs.map((doc) => {
+        const data = doc.data();
+        const { id } = doc;
+        return {
+          ...data,
+          id,
+        };
+      });
+    })
+    .catch((error) => {
+      console.log('Error getting events', error);
+    });
+};
+
 export const getWorkshopsToday = (startDay, endDay) => {
   return firebase
     .firestore()

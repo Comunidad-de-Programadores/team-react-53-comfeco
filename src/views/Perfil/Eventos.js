@@ -1,11 +1,51 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import Events from '../../components/perfil/Events';
+import Modal from '../../components/Portals/Modal';
+import NewEvent from '../../components/Portals/NewEvent';
+import { db } from '../../firebase/client';
 
 const Eventos = () => {
-    return (
-        <div>
-        soy evento
-        </div>
-    )
-}
+  const [isOpen, setIsOpen] = useState(false);
+  const [events, setEvents] = useState([]);
+  const addEvent = async (e) => {
+    await db.collection('eventos').doc().set(e);
+    console.log('nueva tarea agregada');
+  };
 
-export default Eventos
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const getEvents = () => {
+    db.collection('eventos').onSnapshot((querySnapshot) => {
+      const docs = [];
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      setEvents(docs);
+    });
+  };
+
+  useEffect(() => {
+    getEvents();
+  }, []);
+
+  return (
+    <div className='container my-5'>
+      <div className='d-flex justify-content-around'>
+        <h2>Eventos</h2>
+        <button type='button' onClick={handleOpen} className='btn d-inline-block btn-outline-secondary'>Nuevo Evento</button>
+        <Modal isOpen={isOpen} onClose={handleClose}>
+          <NewEvent addEvent={addEvent} onClose={handleClose} />
+        </Modal>
+      </div>
+      <Events events={events} />
+    </div>
+  );
+};
+
+export default Eventos;
