@@ -1,7 +1,7 @@
 .submenu {
   height: auto;
   background: rgba(255, 255, 255, 0.363);
-  padding: 3rem 2rem;
+  padding: 5rem 2rem;
   font-family: "Montserrat", sans-serif;
 }
 .submenu nav {
@@ -12,6 +12,10 @@
 flex-wrap: wrap!important;
 }
 
+.tab-content{
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
 .box-perfil {
   display: flex;
   justify-content: center;
