@@ -135,13 +135,13 @@ const UpdateProfile = () => {
               <label htmlFor='name' className='form__label'>
                 Nick de Usuario :
               </label>
-              <input type='text' id='name' name='name' placeholder='Nick de usuario' className='form__input' value={dataEditProfile.name} onChange={handleInputChangeProfile} />
+              <input type='text' id='name' name='name' placeholder='Nick de usuario' className='form__input' value={dataEditProfile.name} onChange={handleInputChangeProfile} required />
             </div>
             <div>
               <label htmlFor='email' className='form__label'>
                 Correo Electrónico:
               </label>
-              <input type='email' id='email' name='email' placeholder='example@gmail.com' className='form__input' value={dataEditProfile.email} onChange={handleInputChangeProfile} />
+              <input type='email' id='email' name='email' placeholder='example@gmail.com' className='form__input' value={dataEditProfile.email} onChange={handleInputChangeProfile} required />
             </div>
           </div>
           <div className='container__updateProfile-flex'>
@@ -150,6 +150,7 @@ const UpdateProfile = () => {
                 Género:
               </label>
               <select name='gender' id='gender' className='form__select' value={dataEditProfile.gender} onChange={handleInputChangeProfile}>
+                <option value='' selected>---Selecciona---</option>
                 <option value='Hombre'>Hombre</option>
                 <option value='Mujer'>Mujer</option>
                 <option value='Otro'>Otro</option>
@@ -168,6 +169,7 @@ const UpdateProfile = () => {
                 País:
               </label>
               <select name='country' id='country' className='form__select' value={dataEditProfile.country} onChange={handleInputChangeProfile}>
+                <option value='' selected>---Selecciona---</option>
                 <option value='Perú'>Perú</option>
                 <option value='Colombia'>Colombia</option>
                 <option value='México'>México</option>
@@ -181,6 +183,7 @@ const UpdateProfile = () => {
                 Área de Conocimiento:
               </label>
               <select name='area' id='area' className='form__select' value={dataEditProfile.area} onChange={handleInputChangeProfile}>
+                <option value='' selected>---Selecciona---</option>
                 <option value='Frontend'>Frontend</option>
                 <option value='Backend'>Backend</option>
                 <option value='DevOps'>DevOps</option>
@@ -191,25 +194,33 @@ const UpdateProfile = () => {
               </select>
             </div>
           </div>
-          <div className='container__updateProfile-flex margin-top'>
-            <label htmlFor='facebook' className='form__label'>
-              Facebook
-            </label>
-            <input type='text' id='facebook' name='facebook' placeholder='facebook' className='form__input' value={dataEditProfile.facebook} onChange={handleInputChangeProfile} />
-            <label htmlFor='github' className='form__label'>
-              Github
-            </label>
-            <input type='text' id='github' name='github' placeholder='github' className='form__input' value={dataEditProfile.github} onChange={handleInputChangeProfile} />
-          </div>
-          <div className='container__updateProfile-flex margin-top'>
-            <label htmlFor='linkedin' className='form__label'>
-              Linkedin
-            </label>
-            <input type='text' id='linkedin' name='linkedin' placeholder='linkedin' className='form__input' value={dataEditProfile.linkedin} onChange={handleInputChangeProfile} />
-            <label htmlFor='twitter' className='form__label'>
-              Twitter
-            </label>
-            <input type='text' id='twitter' name='twitter' placeholder='twitter' className='form__input' value={dataEditProfile.twitter} onChange={handleInputChangeProfile} />
+          <div className='container__updateProfile-social'>
+            <div className='container__updateProfile-flex margin-top'>
+              <label htmlFor='facebook' className='form__label redes_label'>
+                <i className='fab fa-facebook' />
+                Facebook
+              </label>
+              <input type='text' id='facebook' name='facebook' placeholder='facebook' className='form__input' value={dataEditProfile.facebook} onChange={handleInputChangeProfile} />
+              <label htmlFor='github' className='form__label redes_label'>
+                <i className='fab fa-github' />
+                Github
+              </label>
+              <input type='text' id='github' name='github' placeholder='github' className='form__input' value={dataEditProfile.github} onChange={handleInputChangeProfile} />
+            </div>
+            <div className='container__updateProfile-flex margin-top'>
+              <label htmlFor='linkedin' className='form__label redes_label'>
+                <i className='fab fa-linkedin' />
+                {' '}
+                Linkedin
+              </label>
+              <input type='text' id='linkedin' name='linkedin' placeholder='linkedin' className='form__input' value={dataEditProfile.linkedin} onChange={handleInputChangeProfile} />
+              <label htmlFor='twitter' className='form__label redes_label'>
+                <i className='fab fa-twitter-square' />
+                {' '}
+                Twitter
+              </label>
+              <input type='text' id='twitter' name='twitter' placeholder='twitter' className='form__input' value={dataEditProfile.twitter} onChange={handleInputChangeProfile} />
+            </div>
           </div>
 
           <label htmlFor='bibliography' className='form__label'>
