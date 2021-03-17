@@ -32,7 +32,16 @@ html {
   margin: auto;
   background-color: #ffe4999c;
 }
+.btn-morado{
+  color: #fff!important;
+  background: #380f63!important;
+  border: 2px solid #380f63!important;
+}
 
+.btn-morado:hover{
+  color: #380f63!important;
+  background: #fff!important;
+}
 
     @media (max-width: 768px) {
       /* html { */

@@ -120,6 +120,23 @@ a#controlled-tab-example-tab-eventos i::before {
   top: 0%;
 }
 
+.box-redes-user{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.redes-user{
+  width: 3rem;
+  height: 3rem;
+  background:#380f63 ;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
   .box-perfil {
     flex-direction: column;
