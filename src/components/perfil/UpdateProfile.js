@@ -3,13 +3,11 @@ import AuthContext from '../../auth/AuthContext';
 import Avatar from '../Avatar';
 import { uploadProfilePicture, updateProfile, updateProfileImage } from '../../firebase/client';
 import '../../assets/styles/views/UpdateProfile.css';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
 const UpdateProfile = () => {
-  const { usuario, validateCurrentPassword, mensaje, updatePasswordFirebase } = useContext(AuthContext);
-  const [currentPassword, setCurrentPassword] = useState('');
+  const { usuario, mensaje, updatePasswordFirebase } = useContext(AuthContext);
   const [newPassword, setNewPassword] = useState('');
   const [repeatNewPassword, setRepeatNewPassword] = useState('');
   const [selectedFile, setSelectedFile] = useState({
@@ -17,7 +15,6 @@ const UpdateProfile = () => {
     imgProfilePantalla: usuario.photoUrl === '' ? '' : usuario.photoUrl,
   });
   const [dataEditProfile, setDataEditProfile] = useState({
-    uid: usuario.uid,
     name: usuario.name,
     email: usuario.email,
     photoUrl: usuario.photoUrl,
@@ -30,7 +27,6 @@ const UpdateProfile = () => {
     linkedin: usuario.linkedin,
     twitter: usuario.twitter,
     bibliography: usuario.bibliography,
-    createdAt: usuario.createdAt,
   });
   // const [errorMessageUpdatePassword, setErrorMessageUpdatePassword] = useState('');
   const MySwal = withReactContent(Swal);
@@ -99,16 +95,7 @@ const UpdateProfile = () => {
       [e.target.name]: e.target.value,
     });
   };
-  // const handleInputChangePassword = (e) => {
-  //   e.preventDefault();
-  //   setChanguePassword({
-  //     ...changuePassword,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-  // useEffect(() => {
-  //   setErrorMessageUpdatePassword(mensaje);
-  // }, [mensaje]);
+
   return (
     <div className='container__profile'>
       <div className='container__updateProfile'>
