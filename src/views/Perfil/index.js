@@ -24,7 +24,7 @@ const index = () => {
         <Tab
           eventKey='perfil'
           title={(
-            <i className='far fa-bell'>
+            <i class="far fa-user">
               {' '}
               <span className='title'>Mi Perfil</span>
             </i>
@@ -35,7 +35,7 @@ const index = () => {
         <Tab
           eventKey='insignia'
           title={(
-            <i className='far fa-bell'>
+            <i class="fas fa-award">
               {' '}
               <span className='title'>Insignias</span>
             </i>
@@ -46,7 +46,7 @@ const index = () => {
         <Tab
           eventKey='grupos'
           title={(
-            <i className='far fa-bell'>
+            <i class="fas fa-users">
               {' '}
               <span className='title'>Grupos</span>
             </i>
@@ -57,7 +57,7 @@ const index = () => {
         <Tab
           eventKey='eventos'
           title={(
-            <i className='far fa-bell'>
+            <i class="fas fa-calendar-week">
               {' '}
               <span className='title'>Eventos</span>
             </i>
