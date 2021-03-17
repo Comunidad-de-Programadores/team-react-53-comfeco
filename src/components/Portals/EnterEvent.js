@@ -29,7 +29,7 @@ const EnterEvent = ({ id, onClose, enrolled, user }) => {
       </div>
       <div className='modal-footer'>
         <button type='button' onClick={onClose} className='btn btn-secondary'>Volver</button>
-        <button type='button' onClick={handleInfo} className='btn btn-success'>Entrar al evento</button>
+        <button type='button' onClick={handleInfo} className='btn btn-success btn-morado'>Entrar al evento</button>
       </div>
     </div>
   );
