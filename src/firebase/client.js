@@ -210,14 +210,17 @@ export const updatePasword = (newPassword) => {
   return user.updatePassword(newPassword);
 };
 
-export const uploadProfilePicture = (imagenFile, setUrlProfile) => {
+export const uploadProfilePicture = (imagenFile, dataEditProfile, setDataEditProfile) => {
   const storageRef = firebase.storage().ref(`images/${imagenFile.name}`).put(imagenFile);
   return storageRef.on('state_changed', (snapshot) => {}, (error) => {
     console.log(error);
   }, () => {
     firebase.storage().ref('images').child(imagenFile.name).getDownloadURL()
       .then((url) => {
-        setUrlProfile(url);
+        setDataEditProfile({
+          ...dataEditProfile,
+          photoUrl: url,
+        });
       });
   });
 };

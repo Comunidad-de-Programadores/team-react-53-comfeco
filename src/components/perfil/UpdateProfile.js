@@ -10,7 +10,7 @@ const UpdateProfile = () => {
   const [newPassword, setNewPassword] = useState('');
   const [repeatNewPassword, setRepeatNewPassword] = useState('');
   const [selectedFile, setSelectedFile] = useState({
-    imgProfile: '',
+    imgProfile: null,
     imgProfilePantalla: usuario.photoUrl === '' ? '' : usuario.photoUrl,
   });
   const [dataEditProfile, setDataEditProfile] = useState({
@@ -29,7 +29,7 @@ const UpdateProfile = () => {
     bibliography: usuario.bibliography,
     createdAt: usuario.createdAt,
   });
-  const [urlProfile, setUrlProfile] = useState('');
+  const [urlProfile, setUrlProfile] = useState(null);
   const [errorMessage, setErrorMessage] = useState({
     message: mensaje,
     type: 'password',
@@ -45,10 +45,13 @@ const UpdateProfile = () => {
   };
   const updateAllProfile = (e) => {
     e.preventDefault();
-    // uploadProfilePicture(selectedFile.imgProfile, setUrlProfile);
+    if (selectedFile.imgProfile !== undefined || selectedFile.imgProfile !== null) {
+      uploadProfilePicture(selectedFile.imgProfile, dataEditProfile, setDataEditProfile);
+      return;
+
+    }
     updateProfile(dataEditProfile);
   };
-  console.log(urlProfile, 'url firebase');
 
   const handleFileChange = (event) => {
     event.preventDefault();
