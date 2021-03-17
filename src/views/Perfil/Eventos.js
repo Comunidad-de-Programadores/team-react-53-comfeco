@@ -4,6 +4,8 @@ import Modal from '../../components/Portals/Modal';
 import NewEvent from '../../components/Portals/NewEvent';
 import { db } from '../../firebase/client';
 
+import "../../assets/styles/components/Events.css"
+
 const Eventos = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [events, setEvents] = useState([]);
@@ -36,9 +38,9 @@ const Eventos = () => {
 
   return (
     <div className='container my-5'>
-      <div className='d-flex justify-content-around'>
+      <div className='d-flex justify-content-between'>
         <h2>Eventos</h2>
-        <button type='button' onClick={handleOpen} className='btn d-inline-block btn-outline-secondary'>Nuevo Evento</button>
+        <button type='button' onClick={handleOpen} className='btn d-inline-block btn-outline-secondary btn-evento'>Nuevo Evento</button>
         <Modal isOpen={isOpen} onClose={handleClose}>
           <NewEvent addEvent={addEvent} onClose={handleClose} />
         </Modal>

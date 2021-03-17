@@ -67,7 +67,7 @@ const ButtonEvent = ({ enrolled, banned, id, creator }) => {
 
   return (
     <>
-      <button type='button' onClick={handleOpenEnter} className='btn btn-success float-end'>¡Me anoto!</button>
+      <button type='button' onClick={handleOpenEnter} className='btn btn-success float-end btn-morado'>¡Me anoto!</button>
       <Modal isOpen={isOpenEnter} onClose={handleCloseEnter}>
         <EnterEvent id={id} enrolled={enrolled} user={usuario.uid} onClose={handleCloseEnter} />
       </Modal>

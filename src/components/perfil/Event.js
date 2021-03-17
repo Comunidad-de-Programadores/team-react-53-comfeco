@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ButtonEvent from './ButtonEvent';
 import Modal from '../Portals/Modal';
 import InfoEvent from '../Portals/InfoEvent';
+import "../../assets/styles/components/Events.css"
 
 const Event = ({ eventInfo }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,7 @@ const Event = ({ eventInfo }) => {
 
   return (
     <div className='Event'>
-      <div className="card mb-1" style={{ width: '18rem' }}>
+      <div className="card mb-1">
         <div className="card-header">
           <div className="card-title">
             <h3>{eventInfo.name}</h3>
@@ -36,12 +37,12 @@ const Event = ({ eventInfo }) => {
           <hr />
           <p className='card-text'>¿Quieres saber más de este evento? Encuentra más información en el enlace:</p>
           <button type='button' onClick={handleOpen} className="btn btn-link float-end">Ver más</button>
-          <Modal isOpen={isOpen} onClose={handleClose}>
+          <Modal isOpen={isOpen} onClose={handleClose} xl>
             <InfoEvent data={eventInfo} onClose={handleClose} />
           </Modal>
         </div>
         <div className="card-footer">
-          <ButtonEvent enrolled={eventInfo.enrolled} creator={eventInfo.createdBy} id={eventInfo.id} banned={eventInfo.banned} />
+          <ButtonEvent enrolled={eventInfo.enrolled} creator={eventInfo.createdBy} id={eventInfo.id} banned={eventInfo.banned} className="btn-evento"/>
         </div>
       </div>
     </div>

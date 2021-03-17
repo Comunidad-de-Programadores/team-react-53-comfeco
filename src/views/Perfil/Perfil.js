@@ -39,6 +39,18 @@ const Perfil = () => {
                 <span />
                 <p>lksjlkdj lkdkldjlkdj lkdjlksdjlskjdflsk jfdsklppppppppppp</p>
                 <hr />
+                <div className="box-redes-user">
+                    <div className="redes-user">
+                      a
+                    </div>
+                    <div className="redes-user">
+                      a
+                    </div>
+                    <div className="redes-user">
+                      a
+                    </div>
+
+                </div>
               </div>
             </div>
             <div className="box-centro">
