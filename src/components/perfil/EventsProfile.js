@@ -22,7 +22,7 @@ const EventsProfile = () => {
   return (
     <div className='box-info-user'>
       <div className='list-group'>
-        <h4 className='float-start'>Mis eventos</h4>
+        <h4 className='float-start user-name'>Mis eventos</h4>
         {
           events.map((e) => {
             return (

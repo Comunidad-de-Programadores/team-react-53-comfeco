@@ -32,9 +32,42 @@
   width: 60%;
   padding: 1rem;
   margin: 0.5rem;
+  border: 1px solid #ffffff60;
   background-color: #ffffff60;
 }
 
+.box-centro-insignia{
+  background: linear-gradient(110deg, #ffffff50 0%, #ffffff1a 100%);
+  background-color: #fff8e6;
+  backdrop-filter: blur(5px);
+  /* box-shadow: 0px 4px 24px -1px #63636341; */
+  /* border-radius: 1.5rem; */
+  padding: 1rem;
+}
+
+
+.box-all-insignias{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+}
+.box-insignia{
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  padding: 1rem;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: .5rem 2rem;
+ border:1px solid #380f63
+}
+
+.insignia-img{
+  width: 100%;
+}
 .box-info-user {
   border: 1px solid #ffffff60;
   background-color: #ffffff60;
@@ -63,9 +96,10 @@ a#controlled-tab-example-tab-eventos i::before {
   width: 14rem;
   height: 14rem;
   border-radius: 100%;
+  border:3px solid #380f63
 }
 
-.user-name{
+.user-name {
   margin: 1rem auto;
   font-weight: 600;
 }
@@ -78,7 +112,7 @@ a#controlled-tab-example-tab-eventos i::before {
   color: #ffff !important;
 }
 
-.link-editar{
+.link-editar {
   position: relative;
   right: -30%;
   width: 100%;

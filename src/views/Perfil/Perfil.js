@@ -42,10 +42,22 @@ const Perfil = () => {
               </div>
             </div>
             <div className="box-centro">
-              <h5>Insignias</h5>
+              <div className="box-centro-insignia">
+                <h5> Mis insignias</h5>
+                <div className="box-all-insignias">
+                  <div className="box-insignia">
+                    {" "}
+                    <img src={usuario.photoUrl} className="insignia-img" />
+                  </div>
+                  <div className="box-insignia">
+                    {" "}
+                    <img src={usuario.photoUrl} className="insignia-img" />
+                  </div>
+                 
+                </div>
+              </div>
             </div>
             <div className="box-user">
-  
               <EventsProfile />
             </div>
           </>
