@@ -26,20 +26,20 @@ const Header = () => {
   return (
     <div className='container-comfeco'>
       <Navbar bg='light' expand='lg'>
-        <div>
-          <Navbar.Brand href='/'>
+      
+          <Navbar.Brand href='/' className="logo">
             {' '}
-            <img src={logo} width='180' alt='Logo de COMFECO' className='logo' />
+            <img src={logo}  alt='Logo de COMFECO' className=' w-100'  />
           </Navbar.Brand>
-        </div>
+      
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         {autenticado === true && usuario !== null ? (
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className=' w-100'>
-              <NavLink exact to='/' activeClassName='active'>Inicio</NavLink>
-              <NavLink exact to='/comunidades' activeClassName='active'>Comunidades</NavLink>
-              <NavLink exact to='/talleres' activeClassName='active'>Talleres</NavLink>
-              <NavLink exact to='/creadores-de-contenido' activeClassName='active'>
+              <NavLink exact to='/' activeClassName='active ' className="item-menu">Inicio</NavLink>
+              <NavLink exact to='/comunidades' activeClassName='active'className="item-menu">Comunidades</NavLink>
+              <NavLink exact to='/talleres' activeClassName='active'className="item-menu">Talleres</NavLink>
+              <NavLink exact to='/creadores-de-contenido' activeClassName='active'className="item-menu">
                 Creadores de contenido
               </NavLink>
 

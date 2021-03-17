@@ -1,5 +1,5 @@
 .logo {
-  width: 38%;
+  width: 16rem;
 }
 
 nav {
@@ -7,10 +7,9 @@ nav {
   box-shadow: 0px 1px 10px #999;
  font-size: 1.4rem;
   font-weight: 600;
-flex-wrap: nowrap!important;
 }
 .navbar-expand-lg .navbar-nav{
-  align-items: center!important;
+  /* align-items: center!important; */
 }
 
 .navbar-nav a{
@@ -27,6 +26,13 @@ flex-wrap: nowrap!important;
   color:#380f63;
   padding: 0 1.5rem;
   font-weight: 900;
+
+}
+
+.item-menu{
+  display: flex;
+  align-items: center;
+  margin-left: 3rem;
 }
 .btn-iniciar-sesion {
   position: relative;
@@ -56,13 +62,17 @@ a#basic-nav-dropdown\ {
 
 .foto-user {
   width: 25%;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
+  margin: 0 1rem;
 }
 
 .user-select {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 0 1rem;
 }
 
 .notification i{
@@ -70,6 +80,7 @@ a#basic-nav-dropdown\ {
 }
 
 @media (max-width: 768px) {
+
   .navbar-collapse {
     padding-top: 2rem !important;
   }
@@ -79,5 +90,13 @@ a#basic-nav-dropdown\ {
   }
   .nickname {
     margin-left: 0;
+    padding: 0 1.5rem;
+  }
+  .item-menu{
+    margin-left: 0rem!important;
+    margin-bottom: .8rem;
+  }
+  .foto-user{
+    display: none;
   }
 }
