@@ -3,6 +3,9 @@ import AuthContext from '../../auth/AuthContext';
 import Avatar from '../Avatar';
 import { uploadProfilePicture, updateProfile, updateProfileImage } from '../../firebase/client';
 import '../../assets/styles/views/UpdateProfile.css';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const UpdateProfile = () => {
   const { usuario, validateCurrentPassword, mensaje, updatePasswordFirebase } = useContext(AuthContext);
@@ -29,14 +32,9 @@ const UpdateProfile = () => {
     bibliography: usuario.bibliography,
     createdAt: usuario.createdAt,
   });
-  const [urlProfile, setUrlProfile] = useState(null);
-  const [errorMessage, setErrorMessage] = useState({
-    message: mensaje,
-    type: 'password',
-  });
-  console.log(selectedFile.imgProfile, 'url :)');
-  console.log(dataEditProfile, 'objeto perfil');
-  console.log(dataEditProfile, 'ojitos :)');
+  // const [errorMessageUpdatePassword, setErrorMessageUpdatePassword] = useState('');
+  const MySwal = withReactContent(Swal);
+
   const updatePassword = (e) => {
     e.preventDefault();
     if (newPassword === repeatNewPassword) { updatePasswordFirebase(newPassword); }
@@ -46,12 +44,25 @@ const UpdateProfile = () => {
   const updateAllProfile = (e) => {
     e.preventDefault();
     if (!selectedFile.imgProfile) {
-      updateProfile(dataEditProfile, usuario.uid);
-      return;
+      updateProfile(dataEditProfile, usuario.uid).then(() => {
+        MySwal.fire({
+          title: 'Tu perfil se editó correctamente',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      });
     }
     if (selectedFile.imgProfile) {
       uploadProfilePicture(selectedFile.imgProfile, updateProfileImage, usuario.uid);
-      updateProfile(dataEditProfile, usuario.uid);
+      updateProfile(dataEditProfile, usuario.uid).then(() => {
+        MySwal.fire({
+          title: 'Tu perfil se editó correctamente',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      });
     }
 
   };
@@ -95,9 +106,13 @@ const UpdateProfile = () => {
   //     [e.target.name]: e.target.value,
   //   });
   // };
+  // useEffect(() => {
+  //   setErrorMessageUpdatePassword(mensaje);
+  // }, [mensaje]);
   return (
     <div className='container__profile'>
       <div className='container__updateProfile'>
+        <a href='/perfil'>atrás</a>
         <h2>Editar perfil</h2>
         <form className='updateProfile__form' onSubmit={updateAllProfile}>
           <div className='container__updateProfileImg-flex'>
@@ -198,12 +213,12 @@ const UpdateProfile = () => {
             <div className='container__updateProfile-flex margin-top'>
               <label htmlFor='facebook' className='form__label redes_label'>
                 <i className='fab fa-facebook' />
-                Facebook
+                facebook.com/
               </label>
               <input type='text' id='facebook' name='facebook' placeholder='facebook' className='form__input' value={dataEditProfile.facebook} onChange={handleInputChangeProfile} />
               <label htmlFor='github' className='form__label redes_label'>
                 <i className='fab fa-github' />
-                Github
+                github.com/
               </label>
               <input type='text' id='github' name='github' placeholder='github' className='form__input' value={dataEditProfile.github} onChange={handleInputChangeProfile} />
             </div>
@@ -211,13 +226,13 @@ const UpdateProfile = () => {
               <label htmlFor='linkedin' className='form__label redes_label'>
                 <i className='fab fa-linkedin' />
                 {' '}
-                Linkedin
+                linkedin.com/in/
               </label>
               <input type='text' id='linkedin' name='linkedin' placeholder='linkedin' className='form__input' value={dataEditProfile.linkedin} onChange={handleInputChangeProfile} />
               <label htmlFor='twitter' className='form__label redes_label'>
                 <i className='fab fa-twitter-square' />
                 {' '}
-                Twitter
+                twitter.com/
               </label>
               <input type='text' id='twitter' name='twitter' placeholder='twitter' className='form__input' value={dataEditProfile.twitter} onChange={handleInputChangeProfile} />
             </div>
@@ -233,9 +248,8 @@ const UpdateProfile = () => {
       <div className='container__updatePassword'>
         <h2>Cambiar Contraseña</h2>
         <form className='updatePassword__form' onSubmit={updatePassword}>
-          <p>
-            {errorMessage.message && errorMessage.type === 'password' ? <p>{errorMessage.message}</p> : ''}
-          </p>
+          {mensaje &&
+            <div className='error-msj'>{mensaje}</div>}
           <label className='form__label'>
             Correo electrónico:
           </label>

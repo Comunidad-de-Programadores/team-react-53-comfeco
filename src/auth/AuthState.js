@@ -268,13 +268,18 @@ const AuthState = ({ children }) => {
         dispatch({
           type: UPDATE_PASSWORD_EXITOSO,
         });
-        alert('password editado');
+        alert('Tu contraseña se ha editado correctamente');
       })
       .catch((error) => {
         if (error.message === 'Password should be at least 6 characters') {
           dispatch({
             type: UPDATE_PASSWORD_ERROR,
             payload: 'La contraseña debe tener al menos 6 caracteres',
+          });
+        } else if (error.message === 'This operation is sensitive and requires recent authentication. Log in again before retrying this request.') {
+          dispatch({
+            type: UPDATE_PASSWORD_ERROR,
+            payload: 'Esta operación es sensible y requiere autenticación reciente. Vuelva a iniciar sesión antes de volver a intentar esta solicitud.',
           });
         } else {
           dispatch({

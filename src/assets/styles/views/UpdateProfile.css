@@ -70,13 +70,6 @@
   flex-direction: column;
   justify-content: center;
 }
-.container__updateProfile-social .container__updateProfile-flex{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1.5rem;
-}
 
 .form__button {
   box-sizing: border-box;
@@ -136,7 +129,6 @@ input#inputFile:hover {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  margin-top: 0rem;
   padding-right: 1rem;
 }
 .redes_label i {
@@ -174,5 +166,10 @@ input#inputFile:hover {
     top: 20%;
     left: 45%;
   }
-
+  .redes_label{
+   margin-top: 0rem;
+  }
+  .container__updateProfile-social input{
+margin-right: 1rem;
+  }
 }

@@ -218,11 +218,6 @@ export const uploadProfilePicture = (imagenFile, updateProfileImage, id) => {
     firebase.storage().ref('images').child(imagenFile.name).getDownloadURL()
       .then((url) => {
         updateProfileImage(url, id);
-        alert(id);
-        // setDataEditProfile({
-        //   ...dataEditProfile,
-        //   photoUrl: url,
-        // });
       });
   });
 };
@@ -231,7 +226,6 @@ export const updateProfile = (data, id) => {
   return firebase.firestore().collection('usuarios').doc(id).update({
     name: data.name,
     email: data.email,
-    // photoUrl: data.photoUrl,
     gender: data.gender,
     birth: data.birth,
     country: data.country,
