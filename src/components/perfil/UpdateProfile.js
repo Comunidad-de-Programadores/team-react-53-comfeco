@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../../auth/AuthContext';
 import Avatar from '../Avatar';
-import { uploadProfilePicture } from '../../firebase/client';
+import { uploadProfilePicture, updateProfile } from '../../firebase/client';
 import '../../assets/styles/views/UpdateProfile.css';
 
 const UpdateProfile = () => {
@@ -36,6 +36,7 @@ const UpdateProfile = () => {
   });
   console.log(selectedFile.imgProfile, 'url :)');
   console.log(dataEditProfile, 'objeto perfil');
+  console.log(dataEditProfile, 'ojitos :)');
   const updatePassword = (e) => {
     e.preventDefault();
     if (newPassword === repeatNewPassword) { updatePasswordFirebase(newPassword); }
@@ -44,18 +45,21 @@ const UpdateProfile = () => {
   };
   const updateAllProfile = (e) => {
     e.preventDefault();
-    uploadProfilePicture(selectedFile.imgProfile, setUrlProfile);
+    // uploadProfilePicture(selectedFile.imgProfile, setUrlProfile);
+    updateProfile(dataEditProfile);
   };
   console.log(urlProfile, 'url firebase');
 
   const handleFileChange = (event) => {
     event.preventDefault();
     const input = event.target;
+    console.log(input.files, 'input');
     if (input.files && input.files[0]) {
       const sizeByte = input.files[0].size;
       const sizeMegaByte = parseFloat(sizeByte / (1024 * 1024)).toFixed(2);
       const reader = new FileReader();
       reader.onload = (e) => {
+        console.log(e.target.result, 'resutl');
         if (sizeMegaByte > 1) {
           // setAlertError('El tamaño máximo es de 1mb');
         } else {
@@ -91,7 +95,7 @@ const UpdateProfile = () => {
         <h2>Editar perfil</h2>
         <form className='updateProfile__form' onSubmit={updateAllProfile}>
           <div className='container__updateProfileImg-flex'>
-            {usuario.photoUrl === '' ? (
+            {dataEditProfile.photoUrl === '' ? (
               <>
                 {
                   selectedFile.imgProfilePantalla === '' ?
@@ -118,7 +122,6 @@ const UpdateProfile = () => {
               name='imgProfile'
               accept='image/png, image/jpeg, image/jpg'
               onChange={handleFileChange}
-              required
             />
           </div>
           <div className='container__updateProfile-flex'>
@@ -141,9 +144,9 @@ const UpdateProfile = () => {
                 Género:
               </label>
               <select name='gender' id='gender' className='form__select' value={dataEditProfile.gender} onChange={handleInputChangeProfile}>
-                <option value=''>Hombre</option>
-                <option value=''>Mujer</option>
-                <option value=''>Otro</option>
+                <option value='Hombre'>Hombre</option>
+                <option value='Mujer'>Mujer</option>
+                <option value='Otro'>Otro</option>
               </select>
             </div>
             <div>
@@ -158,27 +161,27 @@ const UpdateProfile = () => {
               <label htmlFor='country' className='form__label'>
                 País:
               </label>
-              <select name='country' id='country' className='form__select'>
-                <option value=''>Perú</option>
-                <option value=''>Colombia</option>
-                <option value=''>México</option>
-                <option value=''>Venezuela</option>
-                <option value=''>Argentina</option>
-                <option value=''>Bolivia</option>
+              <select name='country' id='country' className='form__select' value={dataEditProfile.country} onChange={handleInputChangeProfile}>
+                <option value='Perú'>Perú</option>
+                <option value='Colombia'>Colombia</option>
+                <option value='México'>México</option>
+                <option value='Venezuela'>Venezuela</option>
+                <option value='Argentina'>Argentina</option>
+                <option value='Bolivia'>Bolivia</option>
               </select>
             </div>
             <div>
               <label htmlFor='area' className='form__label'>
                 Área de Conocimiento:
               </label>
-              <select name='area' id='area' className='form__select'>
-                <option value=''>Frontend</option>
-                <option value=''>Backend</option>
-                <option value=''>DevOps</option>
-                <option value=''>Video Game Developers</option>
-                <option value=''>UI/UX</option>
-                <option value=''>Database Developer</option>
-                <option value=''>Cloud Computing</option>
+              <select name='area' id='area' className='form__select' value={dataEditProfile.area} onChange={handleInputChangeProfile}>
+                <option value='Frontend'>Frontend</option>
+                <option value='Backend'>Backend</option>
+                <option value='DevOps'>DevOps</option>
+                <option value='Video Game Developers'>Video Game Developers</option>
+                <option value='UI/UX'>UI/UX</option>
+                <option value='Database Developer'>Database Developer</option>
+                <option value='Cloud Computing'>Cloud Computing</option>
               </select>
             </div>
           </div>

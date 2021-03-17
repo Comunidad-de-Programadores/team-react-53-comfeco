@@ -212,10 +212,29 @@ export const updatePasword = (newPassword) => {
 
 export const uploadProfilePicture = (imagenFile, setUrlProfile) => {
   const storageRef = firebase.storage().ref(`images/${imagenFile.name}`).put(imagenFile);
-  return storageRef.on('state_changed', console.log, console.error, () => {
+  return storageRef.on('state_changed', (snapshot) => {}, (error) => {
+    console.log(error);
+  }, () => {
     firebase.storage().ref('images').child(imagenFile.name).getDownloadURL()
       .then((url) => {
         setUrlProfile(url);
       });
+  });
+};
+
+export const updateProfile = (data) => {
+  return firebase.firestore().collection('usuarios').doc(data.uid).update({
+    name: data.name,
+    email: data.email,
+    photoUrl: data.photoUrl,
+    gender: data.gender,
+    birth: data.birth,
+    country: data.country,
+    area: data.area,
+    facebook: data.facebook,
+    github: data.github,
+    linkedin: data.linkedin,
+    twitter: data.twitter,
+    bibliography: data.bibliography,
   });
 };
