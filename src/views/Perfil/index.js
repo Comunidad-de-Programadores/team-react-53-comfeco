@@ -7,67 +7,66 @@ import Perfil from './Perfil';
 import Insignias from './Insignias';
 import Grupos from './Grupos';
 import Eventos from './Eventos';
-
 import '../../assets/styles/views/Perfil.css';
 
 const index = () => {
   const [key, setKey] = useState('perfil');
   return (
-  <div className="container-comfeco">
+    <div className='container-comfeco'>
       <div className='submenu'>
-      <Tabs
-        justify
-        id='controlled-tab-example'
-        activeKey={key}
-        onSelect={(k) => setKey(k)}
-      >
-        <Tab
-          eventKey='perfil'
-          title={(
-            <i class="far fa-user">
-              {' '}
-              <span className='title'>Mi Perfil</span>
-            </i>
-          )}
+        <Tabs
+          justify
+          id='controlled-tab-example'
+          activeKey={key}
+          onSelect={(k) => setKey(k)}
         >
-          <Perfil />
-        </Tab>
-        <Tab
-          eventKey='insignia'
-          title={(
-            <i class="fas fa-award">
-              {' '}
-              <span className='title'>Insignias</span>
-            </i>
-          )}
-        >
-          <Insignias />
-        </Tab>
-        <Tab
-          eventKey='grupos'
-          title={(
-            <i class="fas fa-users">
-              {' '}
-              <span className='title'>Grupos</span>
-            </i>
-          )}
-        >
-          <Grupos />
-        </Tab>
-        <Tab
-          eventKey='eventos'
-          title={(
-            <i class="fas fa-calendar-week">
-              {' '}
-              <span className='title'>Eventos</span>
-            </i>
-          )}
-        >
-          <Eventos />
-        </Tab>
-      </Tabs>
+          <Tab
+            eventKey='perfil'
+            title={(
+              <i className='far fa-user'>
+                {' '}
+                <span className='title'>Mi Perfil</span>
+              </i>
+            )}
+          >
+            <Perfil />
+          </Tab>
+          <Tab
+            eventKey='insignia'
+            title={(
+              <i className='fas fa-award'>
+                {' '}
+                <span className='title'>Insignias</span>
+              </i>
+            )}
+          >
+            <Insignias />
+          </Tab>
+          <Tab
+            eventKey='grupos'
+            title={(
+              <i className='fas fa-users'>
+                {' '}
+                <span className='title'>Grupos</span>
+              </i>
+            )}
+          >
+            <Grupos />
+          </Tab>
+          <Tab
+            eventKey='eventos'
+            title={(
+              <i className='fas fa-calendar-week'>
+                {' '}
+                <span className='title'>Eventos</span>
+              </i>
+            )}
+          >
+            <Eventos />
+          </Tab>
+        </Tabs>
+      </div>
     </div>
-  </div>
   );
 };
 
