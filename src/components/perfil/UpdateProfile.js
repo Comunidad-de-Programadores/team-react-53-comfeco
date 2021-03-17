@@ -27,6 +27,7 @@ const UpdateProfile = () => {
     linkedin: usuario.linkedin,
     twitter: usuario.twitter,
     bibliography: usuario.bibliography,
+
   });
   // const [errorMessageUpdatePassword, setErrorMessageUpdatePassword] = useState('');
   const MySwal = withReactContent(Swal);
