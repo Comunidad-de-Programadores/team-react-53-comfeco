@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../../auth/AuthContext';
 import Avatar from '../Avatar';
-import { uploadProfilePicture, updateProfile } from '../../firebase/client';
+import { uploadProfilePicture, updateProfile, updateProfileImage } from '../../firebase/client';
 import '../../assets/styles/views/UpdateProfile.css';
 
 const UpdateProfile = () => {
@@ -45,12 +45,15 @@ const UpdateProfile = () => {
   };
   const updateAllProfile = (e) => {
     e.preventDefault();
-    if (selectedFile.imgProfile !== undefined || selectedFile.imgProfile !== null) {
-      uploadProfilePicture(selectedFile.imgProfile, dataEditProfile, setDataEditProfile);
+    if (!selectedFile.imgProfile) {
+      updateProfile(dataEditProfile, usuario.uid);
       return;
-
     }
-    updateProfile(dataEditProfile);
+    if (selectedFile.imgProfile) {
+      uploadProfilePicture(selectedFile.imgProfile, updateProfileImage, usuario.uid);
+      updateProfile(dataEditProfile, usuario.uid);
+    }
+
   };
 
   const handleFileChange = (event) => {

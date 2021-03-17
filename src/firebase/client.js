@@ -210,26 +210,28 @@ export const updatePasword = (newPassword) => {
   return user.updatePassword(newPassword);
 };
 
-export const uploadProfilePicture = (imagenFile, dataEditProfile, setDataEditProfile) => {
+export const uploadProfilePicture = (imagenFile, updateProfileImage, id) => {
   const storageRef = firebase.storage().ref(`images/${imagenFile.name}`).put(imagenFile);
   return storageRef.on('state_changed', (snapshot) => {}, (error) => {
     console.log(error);
   }, () => {
     firebase.storage().ref('images').child(imagenFile.name).getDownloadURL()
       .then((url) => {
-        setDataEditProfile({
-          ...dataEditProfile,
-          photoUrl: url,
-        });
+        updateProfileImage(url, id);
+        alert(id);
+        // setDataEditProfile({
+        //   ...dataEditProfile,
+        //   photoUrl: url,
+        // });
       });
   });
 };
 
-export const updateProfile = (data) => {
-  return firebase.firestore().collection('usuarios').doc(data.uid).update({
+export const updateProfile = (data, id) => {
+  return firebase.firestore().collection('usuarios').doc(id).update({
     name: data.name,
     email: data.email,
-    photoUrl: data.photoUrl,
+    // photoUrl: data.photoUrl,
     gender: data.gender,
     birth: data.birth,
     country: data.country,
@@ -240,4 +242,11 @@ export const updateProfile = (data) => {
     twitter: data.twitter,
     bibliography: data.bibliography,
   });
+};
+
+export const updateProfileImage = (url, id) => {
+  return firebase.firestore().collection('usuarios').doc(id).update({
+    photoUrl: url,
+  });
+
 };
