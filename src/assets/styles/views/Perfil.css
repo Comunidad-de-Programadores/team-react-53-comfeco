@@ -9,16 +9,17 @@
   background-color: #ffffff60;
   display: flex;
   align-items: center;
-flex-wrap: wrap!important;
+  flex-wrap: wrap !important;
 }
 
-.tab-content{
+.tab-content {
   margin-top: 5rem;
   margin-bottom: 5rem;
 }
 .box-perfil {
   display: flex;
   justify-content: center;
+  
 }
 .box-user {
   width: 20%;
@@ -26,8 +27,13 @@ flex-wrap: wrap!important;
   text-align: center;
   margin: 0.5rem;
   position: relative;
+
 }
 
+.bg-user{
+  border: 2px solid #380f63!important; 
+   background-color: #fff8e6;
+}
 .link-edit {
   position: absolute;
   right: 5%;
@@ -37,27 +43,29 @@ flex-wrap: wrap!important;
   width: 60%;
   padding: 1rem;
   margin: 0.5rem;
-  border: 1px solid #ffffff60;
-  background-color: #ffffff60;
+  padding-top: 0;
+  /* border: 1px solid #ffffff60;
+  background-color: #ffffff60; */
+  
 }
 
-.box-centro-insignia{
+.box-centro-insignia {
   background: linear-gradient(110deg, #ffffff50 0%, #ffffff1a 100%);
   background-color: #fff8e6;
   backdrop-filter: blur(5px);
   /* box-shadow: 0px 4px 24px -1px #63636341; */
   /* border-radius: 1.5rem; */
   padding: 1rem;
+  border: 2px solid #380f63!important;
 }
 
-
-.box-all-insignias{
+.box-all-insignias {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 2rem;
 }
-.box-insignia{
+.box-insignia {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
@@ -66,11 +74,11 @@ flex-wrap: wrap!important;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: .5rem 2rem;
- border:1px solid #380f63
+  margin: 0.5rem 2rem;
+  border: 1.5px solid #380f63;
 }
 
-.insignia-img{
+.insignia-img {
   width: 100%;
 }
 .box-info-user {
@@ -101,12 +109,17 @@ a#controlled-tab-example-tab-eventos i::before {
   width: 14rem;
   height: 14rem;
   border-radius: 100%;
-  border:3px solid #380f63
+  border: 3px solid #380f63;
 }
 
 .user-name {
   margin: 1rem auto;
   font-weight: 600;
+}
+
+.user-area{
+  color: gray;
+  margin-top: -1rem;
 }
 .nav-link {
   color: #380f63;
@@ -124,16 +137,16 @@ a#controlled-tab-example-tab-eventos i::before {
   top: 0%;
 }
 
-.box-redes-user{
+.box-redes-user {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.redes-user{
+.redes-user {
   width: 3rem;
   height: 3rem;
-  background:#380f63 ;
+  background: #380f63;
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -148,23 +161,25 @@ a#controlled-tab-example-tab-eventos i::before {
 
   .box-user {
     width: 100%;
+    margin: 0;
   }
   .box-centro {
     width: 100%;
+    margin: 0;
   }
   a#controlled-tab-example-tab-insignia span,
-a#controlled-tab-example-tab-perfil span,
-a#controlled-tab-example-tab-grupos span,
-a#controlled-tab-example-tab-eventos span {
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 600;
-  font-size: 1.5rem;
-}
+  a#controlled-tab-example-tab-perfil span,
+  a#controlled-tab-example-tab-grupos span,
+  a#controlled-tab-example-tab-eventos span {
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
 
-a#controlled-tab-example-tab-insignia i::before,
-a#controlled-tab-example-tab-perfil i::before,
-a#controlled-tab-example-tab-grupos i::before,
-a#controlled-tab-example-tab-eventos i::before {
-  font-size: 1.2rem;
-}
+  a#controlled-tab-example-tab-insignia i::before,
+  a#controlled-tab-example-tab-perfil i::before,
+  a#controlled-tab-example-tab-grupos i::before,
+  a#controlled-tab-example-tab-eventos i::before {
+    font-size: 1.2rem;
+  }
 }
