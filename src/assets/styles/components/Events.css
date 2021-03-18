@@ -1,6 +1,14 @@
 .btn-evento{
     border: 2px solid #380f63!important;
-    color: #380f63;
+    color: #fff!important;
+    background-color: #380f63!important;
+
+}
+
+.btn-evento:hover{
+    border: 2px solid #380f63!important;
+    color: #380f63!important;
+    background-color: #ffff!important;
 
 }
 
