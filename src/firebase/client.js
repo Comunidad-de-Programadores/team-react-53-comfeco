@@ -156,6 +156,8 @@ export const getWorkshopsFilterArea = (valueArea) => {
       .then((snapshot) => {
         return snapshot.docs.map((doc) => {
           const data = doc.data();
+          console.log(data, 'datita');
+          console.log(doc.id, 'datita');
           const { id } = doc;
           const { hora } = data;
           const normalizedCreateAt = new Date(hora.seconds * 1000).toString();
@@ -172,24 +174,40 @@ export const getWorkshopsFilterArea = (valueArea) => {
   );
 };
 
+export const getBadge = () => {
+  return (
+    firebase
+      .firestore()
+      .collection('insignias')
+      .get()
+      .then((snapshot) => {
+        return snapshot.docs.map((doc) => {
+          const data = doc.data();
+          const { id } = doc;
+          return {
+            ...data,
+            id,
+          };
+        });
+      })
+      .catch((error) => {
+        console.log('Error getting documents: ', error);
+      })
+  );
+};
+
 export const getCommunities = () => {
   return firebase
     .firestore()
     .collection('comunidades')
-  //.orderBy('hora', 'desc')
     .get()
     .then((snapshot) => {
       return snapshot.docs.map((doc) => {
         const data = doc.data();
         const { id } = doc;
-        //const { hora } = data;
-        // const date = new Date(hora.seconds * 1000);
-        // const normalizedCreateAt = new Intl.DateTimeFormat('es-ES').format(date);
-        //const normalizedCreateAt = new Date(hora.seconds * 1000).toString();
         return {
           ...data,
           id,
-          //hora: normalizedCreateAt,
         };
 
       });

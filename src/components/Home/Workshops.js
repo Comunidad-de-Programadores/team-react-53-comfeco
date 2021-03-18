@@ -113,19 +113,6 @@ const Workshops = () => {
             <>
               {listWorkshops.map((workshop) => (
                 <CardListWorkshops key={workshop.id} workshop={workshop} />
-                // <div className='list__body--group'>
-                //   <img src={iconCheck} alt='icono de taller' />
-                //   {/* <img src={iconPoints} alt='icono de taller' /> */}
-                //   <div>
-                //     <h5>{workshop.titulo}</h5>
-
-                //     <h6>{workshop.hora}</h6>
-                //     <p>
-                //       <span>By </span>
-                //       <a href={workshop.redSocial}>{workshop.profesor}</a>
-                //     </p>
-                //   </div>
-                // </div>
               ))}
             </>
           )}
