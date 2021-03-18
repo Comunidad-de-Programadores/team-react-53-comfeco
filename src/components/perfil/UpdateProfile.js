@@ -61,9 +61,14 @@ const UpdateProfile = () => {
         });
       });
     }
-
+    if (dataEditProfile.gender.trim() !== '' && dataEditProfile.birth.trim() !== '' && dataEditProfile.country.trim() !== '' && dataEditProfile.area.trim() !== '' && dataEditProfile.facebook.trim() !== '' && dataEditProfile.github.trim() !== '' && dataEditProfile.linkedin.trim() !== '' && dataEditProfile.bibliography.trim() !== '' && dataEditProfile.photoUrl.trim() !== '') {
+      console.log('completado todoooooo');
+    }
+    console.log(dataEditProfile, 'toda la datad');
+    // if (dataEditProfile.photoUrl.trim() !== '') {
+    //   console.log('completado');
+    // }
   };
-
   const handleFileChange = (event) => {
     event.preventDefault();
     const input = event.target;

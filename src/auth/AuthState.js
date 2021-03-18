@@ -14,6 +14,7 @@ import {
   auth,
   dateCreateUserProfile,
   updatePasword,
+  db,
 } from '../firebase/client';
 
 import {
@@ -83,8 +84,12 @@ const AuthState = ({ children }) => {
   const usuarioAutenticado = async () => {
     await auth.onAuthStateChanged((user) => {
       if (user) {
-        return getUserProfile(user.uid)
-          .then((snapshot) => {
+        return db.collection('usuarios').doc(user.uid)
+          .onSnapshot((snapshot) => {
+
+            console.log(snapshot.data(), 'ojitos');
+
+            // Add the new post to the posts list
             const dbUser = snapshot.data();
             dispatch({
               type: OBTENER_USUARIO,
@@ -108,10 +113,39 @@ const AuthState = ({ children }) => {
             dispatch({
               type: REGISTRO_EXITOSO,
             });
-          })
-          .catch((error) => {
+
+          }
+          , (error) => {
             console.error('Error writing document: ', error);
           });
+        // .then((snapshot) => {
+        //   const dbUser = snapshot.data();
+        //   dispatch({
+        //     type: OBTENER_USUARIO,
+        //     payload: {
+        //       uid: dbUser.uid,
+        //       name: dbUser.name,
+        //       email: dbUser.email,
+        //       photoUrl: dbUser.photoUrl,
+        //       gender: dbUser.gender,
+        //       birth: dbUser.birth,
+        //       country: dbUser.country,
+        //       area: dbUser.area,
+        //       facebook: dbUser.facebook,
+        //       github: dbUser.github,
+        //       linkedin: dbUser.linkedin,
+        //       twitter: dbUser.twitter,
+        //       bibliography: dbUser.bibliography,
+        //       createdAt: dbUser.createdAt,
+        //     },
+        //   });
+        //   dispatch({
+        //     type: REGISTRO_EXITOSO,
+        //   });
+        // })
+        // .catch((error) => {
+        //   console.error('Error writing document: ', error);
+        // });
       }
       if (!user) {
         return dispatch({

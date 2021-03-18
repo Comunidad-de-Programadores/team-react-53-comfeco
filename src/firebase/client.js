@@ -73,9 +73,9 @@ export const logOut = () => {
 export const createUserProfile = (uid, data) => {
   return firebase.firestore().collection('usuarios').doc(uid).set(data);
 };
-export const getUserProfile = (uid) => {
-  return firebase.firestore().collection('usuarios').doc(uid).get();
-};
+// export const getUserProfile = (uid) => {
+//   return firebase.firestore().collection('usuarios').doc(uid).get();
+// };
 
 export const sendRecoverPassword = (email) => {
   return firebase.auth().sendPasswordResetEmail(email);
