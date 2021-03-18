@@ -16,7 +16,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
 export const auth = firebase.auth();
-
+export const storage = firebase.storage();
 const mapUserFromFirebaseAuth = (user) => {
   const { email, displayName, uid } = user;
   return {
@@ -151,13 +151,10 @@ export const getWorkshopsFilterArea = (valueArea) => {
       .firestore()
       .collection('talleres')
       .where('area', '==', valueArea)
-    // .orderBy('hora', 'desc')
       .get()
       .then((snapshot) => {
         return snapshot.docs.map((doc) => {
           const data = doc.data();
-          console.log(data, 'datita');
-          console.log(doc.id, 'datita');
           const { id } = doc;
           const { hora } = data;
           const normalizedCreateAt = new Date(hora.seconds * 1000).toString();
@@ -179,6 +176,28 @@ export const getBadge = () => {
     firebase
       .firestore()
       .collection('insignias')
+      .get()
+      .then((snapshot) => {
+        return snapshot.docs.map((doc) => {
+          const data = doc.data();
+          const { id } = doc;
+          return {
+            ...data,
+            id,
+          };
+        });
+      })
+      .catch((error) => {
+        console.log('Error getting documents: ', error);
+      })
+  );
+};
+export const getBadgeSpecific = (idBadge) => {
+  return (
+    firebase
+      .firestore()
+      .collection('insignias')
+      .where('id', '==', idBadge)
       .get()
       .then((snapshot) => {
         return snapshot.docs.map((doc) => {
@@ -262,3 +281,21 @@ export const updateProfileImage = (url, id) => {
   });
 
 };
+export const addBadgeProfile = (id, insignia) => {
+  return firebase.firestore().collection('usuarios').doc(id).update({
+    badge: firebase.firestore.FieldValue.arrayUnion(insignia),
+  });
+};
+
+// const handleInfo = async () => {
+//   // Se toma toda la info de la base de datos del evento en cuestión
+//   const doc = await db.collection('eventos').doc(id).get();
+//   // Se agrega al usuario a la lista de "Inscritos"
+//   enrolled.push(user);
+//   // Se envía el objeto con la nueva lista
+//   updateData({ ...doc.data(), enrolled });
+// };
+
+// const arrUnion = washingtonRef.update({
+//   regions: admin.firestore.FieldValue.arrayUnion('greater_virginia'),
+// });

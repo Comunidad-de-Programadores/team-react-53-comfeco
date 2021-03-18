@@ -1,13 +1,16 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../../auth/AuthContext';
 import Avatar from '../Avatar';
-import { uploadProfilePicture, updateProfile, updateProfileImage } from '../../firebase/client';
+// import { uploadProfilePicture, updateProfile, updateProfileImage } from '../../firebase/client';
 import '../../assets/styles/views/UpdateProfile.css';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { uploadProfilePicture,
+  updateProfile,
+  updateProfileImage, addBadgeProfile } from '../../firebase/client';
 
 const UpdateProfile = () => {
-  const { usuario, mensaje, updatePasswordFirebase } = useContext(AuthContext);
+  const { usuario, mensaje, updatePasswordFirebase, hideUpdateProfile, showUpdateProfile } = useContext(AuthContext);
   const [newPassword, setNewPassword] = useState('');
   const [repeatNewPassword, setRepeatNewPassword] = useState('');
   const [selectedFile, setSelectedFile] = useState({
@@ -41,33 +44,71 @@ const UpdateProfile = () => {
   const updateAllProfile = (e) => {
     e.preventDefault();
     if (!selectedFile.imgProfile) {
-      updateProfile(dataEditProfile, usuario.uid).then(() => {
-        MySwal.fire({
-          title: 'Tu perfil se editó correctamente',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 2500,
+      if (usuario.badge.length === 0 && dataEditProfile.gender.trim() !== '' && dataEditProfile.birth.trim() !== '' && dataEditProfile.country.trim() !== '' && dataEditProfile.area.trim() !== '' && dataEditProfile.facebook.trim() !== '' && dataEditProfile.github.trim() !== '' && dataEditProfile.linkedin.trim() !== '' && dataEditProfile.bibliography.trim() !== '' && (dataEditProfile.photoUrl.trim() !== '' || selectedFile.imgProfile)) {
+        console.log('completado todoooooo');
+        updateProfile(dataEditProfile, usuario.uid).then(() => {
+          addBadgeProfile(usuario.uid, 'insignia_1');
+          MySwal.fire({
+            title: ' <p>Tu perfil se ha editado correctamente. <br/> Acabas de ganar tu <strong>INSIGNIA SOCIABLE</strong> </p>',
+            width: 600,
+            padding: '3em',
+            imageUrl: 'https://firebasestorage.googleapis.com/v0/b/team-react-53-comfeco.appspot.com/o/images%2Ficonos%2FGroup%2024.svg?alt=media&token=6b30cfa2-a7be-4a8a-9c7b-d5ec7945fcfd',
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'imagen insignia',
+            background: '#fff',
+            backdrop: `
+              rgba(47, 47, 116, 0.301)
+            `,
+          });
+          showUpdateProfile();
         });
-      });
+      } else {
+        updateProfile(dataEditProfile, usuario.uid).then(() => {
+          MySwal.fire({
+            title: 'Tu perfil se editó correctamente',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2500,
+          });
+          showUpdateProfile();
+        });
+      }
+
     }
     if (selectedFile.imgProfile) {
-      uploadProfilePicture(selectedFile.imgProfile, updateProfileImage, usuario.uid);
-      updateProfile(dataEditProfile, usuario.uid).then(() => {
-        MySwal.fire({
-          title: 'Tu perfil se editó correctamente',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 2500,
+      if (usuario.badge.length === 0 && dataEditProfile.gender.trim() !== '' && dataEditProfile.birth.trim() !== '' && dataEditProfile.country.trim() !== '' && dataEditProfile.area.trim() !== '' && dataEditProfile.facebook.trim() !== '' && dataEditProfile.github.trim() !== '' && dataEditProfile.linkedin.trim() !== '' && dataEditProfile.bibliography.trim() !== '' && (dataEditProfile.photoUrl.trim() !== '' || selectedFile.imgProfile)) {
+        console.log('completado todoooooo');
+        uploadProfilePicture(selectedFile.imgProfile, updateProfileImage, usuario.uid);
+        updateProfile(dataEditProfile, usuario.uid).then(() => {
+          addBadgeProfile(usuario.uid, 'insignia_1');
+          MySwal.fire({
+            title: ' <p>Tu perfil se ha editado correctamente. <br/> Acabas de ganar tu <strong>INSIGNIA SOCIABLE</strong> </p>',
+            width: 600,
+            padding: '3em',
+            imageUrl: 'https://firebasestorage.googleapis.com/v0/b/team-react-53-comfeco.appspot.com/o/images%2Ficonos%2FGroup%2024.svg?alt=media&token=6b30cfa2-a7be-4a8a-9c7b-d5ec7945fcfd',
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'imagen insignia',
+            background: '#fff',
+            backdrop: `
+              rgba(47, 47, 116, 0.301)
+            `,
+          });
         });
-      });
+      } else {
+        uploadProfilePicture(selectedFile.imgProfile, updateProfileImage, usuario.uid);
+        updateProfile(dataEditProfile, usuario.uid).then(() => {
+          MySwal.fire({
+            title: 'Tu perfil se editó correctamente',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        });
+      }
     }
-    if (dataEditProfile.gender.trim() !== '' && dataEditProfile.birth.trim() !== '' && dataEditProfile.country.trim() !== '' && dataEditProfile.area.trim() !== '' && dataEditProfile.facebook.trim() !== '' && dataEditProfile.github.trim() !== '' && dataEditProfile.linkedin.trim() !== '' && dataEditProfile.bibliography.trim() !== '' && dataEditProfile.photoUrl.trim() !== '') {
-      console.log('completado todoooooo');
-    }
-    console.log(dataEditProfile, 'toda la datad');
-    // if (dataEditProfile.photoUrl.trim() !== '') {
-    //   console.log('completado');
-    // }
+
   };
   const handleFileChange = (event) => {
     event.preventDefault();
@@ -105,7 +146,7 @@ const UpdateProfile = () => {
   return (
     <div className='container__profile'>
       <div className='container__updateProfile'>
-        <a href='/perfil'>atrás</a>
+        <a onClick={hideUpdateProfile}>atrás</a>
         <h2>Editar perfil</h2>
         <form className='updateProfile__form' onSubmit={updateAllProfile}>
           <div className='container__updateProfileImg-flex'>

@@ -19,7 +19,7 @@
 .box-perfil {
   display: flex;
   justify-content: center;
-  
+
 }
 .box-user {
   width: 20%;
@@ -31,7 +31,7 @@
 }
 
 .bg-user{
-  border: 2px solid #380f63!important; 
+  border: 2px solid #380f63!important;
    background-color: #fff8e6;
 }
 .link-edit {
@@ -46,7 +46,7 @@
   padding-top: 0;
   /* border: 1px solid #ffffff60;
   background-color: #ffffff60; */
-  
+
 }
 
 .box-centro-insignia {
@@ -66,16 +66,14 @@
   padding: 0 2rem;
 }
 .box-insignia {
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
-  padding: 1rem;
   background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0.5rem 2rem;
-  border: 1.5px solid #380f63;
 }
 
 .insignia-img {
