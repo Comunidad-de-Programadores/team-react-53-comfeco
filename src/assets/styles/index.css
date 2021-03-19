@@ -111,6 +111,38 @@ html {
 }
 /* LOADER */
 
+
+.box-building{
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.logo-build{
+  width: 18rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+
+.link-ancor{
+  text-decoration: none;
+  color: #380f63;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.link-ancor:hover{
+  text-decoration: underline;
+  color: rgb(0, 0, 0);
+  font-weight: 800;
+}
+
 @media (max-width: 768px) {
   /* html { */
   /* font-size: 62.5%; */
