@@ -27,14 +27,14 @@ const EventsProfile = () => {
           events.map((e) => {
             return (
               <div className='list-group-item'>
-                <div className='d-flex w-100 justify-content-between'>
+                <div className='d-flex w-100 justify-content-between tilte-event-profile'>
                   <h5 className='mb-1'>{e.name}</h5>
                 </div>
-                <small className='text-muted'>
+                <div className='text-muted'>
                   Fecha de inicio:
                   <br />
                   {e.dateInit}
-                </small>
+                </div>
               </div>
             );
           })

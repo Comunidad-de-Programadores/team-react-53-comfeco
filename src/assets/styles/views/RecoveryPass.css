@@ -4,20 +4,20 @@
 }
 
 .Recovery__container {
-  background-color: rgb(32, 120, 180);
+  background-color: #fff;
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  border: 3px solid #380f63;
   /* justify-content: center; */
 }
 
 @media screen and (min-width: 401px) {
   .Recovery__container {
-    width: 400px;
-    background-color: rgba(32, 120, 180, 0.7);
+    width: 500px;
   }
 }
 

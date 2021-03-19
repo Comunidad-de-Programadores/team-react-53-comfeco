@@ -4,7 +4,7 @@ import Modal from '../../components/Portals/Modal';
 import NewEvent from '../../components/Portals/NewEvent';
 import { db } from '../../firebase/client';
 
-import "../../assets/styles/components/Events.css"
+import '../../assets/styles/components/Events.css';
 
 const Eventos = () => {
   const [isOpen, setIsOpen] = useState(false);
