@@ -150,7 +150,8 @@ const Login = () => {
         <div className='box-login'>
           <div className='Login'>
             <h1 className='Login__title'>
-              <span className='title__message'> Iniciar Sesión </span>
+              {/* <span className="title_hola"> Hola, </span> */}
+              <span className='title__message title'> Iniciar Sesión </span>
             </h1>
             <form className='Login__form' onSubmit={Login}>
               {errorMessage.message ? (

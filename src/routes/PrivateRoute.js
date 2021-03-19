@@ -10,13 +10,20 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      component={(props) => (
-        (authReady === false) ? <p>Loading</p> :
-
-          ((autenticado === true) ?
-            <Component {...props} /> :
-            <Redirect to='/login' />)
-      )}
+      component={(props) => (authReady === false ? (
+        <div className='box-loading'>
+          <div className='lds-ellipsis'>
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
+        </div>
+      ) : autenticado === true ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to='/login' />
+      ))}
     />
   );
 };

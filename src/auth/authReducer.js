@@ -10,6 +10,10 @@ import {
   VALIDATE_PASSWORD_EXITOSO,
   UPDATE_PASSWORD_EXITOSO,
   UPDATE_PASSWORD_ERROR,
+  UPDATE_PROFILE_EXITOSO,
+  UPDATE_PROFILE_ERROR,
+  UPDATE_PROFILE_SHOW,
+  UPDATE_PROFILE_HIDE,
 
 } from '../types/types';
 
@@ -53,6 +57,7 @@ export default (state, action) => {
         updateProfile: false,
       };
     case UPDATE_PASSWORD_EXITOSO:
+    case UPDATE_PROFILE_EXITOSO:
       return {
         ...state,
         authReady: true,
@@ -62,12 +67,23 @@ export default (state, action) => {
       };
     case VALIDATE_PASSWORD_ERROR:
     case UPDATE_PASSWORD_ERROR:
+    case UPDATE_PROFILE_ERROR:
       return {
         ...state,
         authReady: true,
         autenticado: true,
         updateProfile: true,
         mensaje: action.payload,
+      };
+    case UPDATE_PROFILE_SHOW:
+      return {
+        ...state,
+        updateProfile: true,
+      };
+    case UPDATE_PROFILE_HIDE:
+      return {
+        ...state,
+        updateProfile: false,
       };
     default:
       return state;

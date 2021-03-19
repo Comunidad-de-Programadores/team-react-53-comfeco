@@ -16,7 +16,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
 export const auth = firebase.auth();
-
+export const storage = firebase.storage();
 const mapUserFromFirebaseAuth = (user) => {
   const { email, displayName, uid } = user;
   return {
@@ -73,9 +73,9 @@ export const logOut = () => {
 export const createUserProfile = (uid, data) => {
   return firebase.firestore().collection('usuarios').doc(uid).set(data);
 };
-export const getUserProfile = (uid) => {
-  return firebase.firestore().collection('usuarios').doc(uid).get();
-};
+// export const getUserProfile = (uid) => {
+//   return firebase.firestore().collection('usuarios').doc(uid).get();
+// };
 
 export const sendRecoverPassword = (email) => {
   return firebase.auth().sendPasswordResetEmail(email);
@@ -151,13 +151,10 @@ export const getWorkshopsFilterArea = (valueArea) => {
       .firestore()
       .collection('talleres')
       .where('area', '==', valueArea)
-      // .orderBy('hora', 'desc')
       .get()
       .then((snapshot) => {
         return snapshot.docs.map((doc) => {
           const data = doc.data();
-          console.log(data, 'datita');
-          console.log(doc.id, 'datita');
           const { id } = doc;
           const { hora } = data;
           const normalizedCreateAt = new Date(hora.seconds * 1000).toString();
@@ -175,25 +172,41 @@ export const getWorkshopsFilterArea = (valueArea) => {
 };
 
 export const getBadge = () => {
-  return (
-    firebase
-      .firestore()
-      .collection('insignias')
-      .get()
-      .then((snapshot) => {
-        return snapshot.docs.map((doc) => {
-          const data = doc.data();
-          const { id } = doc;
-          return {
-            ...data,
-            id,
-          };
-        });
-      })
-      .catch((error) => {
-        console.log('Error getting documents: ', error);
-      })
-  );
+  return firebase.firestore()
+    .collection('insignias')
+    .get()
+    .then((snapshot) => {
+      return snapshot.docs.map((doc) => {
+        const data = doc.data();
+        const { id } = doc;
+        return {
+          ...data,
+          id,
+        };
+      });
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
+};
+export const getBadgeSpecific = (idBadge) => {
+  return firebase.firestore().collection('insignias')
+    .where('id', '==', idBadge)
+    .get()
+    .then((snapshot) => {
+      return snapshot.docs.map((doc) => {
+        const data = doc.data();
+        const { id } = doc;
+        return {
+          ...data,
+          id,
+        };
+      });
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
+
 };
 
 export const getCommunities = () => {
@@ -277,3 +290,33 @@ export const setActivity = async (activity, type, message, title, color, id) => 
     activity: firebase.firestore.FieldValue.arrayUnion(data),
   });
 };
+export const addBadgeProfile = (id, insignia) => {
+  return firebase.firestore().collection('usuarios').doc(id).update({
+    badge: firebase.firestore.FieldValue.arrayUnion(insignia),
+  });
+};
+
+export const getGroup = (setGroupList) => {
+  return firebase.firestore()
+    .collection('grupos')
+    .onSnapshot((querySnapshot) => {
+      const groupList = [];
+      querySnapshot.forEach((doc) => {
+        groupList.push(doc.data());
+      });
+      setGroupList(groupList);
+    });
+};
+
+export const getGroupsFilterLanguage = (valueLanguage, groupList) => {
+  return firebase.firestore()
+    .collection('grupos').where('programmingLanguage', '==', valueLanguage)
+    .onSnapshot((querySnapshot) => {
+      const listGroupsLanguage = [];
+      querySnapshot.forEach((doc) => {
+        listGroupsLanguage.push(doc.data());
+      });
+      groupList(listGroupsLanguage);
+    });
+};
+

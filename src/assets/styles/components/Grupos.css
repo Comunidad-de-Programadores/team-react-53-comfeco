@@ -48,7 +48,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
 }
 
 .my-group-name{
@@ -61,7 +61,7 @@
     display: flex;
     flex-direction: column;
     margin: 2rem auto;
-    
+
 }
 
 .box-one-integrants{
@@ -79,7 +79,7 @@
     background-color: red;
   }
 
- 
+
 
 @media (max-width: 768px) {
     .box-group{
@@ -103,10 +103,10 @@
     .box-filter{
         flex-direction: column;
     }
-    
+
     .box-filter .form-select{
         width: 100%!important;
-        
+
     }
     .box-filter form{
         width: 100%!important;
