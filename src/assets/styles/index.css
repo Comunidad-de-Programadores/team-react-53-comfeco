@@ -114,7 +114,7 @@ html {
 
 .box-building{
   height: 80vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

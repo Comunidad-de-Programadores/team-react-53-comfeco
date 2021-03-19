@@ -93,6 +93,13 @@ a#basic-nav-dropdown\ {
     display: none;
     
   }
+  a#basic-nav-dropdown\ {
+justify-content: flex-start!important;
+  }
+  .dropdown-menu{
+    border: none!important;
+
+  }
 }
 
 
