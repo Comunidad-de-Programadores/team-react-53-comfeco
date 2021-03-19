@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import Nav from 'react-bootstrap/Nav';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Perfil from './Perfil';

@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
-import '../../assets/styles/views/Register.css';
 import { useHistory, Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../auth/AuthContext';
+import '../../assets/styles/views/Login.css';
+import fondo from '../../assets/img/fondo.png';
 
 const Register = () => {
   //extraer los valores del context
@@ -194,119 +195,133 @@ const Register = () => {
       });
   };
   return (
-    <div className='Register container-comfeco'>
-      <h1 className='Register__title'>
-        <span className='title_hola'>Bienvenido,</span>
-        <span className='title__message'>¡Vamos a registrarte!</span>
-      </h1>
-      <form className='Register__form' onSubmit={signIn}>
-        {errorMessage.message ? <p>{errorMessage.message}</p> : ''}
-        <div className='form__group_re'>
-          <label htmlFor='name' className='form__label_re'>
-            Nick:
-          </label>
-          <input
-            name='name'
-            type='name'
-            value={user.name}
-            className='form__input_re'
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            className={errorMessage.type === 'name' ? 'error' : ''}
-          />
+    <div className='view-login container-comfeco'>
+      <div className='box-login-img'>
+        <div className='box-login'>
+          <div className='Login'>
+            <h1 className='Login__title'>
+              <span className='title__message'>¡Aquí podrás registrarte!</span>
+            </h1>
+            <form className='Login__form' onSubmit={signIn}>
+              {errorMessage.message ? (
+                <div className='error-msj'>{errorMessage.message}</div>
+              ) : (
+                ''
+              )}
+              <div className='form__group'>
+                <label htmlFor='name' className='form__label'>
+                  Nick:
+                </label>
+                <input
+                  name='name'
+                  type='name'
+                  value={user.name}
+                  className='form__input'
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  className={errorMessage.type === 'name' ? 'error' : ''}
+                />
+              </div>
+              <div className='form__group'>
+                <label htmlFor='email' className='form__label'>
+                  Email:
+                </label>
+                <input
+                  // style={{ opacity: 0, position: absolute }}
+                  name='email'
+                  type='email'
+                  value={user.email}
+                  className='form__input'
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  autoComplete='new-password'
+                  className={errorMessage.type === 'email' ? 'error' : ''}
+                />
+              </div>
+              <div className='form__group'>
+                <label htmlFor='password' className='form__label'>
+                  Contraseña:
+                </label>
+                <input
+                  name='password'
+                  type='password'
+                  value={user.password}
+                  className='form__input'
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  autoComplete='new-password'
+                  className={errorMessage.type === 'password' ? 'error' : ''}
+                />
+              </div>
+              <div className='form__group'>
+                <label htmlFor='password' className='form__label'>
+                  Confirmar Contraseña:
+                </label>
+                <input
+                  name='confirmar'
+                  type='password'
+                  className='form__input'
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  className={errorMessage.type === 'confirmar' ? 'error' : ''}
+                />
+              </div>
+              <div className='form__group'>
+                <button
+                  type='submit'
+                  className='form__button'
+                  disabled={
+                    !(
+                      formValid.name &&
+                      formValid.email &&
+                      formValid.password &&
+                      formValid.confirmar
+                    )
+                  }
+                >
+                  Registrarse
+                </button>
+                <label className='form__register'>
+                  Ya tienes cuenta? Inicia sesión
+                  {' '}
+                  <Link to='/login' type='button'>
+                    aquí.
+                  </Link>
+                </label>
+              </div>
+            </form>
+            <div>
+              <div className='social__group'>
+                <button
+                  type='button'
+                  className='form__button_other loginBtn--facebook'
+                  onClick={handleClickFacebook}
+                >
+                  Ingresar con Facebook
+                </button>
+                <button
+                  type='button'
+                  className='form__button_other loginBtn--google'
+                  onClick={handleClickGoogle}
+                >
+                  Ingresar con Google
+                </button>
+              </div>
+              <div className='form__check'>
+                <span className='form__check_s'>
+                  Al registrarte estas aceptando los
+                  <Link to='#'>Términos y Condiciones</Link>
+                  y la
+                  <Link to='#'> Política de privacidad y protección de datos</Link>
+                  de COMFECO
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className='form__group_re'>
-          <label htmlFor='email' className='form__label_re'>
-            Email:
-          </label>
-          <input
-            // style={{ opacity: 0, position: absolute }}
-            name='email'
-            type='email'
-            value={user.email}
-            className='form__input_re'
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            autoComplete='new-password'
-            className={errorMessage.type === 'email' ? 'error' : ''}
-          />
+        <div className='box-img'>
+          <img src={fondo} className='' alt='background' />
         </div>
-        <div className='form__group_re'>
-          <label htmlFor='password' className='form__label_re'>
-            Contraseña:
-          </label>
-          <input
-            name='password'
-            type='password'
-            value={user.password}
-            className='form__input_re'
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            autoComplete='new-password'
-            className={errorMessage.type === 'password' ? 'error' : ''}
-          />
-        </div>
-        <div className='form__group_re'>
-          <label htmlFor='password' className='form__label_re'>
-            Confirmar Contraseña:
-          </label>
-          <input
-            name='confirmar'
-            type='password'
-            className='form__input_re'
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            className={errorMessage.type === 'confirmar' ? 'error' : ''}
-          />
-        </div>
-        <div className='form__group_re'>
-          <button
-            type='submit'
-            className='form__button_re'
-            disabled={
-              !(
-                formValid.name &&
-                formValid.email &&
-                formValid.password &&
-                formValid.confirmar
-              )
-            }
-          >
-            Registrarse
-          </button>
-          <label className='form__register_re'>
-            Ya tienes cuenta? Inicia sesión
-            {' '}
-            <Link to='/login' type='button'>
-              aquí.
-            </Link>
-          </label>
-        </div>
-      </form>
-      <div>
-        <div className='social__group_re'>
-          <button
-            type='button'
-            className='form__button_other_re'
-            onClick={handleClickFacebook}
-          >
-            Ingresar con Facebook
-          </button>
-          <button
-            type='button'
-            className='form__button_other_re'
-            onClick={handleClickGoogle}
-          >
-            Ingresar con Google
-          </button>
-        </div>
-        <p className='form__relogin_re'>
-          Al registrarte estas aceptando los
-          <a href='#'> Términos y Condiciones</a>
-          y la
-          <a href='#'> Política de privacidad y protección de datos</a>
-          de COMFECO
-        </p>
       </div>
     </div>
   );

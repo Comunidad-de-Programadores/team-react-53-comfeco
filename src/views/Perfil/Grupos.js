@@ -35,9 +35,6 @@ const Grupos = () => {
 
   };
 
-  console.log(groupList, 'miedo');
-  console.log(valueSearch, 'valueVerda');
-  console.log(searchGroups, 'value');
   return (
     <div className='container__badge'>
       <h2 className='container__badge-title'>Grupos</h2>
