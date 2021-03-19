@@ -63,6 +63,7 @@ const AuthState = ({ children }) => {
         twitter: '',
         bibliography: '',
         createdAt: dateCreateUserProfile(),
+        activity: [],
       })
         .then(() => {
           console.log('Document successfully written! Judith');
@@ -103,6 +104,7 @@ const AuthState = ({ children }) => {
                 twitter: dbUser.twitter,
                 bibliography: dbUser.bibliography,
                 createdAt: dbUser.createdAt,
+                activity: dbUser.activity,
               },
             });
             dispatch({

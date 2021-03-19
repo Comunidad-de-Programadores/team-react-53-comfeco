@@ -1,9 +1,18 @@
-import React from 'react';
-import { db } from '../../firebase/client';
+import React, { useContext } from 'react';
+import AuthContext from '../../auth/AuthContext';
+import { db, setActivity } from '../../firebase/client';
 
 const DeleteEvent = ({ id, onClose }) => {
-
+  const { usuario } = useContext(AuthContext);
   const handleDelete = async (e) => {
+    setActivity(
+      usuario,
+      'evento',
+      'Has borrado un evento, pero siempre puedes crear uno nuevo',
+      'Evento borrado',
+      'warning',
+      usuario.uid,
+    );
     await db.collection('eventos').doc(e).delete();
     onClose();
   };
