@@ -155,6 +155,13 @@ a#controlled-tab-example-tab-eventos i::before {
 }
 
 
+.small{
+  margin: auto;
+}
+.large{
+  margin: auto;
+}
+
 @media (max-width: 768px) {
   .box-perfil {
     flex-direction: column;

@@ -14,6 +14,19 @@
 
 }
 
+.link-atras{
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  color: #380f63;
+}
+
+.link-atras:hover{
+  color: #555;
+  font-weight: 700;
+}
+
 .updateProfile__form {
   display: flex;
   flex-direction: column;
