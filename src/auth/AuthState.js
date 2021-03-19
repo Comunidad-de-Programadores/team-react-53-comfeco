@@ -92,9 +92,7 @@ const AuthState = ({ children }) => {
       if (user) {
         return db.collection('usuarios').doc(user.uid)
           .onSnapshot((snapshot) => {
-
             console.log(snapshot.data(), 'ojitos');
-
             // Add the new post to the posts list
             const dbUser = snapshot.data();
             dispatch({

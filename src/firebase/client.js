@@ -172,47 +172,41 @@ export const getWorkshopsFilterArea = (valueArea) => {
 };
 
 export const getBadge = () => {
-  return (
-    firebase
-      .firestore()
-      .collection('insignias')
-      .get()
-      .then((snapshot) => {
-        return snapshot.docs.map((doc) => {
-          const data = doc.data();
-          const { id } = doc;
-          return {
-            ...data,
-            id,
-          };
-        });
-      })
-      .catch((error) => {
-        console.log('Error getting documents: ', error);
-      })
-  );
+  return firebase.firestore()
+    .collection('insignias')
+    .get()
+    .then((snapshot) => {
+      return snapshot.docs.map((doc) => {
+        const data = doc.data();
+        const { id } = doc;
+        return {
+          ...data,
+          id,
+        };
+      });
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
 };
 export const getBadgeSpecific = (idBadge) => {
-  return (
-    firebase
-      .firestore()
-      .collection('insignias')
-      .where('id', '==', idBadge)
-      .get()
-      .then((snapshot) => {
-        return snapshot.docs.map((doc) => {
-          const data = doc.data();
-          const { id } = doc;
-          return {
-            ...data,
-            id,
-          };
-        });
-      })
-      .catch((error) => {
-        console.log('Error getting documents: ', error);
-      })
-  );
+  return firebase.firestore().collection('insignias')
+    .where('id', '==', idBadge)
+    .get()
+    .then((snapshot) => {
+      return snapshot.docs.map((doc) => {
+        const data = doc.data();
+        const { id } = doc;
+        return {
+          ...data,
+          id,
+        };
+      });
+    })
+    .catch((error) => {
+      console.log('Error getting documents: ', error);
+    });
+
 };
 
 export const getCommunities = () => {
@@ -287,15 +281,14 @@ export const addBadgeProfile = (id, insignia) => {
   });
 };
 
-// const handleInfo = async () => {
-//   // Se toma toda la info de la base de datos del evento en cuestión
-//   const doc = await db.collection('eventos').doc(id).get();
-//   // Se agrega al usuario a la lista de "Inscritos"
-//   enrolled.push(user);
-//   // Se envía el objeto con la nueva lista
-//   updateData({ ...doc.data(), enrolled });
-// };
-
-// const arrUnion = washingtonRef.update({
-//   regions: admin.firestore.FieldValue.arrayUnion('greater_virginia'),
-// });
+export const getGroup = (setGroupList) => {
+  return firebase.firestore()
+    .collection('grupos')
+    .onSnapshot((querySnapshot) => {
+      const groupList = [];
+      querySnapshot.forEach((doc) => {
+        groupList.push(doc.data());
+      });
+      setGroupList(groupList);
+    });
+};
