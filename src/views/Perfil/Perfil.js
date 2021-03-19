@@ -4,22 +4,16 @@ import Avatar from '../../components/Avatar';
 import UpdateProfile from '../../components/perfil/UpdateProfile';
 import EventsProfile from '../../components/perfil/EventsProfile';
 import Activity from '../../components/perfil/Activity';
-import { setActivity } from '../../firebase/client';
+import { get } from '../../firebase/client';
 
 const Perfil = () => {
   const { usuario, updateProfile } = useContext(AuthContext);
   const [showUpdateProfile, setShowUpdateProfile] = useState(false);
-  console.log(showUpdateProfile, 'vistas');
-  console.log(updateProfile, ':s');
+  const [user, setUser] = useState(false);
+
   const functionUpdateProfile = (show) => {
     setShowUpdateProfile(show);
   };
-  console.log(showUpdateProfile, 'vistas ii');
-
-  const handleActivity = () => {
-    setActivity('event', 'soy un mensaje', 'soy un titulo', 'red', usuario.uid);
-  };
-  console.log(usuario);
 
   return (
     <div className='container-comfeco'>
@@ -131,12 +125,13 @@ const Perfil = () => {
                 <div className='box-all-activity'>
                   {console.log('La actividad del usuario es: ', usuario.activity)}
                   {usuario.activity.length > 0 ? (
-                    usuario.activity.splice(0, 5).map((item) => {
+                    usuario.activity.map((item) => {
                       return <Activity type={item.type} title={item.title} message={item.message} color={item.color} time={item.time} />;
                     })
                   ) : (
                     <div className='no-activites'>
-                      <button onClick={handleActivity}>click me</button>
+                      <i class="far fa-frown-open fa-5x"></i>
+                      <h3>Lastimosamente aún no tienes actividad, ¿qué tal si navegas un poco?</h3>
                     </div>
                   )}
                 </div>
