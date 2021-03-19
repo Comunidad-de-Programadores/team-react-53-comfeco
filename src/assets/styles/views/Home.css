@@ -1,7 +1,7 @@
 .container__home {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   min-height: 80vh;
   /* margin-top: 1rem; */
   max-width: 1800px;
@@ -12,7 +12,7 @@
 .home__communities {
   width: 25%;
   padding: 2rem 1rem;
-  margin-top: 15rem;
+  /* margin-top: 5rem; */
 }
 .home__main {
   width: 50%;
@@ -24,7 +24,7 @@
 .home__workshops {
   width: 25%;
   padding: 2rem 1rem;
-  margin-top: 15rem;
+  /* margin-top: 5rem; */
 }
 
 .creadores__content {
@@ -114,7 +114,6 @@ padding-bottom: 2rem;
   .home__communities {
     width: 100%;
     padding: 2rem 1rem;
-    margin-top: 1rem;
   }
   .home__main {
     width: 100%;
@@ -123,6 +122,5 @@ padding-bottom: 2rem;
   .home__workshops {
     width: 100%;
     padding: 2rem 1rem;
-    margin-top: 1rem;
   }
 }

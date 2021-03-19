@@ -71,6 +71,7 @@ const AuthState = ({ children }) => {
         badge: [],
         activity: [],
         createdAt: dateCreateUserProfile(),
+        activity: [],
       })
         .then(() => {
           console.log('Document successfully written! Judith');
@@ -115,6 +116,7 @@ const AuthState = ({ children }) => {
                 badge: dbUser.badge,
                 activity: dbUser.activity,
                 createdAt: dbUser.createdAt,
+                activity: dbUser.activity,
               },
             });
             dispatch({

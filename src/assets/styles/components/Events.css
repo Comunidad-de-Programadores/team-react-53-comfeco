@@ -44,28 +44,3 @@
     color: #380f63;
 
 }
-
-.list-group-item{
-    border: 1px solid #380f63!important;
-    margin-bottom: 1rem;
-    padding:0 !important;
-    margin-left: .6rem!important;
-    margin-right: .6rem!important;
-}
-
-.tilte-event-profile{
-    background-color: #380f63d1;
-    color: #ffff;
-    padding: .5rem 0;
-}
-
-.tilte-event-profile h5{
-    margin: auto;
-
-}
-
-.text-muted{
-    color: #000!important;
-    font-size: 1rem;
-    padding: 1rem 0!important;
-}
