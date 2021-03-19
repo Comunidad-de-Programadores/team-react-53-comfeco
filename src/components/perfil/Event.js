@@ -36,7 +36,7 @@ const Event = ({ eventInfo }) => {
           <p className='text-muted'>Fecha de fin: {dateERJ}</p>
           <hr />
           <p className='card-text'>¿Quieres saber más de este evento? Encuentra más información en el enlace:</p>
-          <button type='button' onClick={handleOpen} className="btn btn-link float-end">Ver más</button>
+          <button type='button' onClick={handleOpen} className="btn btn-link float-end link-ancor">Ver más</button>
           <Modal isOpen={isOpen} onClose={handleClose} xl>
             <InfoEvent data={eventInfo} onClose={handleClose} />
           </Modal>

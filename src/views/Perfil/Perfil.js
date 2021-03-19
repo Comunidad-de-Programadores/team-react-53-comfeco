@@ -28,7 +28,7 @@ const Perfil = () => {
           <>
             <div className='box-user bg-user'>
               <div className='box-info-user'>
-                <a className='link-editar' onClick={showUpdateProfile}>
+                <a className='link-editar link-ancor' onClick={showUpdateProfile}>
                   Editar Perfil
                 </a>
                 <div className='circle-user'>

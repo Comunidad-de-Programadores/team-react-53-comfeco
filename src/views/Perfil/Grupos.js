@@ -65,52 +65,30 @@ const Grupos = () => {
             </div>
             <div>
               <div className='row row-cols-1 row-cols-sm-3 row-cols-md-3 row-cols-lg-5  g-4'>
-                <div className='col'>
-                  <div className='card h-100'>
-                    <img src={imgGroup} />
-                    <div className='card-body'>
-                      <div className='box-lenguaje'>Typescript</div>
-                      <h5 className='card-title text-start'>Los Crypto</h5>
-                      <p className='card-text text-start'>
-                        This is a wider card with supporting text below as a
-                        natural lead-in to additional content. This content is a
-                        little bit longer.
-                      </p>
+                {
+                  groupList.map((group) => (
+                    <div className='col'>
+                      <div className='card h-100'>
+                        <img src={group.image} />
+                        <div className='card-body'>
+                          <div className='box-lenguaje'>{group.programmingLanguage}</div>
+                          <h5 className='card-title text-start'>{group.name}</h5>
+                          <p className='card-text text-start'>
+                            {group.description}
+                          </p>
+                        </div>
+                        <div className='card-footer text-center'>
+                          <button
+                            type='button'
+                            className='btn d-inline-block btn-outline-secondary btn-evento '
+                          >
+                            Unirse
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <div className='card-footer text-center'>
-                      <button
-                        type='button'
-                        className='btn d-inline-block btn-outline-secondary btn-evento '
-                      >
-                        Unirse
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className='col'>
-                  <div className='card h-100'>
-                    <img src={imgGroup} />
-                    <div className='card-body'>
-                      <div className='box-lenguaje'>Typescript</div>
-                      <h5 className='card-title text-start'>Los Crypto</h5>
-                      <p className='card-text text-start'>
-                        This is a wider card with supporting text below as a
-                        natural lead-in to additional content. This content is a
-                        little bit longer.
-                      </p>
-                    </div>
-                    <div className='card-footer text-center'>
-                      <button
-                        type='button'
-                        className='btn d-inline-block btn-outline-secondary btn-evento '
-                      >
-                        Unirse
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
+                  ))
+                }
               </div>
             </div>
           </div>

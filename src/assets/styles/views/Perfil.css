@@ -152,6 +152,7 @@ a#controlled-tab-example-tab-eventos i::before {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 }
 
 

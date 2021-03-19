@@ -18,6 +18,9 @@ import NewPassword from '../views/Auth/NewPassword';
 import RutaPrivada from './PrivateRoute';
 import RutaPublica from './PublicRoute';
 import Perfil from '../views/Perfil';
+import Workshop from '../views/Workshop/Workshop';
+import Comunities from '../views/Comunities/Comunities';
+import Creators from '../views/Creators/Creators';
 
 // import CarouselContainer from '../views/Home/CarouselContainer';
 
@@ -39,6 +42,9 @@ const AppRouter = () => {
         <RutaPublica exact path='/recovery-pass' component={RecoveryPass} />
         <RutaPublica exact path='/new-pass' component={NewPassword} />
         <RutaPrivada exact path='/perfil' component={Perfil} />
+        <RutaPrivada exact path='/comunidades' component={Comunities } />
+        <RutaPrivada exact path='/talleres' component={ Workshop} />
+        <RutaPrivada exact path='/creadores-de-contenido' component={ Creators} />
         {/* <Route exact path="/caru" component={CarouselContainer} /> */}
 
       </Switch>
