@@ -38,9 +38,6 @@ const Grupos = () => {
     }
   };
 
-  console.log(groupList, "miedo");
-  console.log(valueSearch, "valueVerda");
-  console.log(searchGroups, "value");
   return (
     <div className="container__badge">
       <h2 className="container__badge-title">Grupos</h2>
@@ -101,7 +98,7 @@ const Grupos = () => {
               </form>
             </div>
             <div>
-              <div className="row row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5  g-4">
+              <div className="row row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4  g-4">
                 {groupList.map((group) => (
                   <div className="col">
                     <div className="card h-100">

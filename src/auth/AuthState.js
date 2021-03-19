@@ -69,6 +69,7 @@ const AuthState = ({ children }) => {
         twitter: '',
         bibliography: '',
         badge: [],
+        activity: [],
         createdAt: dateCreateUserProfile(),
       })
         .then(() => {
@@ -112,6 +113,7 @@ const AuthState = ({ children }) => {
                 twitter: dbUser.twitter,
                 bibliography: dbUser.bibliography,
                 badge: dbUser.badge,
+                activity: dbUser.activity,
                 createdAt: dbUser.createdAt,
               },
             });

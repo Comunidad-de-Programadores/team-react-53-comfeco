@@ -3,12 +3,17 @@ import AuthContext from '../../auth/AuthContext';
 import Avatar from '../../components/Avatar';
 import UpdateProfile from '../../components/perfil/UpdateProfile';
 import EventsProfile from '../../components/perfil/EventsProfile';
-import { getBadgeSpecific, userActive } from '../../firebase/client';
+import { getBadgeSpecific, setActivity } from '../../firebase/client';
+import Activity from '../../components/perfil/Activity';
 
 const Perfil = () => {
   const { usuario, updateProfile, showUpdateProfile } = useContext(AuthContext);
   const [listBadge, setListBadge] = useState([]);
 
+  const handleActivity = () => {
+    setActivity('event', 'soy un mensaje', 'soy un titulo', 'red', usuario.uid);
+  };
+  console.log(usuario);
   useEffect(() => {
     if (usuario.badge.indexOf('insignia_1') >= 0) {
       getBadgeSpecific('insignia_1')
@@ -104,6 +109,21 @@ const Perfil = () => {
                     ))}
                   </div>
                 )}
+              </div>
+              <div className='box-centro-actividad'>
+                <h5> Actividad reciente</h5>
+                <div className='box-all-activity'>
+                  {console.log('La actividad del usuario es: ', usuario.activity)}
+                  {usuario.activity.length > 0 ? (
+                    usuario.activity.splice(0, 5).map((item) => {
+                      return <Activity type={item.type} title={item.title} message={item.message} color={item.color} time={item.time} />;
+                    })
+                  ) : (
+                    <div className='no-activites'>
+                      <button onClick={handleActivity}>click me</button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
             <div className='box-user bg-user'>
