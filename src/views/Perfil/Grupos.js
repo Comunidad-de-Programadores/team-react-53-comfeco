@@ -1,15 +1,43 @@
 import React, { useEffect, useState } from 'react';
-
 import '../../assets/styles/components/Grupos.css';
-import imgGroup from '../../assets/img/group1.png';
-import { getGroup } from '../../firebase/client';
+import { getGroup, getGroupsFilterLanguage } from '../../firebase/client';
 
 const Grupos = () => {
   const [groupList, setGroupList] = useState([]);
+  // const [valueSelectLanguage, setValueSelectLanguaje] = useState('');
+  const [valueSearch, setValueSearch] = useState('');
+  const [searchGroups, setSearchGroups] = useState([]);
 
   useEffect(() => {
     getGroup(setGroupList);
   }, []);
+
+  const selectLanguage = (e) => {
+    e.preventDefault();
+    getGroupsFilterLanguage(e.target.value, setGroupList);
+  };
+  const functionSearch = (e) => {
+    e.preventDefault();
+    const searchFilter = e.target.value.toLowerCase();
+    setValueSearch(searchFilter);
+
+  };
+
+  const searchName = (e) => {
+    e.preventDefault();
+    if (valueSearch !== '') {
+      getGroup(setSearchGroups);
+    }
+
+    if (searchGroups.length >= 1) {
+      setGroupList(searchGroups.filter((filterName) => filterName.name.toLowerCase().indexOf(valueSearch) >= 0));
+    }
+
+  };
+
+  console.log(groupList, 'miedo');
+  console.log(valueSearch, 'valueVerda');
+  console.log(searchGroups, 'value');
   return (
     <div className='container__badge'>
       <h2 className='container__badge-title'>Grupos</h2>
@@ -42,18 +70,21 @@ const Grupos = () => {
         <div className='box-2'>
           <div className='box-all-group'>
             <div className='box-filter'>
-              <select className='form-select' aria-label='Default select example'>
-                <option selected>Open this select menu</option>
-                <option value='1'>One</option>
-                <option value='2'>Two</option>
-                <option value='3'>Three</option>
+              <select className='form-select' aria-label='Default select example' value='' onChange={selectLanguage}>
+                <option selected>Selecciona un lenguaje de programación</option>
+                <option value='Typescript'>Typescript</option>
+                <option value='PHP'>PHP</option>
+                <option value='Python'>Python</option>
+                <option value='JavaScript'>JavaScript</option>
               </select>
-              <form className='d-flex'>
+              <form className='d-flex' onSubmit={searchName}>
                 <input
                   className='form-control me-2'
                   type='search'
                   placeholder='Search'
                   aria-label='Search'
+                  value={valueSearch}
+                  onChange={functionSearch}
                 />
                 <button
                   className='btn btn-outline-success btn-evento'

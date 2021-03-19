@@ -8,6 +8,7 @@ import { getBadgeSpecific, userActive } from '../../firebase/client';
 const Perfil = () => {
   const { usuario, updateProfile, showUpdateProfile } = useContext(AuthContext);
   const [listBadge, setListBadge] = useState([]);
+
   useEffect(() => {
     if (usuario.badge.indexOf('insignia_1') >= 0) {
       getBadgeSpecific('insignia_1')
@@ -20,7 +21,7 @@ const Perfil = () => {
         });
     }
   }, []);
-  console.log(listBadge, 'pruebita');
+
   return (
     <div className='container-comfeco'>
       <div className='box-perfil'>
@@ -46,44 +47,44 @@ const Perfil = () => {
                 usuario.github !== '' ||
                 usuario.linkedin !== '' ||
                 usuario.twitter !== '' ? (
-                    <div className='box-redes-user'>
-                    {usuario.facebook !== '' && (
-                        <a
-                      href={`https://www.facebook.com/${usuario.facebook}`}
-                      className='redes-user'
-                      target='_blank'
-                    >
-                      <i className='fab fa-facebook-f' />
-                    </a>
+                  <div className='box-redes-user'>
+                      {usuario.facebook !== '' && (
+                    <a
+                          href={`https://www.facebook.com/${usuario.facebook}`}
+                          className='redes-user'
+                          target='_blank'
+                        >
+                          <i className='fab fa-facebook-f' />
+                        </a>
                       )}
-                    {usuario.github !== '' && (
-                        <a
-                      href={`https://github.com/${usuario.github}`}
-                      className='redes-user'
-                      target='_blank'
-                    >
-                      <i className='fab fa-github' />
-                    </a>
+                      {usuario.github !== '' && (
+                    <a
+                          href={`https://github.com/${usuario.github}`}
+                          className='redes-user'
+                          target='_blank'
+                        >
+                          <i className='fab fa-github' />
+                        </a>
                       )}
-                    {usuario.linkedin !== '' && (
-                        <a
-                      href={`https://www.linkedin.com/in/${usuario.linkedin}`}
-                      className='redes-user'
-                      target='_blank'
-                    >
-                      <i className='fab fa-linkedin-in' />
-                    </a>
+                      {usuario.linkedin !== '' && (
+                    <a
+                          href={`https://www.linkedin.com/in/${usuario.linkedin}`}
+                          className='redes-user'
+                          target='_blank'
+                        >
+                          <i className='fab fa-linkedin-in' />
+                        </a>
                       )}
-                    {usuario.twitter !== '' && (
-                        <a
-                      href={`https://twitter.com/${usuario.twitter}`}
-                      className='redes-user'
-                      target='_blank'
-                    >
-                      <i className='fab fa-twitter' />
-                    </a>
+                      {usuario.twitter !== '' && (
+                    <a
+                          href={`https://twitter.com/${usuario.twitter}`}
+                          className='redes-user'
+                          target='_blank'
+                        >
+                          <i className='fab fa-twitter' />
+                        </a>
                       )}
-                  </div>
+                    </div>
                   ) : (
                     <></>
                   )}

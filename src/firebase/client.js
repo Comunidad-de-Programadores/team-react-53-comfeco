@@ -292,3 +292,16 @@ export const getGroup = (setGroupList) => {
       setGroupList(groupList);
     });
 };
+
+export const getGroupsFilterLanguage = (valueLanguage, groupList) => {
+  return firebase.firestore()
+    .collection('grupos').where('programmingLanguage', '==', valueLanguage)
+    .onSnapshot((querySnapshot) => {
+      const listGroupsLanguage = [];
+      querySnapshot.forEach((doc) => {
+        listGroupsLanguage.push(doc.data());
+      });
+      groupList(listGroupsLanguage);
+    });
+};
+
