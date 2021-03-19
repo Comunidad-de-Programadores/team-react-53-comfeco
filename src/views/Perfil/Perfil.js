@@ -43,7 +43,7 @@ const Perfil = () => {
                 </div>
                 <h2 className='user-name'>{usuario.name}</h2>
                 <h4 className='user-area'>
-                  {usuario.name}
+                  {usuario.area}
                 </h4>
                 <span />
                 <p>{usuario.bibliography}</p>

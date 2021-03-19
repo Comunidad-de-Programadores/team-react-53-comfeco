@@ -99,4 +99,19 @@ a#basic-nav-dropdown\ {
   .foto-user{
     display: none;
   }
+  .header-mobile{
+    position: fixed!important;
+    width: 100%!important;
+    z-index: 999!important;
+    top: 0!important;
+  }
 }
+
+
+@media (min-width: 500px) and (max-width: 500px){
+
+}
+
+
+
+

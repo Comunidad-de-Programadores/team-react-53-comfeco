@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <div className='container-comfeco'>
-      <Navbar bg='light' expand='lg'>
+      <Navbar bg='light' expand='lg' className="header-mobile">
       
           <Navbar.Brand href='/' className="logo">
             {' '}
