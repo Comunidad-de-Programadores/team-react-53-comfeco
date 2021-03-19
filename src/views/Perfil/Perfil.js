@@ -1,26 +1,34 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../auth/AuthContext';
 import Avatar from '../../components/Avatar';
 import UpdateProfile from '../../components/perfil/UpdateProfile';
 import EventsProfile from '../../components/perfil/EventsProfile';
 import Activity from '../../components/perfil/Activity';
-import { setActivity } from '../../firebase/client';
+import { getUserProfile, setActivity } from '../../firebase/client';
 
-const Perfil = () => {
+const Perfil = (userData) => {
   const { usuario, updateProfile } = useContext(AuthContext);
   const [showUpdateProfile, setShowUpdateProfile] = useState(false);
-  console.log(showUpdateProfile, 'vistas');
-  console.log(updateProfile, ':s');
+  const [user, setUser] = useState(false);
+
   const functionUpdateProfile = (show) => {
     setShowUpdateProfile(show);
   };
-  console.log(showUpdateProfile, 'vistas ii');
 
   const handleActivity = () => {
     setActivity('event', 'soy un mensaje', 'soy un titulo', 'red', usuario.uid);
   };
   console.log(usuario);
 
+  if (!user) {
+    getUserProfile(usuario.uid)
+      .then((res) => {
+        setUser(res.data());
+      });
+  }
+
+
+  console.log('El usuario es: ', user);
   return (
     <div className='container-comfeco'>
       <div className='box-perfil'>
@@ -129,10 +137,9 @@ const Perfil = () => {
               <div className='box-centro-actividad'>
                 <h5> Actividad reciente</h5>
                 <div className='box-all-activity'>
-                  {console.log('La actividad del usuario es: ', usuario.activity)}
-                  {usuario.activity.length > 0 ? (
+                  {usuario.activity !== [] ? (
                     usuario.activity.splice(0, 5).map((item) => {
-                      return <Activity type={item.type} title={item.title} message={item.message} color={item.color} time={item.time} />
+                      <Activity type={item.type} title={item.title} message={item.message} color={item.color} time={item.time} />
                     })
                   ) : (
                     <div className='no-activites'>

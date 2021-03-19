@@ -5,8 +5,8 @@ import { db, setActivity } from '../../firebase/client';
 const DeleteEvent = ({ id, onClose }) => {
   const { usuario } = useContext(AuthContext);
   const handleDelete = async (e) => {
-    setActivity(
-      usuario,
+    await setActivity(
+      usuario.activity,
       'evento',
       'Has borrado un evento, pero siempre puedes crear uno nuevo',
       'Evento borrado',

@@ -22,12 +22,12 @@ const NewEvent = ({ addEvent, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setActivity(
-      usuario,
+    await setActivity(
+      usuario.activity,
       'evento',
-      'Has borrado un evento, pero siempre puedes crear uno nuevo',
-      'Evento borrado',
-      'warning',
+      'Has creado un evento, ¡esperamos que sea un éxito!',
+      'Evento creado',
+      'success',
       usuario.uid,
     );
     await addEvent(values);
