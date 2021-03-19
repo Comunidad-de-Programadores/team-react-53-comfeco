@@ -19,7 +19,6 @@
 .box-perfil {
   display: flex;
   justify-content: center;
-
 }
 .box-user {
   width: 20%;
@@ -27,13 +26,8 @@
   text-align: center;
   margin: 0.5rem;
   position: relative;
-
 }
 
-.bg-user{
-  border: 2px solid #380f63!important;
-   background-color: #fff8e6;
-}
 .link-edit {
   position: absolute;
   right: 5%;
@@ -43,10 +37,8 @@
   width: 60%;
   padding: 1rem;
   margin: 0.5rem;
-  padding-top: 0;
-  /* border: 1px solid #ffffff60;
-  background-color: #ffffff60; */
-
+  border: 1px solid #ffffff60;
+  background-color: #ffffff60;
 }
 
 .box-centro-insignia {
@@ -56,7 +48,6 @@
   /* box-shadow: 0px 4px 24px -1px #63636341; */
   /* border-radius: 1.5rem; */
   padding: 1rem;
-  border: 2px solid #380f63!important;
 }
 
 .box-all-insignias {
@@ -66,14 +57,16 @@
   padding: 0 2rem;
 }
 .box-insignia {
-  width: 7rem;
-  height: 7rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
+  padding: 1rem;
   background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0.5rem 2rem;
+  border: 1px solid #380f63;
 }
 
 .insignia-img {
@@ -114,11 +107,6 @@ a#controlled-tab-example-tab-eventos i::before {
   margin: 1rem auto;
   font-weight: 600;
 }
-
-.user-area{
-  color: gray;
-  margin-top: -1rem;
-}
 .nav-link {
   color: #380f63;
 }
@@ -139,8 +127,6 @@ a#controlled-tab-example-tab-eventos i::before {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-top: 1px solid rgb(145, 145, 145);
-  padding-top: 1rem;
 }
 
 .redes-user {
@@ -152,15 +138,6 @@ a#controlled-tab-example-tab-eventos i::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
-}
-
-
-.small{
-  margin: auto;
-}
-.large{
-  margin: auto;
 }
 
 @media (max-width: 768px) {
@@ -174,9 +151,7 @@ a#controlled-tab-example-tab-eventos i::before {
   }
   .box-centro {
     width: 100%;
-    padding: 0rem;
     margin: 0;
-    margin: 1rem auto
   }
   a#controlled-tab-example-tab-insignia span,
   a#controlled-tab-example-tab-perfil span,

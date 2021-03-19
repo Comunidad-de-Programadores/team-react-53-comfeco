@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../auth/AuthContext';
+import { setActivity } from '../../firebase/client';
 
 const NewEvent = ({ addEvent, onClose }) => {
   const { usuario } = useContext(AuthContext);
@@ -21,9 +22,18 @@ const NewEvent = ({ addEvent, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setActivity(
+      usuario,
+      'evento',
+      'Has borrado un evento, pero siempre puedes crear uno nuevo',
+      'Evento borrado',
+      'warning',
+      usuario.uid,
+    );
     await addEvent(values);
     await setValues(initialState);
     onClose();
+    console.log(usuario);
   };
 
   return (

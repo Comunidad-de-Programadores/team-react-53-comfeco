@@ -243,7 +243,7 @@ export const updatePasword = (newPassword) => {
 
 export const uploadProfilePicture = (imagenFile, updateProfileImage, id) => {
   const storageRef = firebase.storage().ref(`images/${imagenFile.name}`).put(imagenFile);
-  return storageRef.on('state_changed', (snapshot) => {}, (error) => {
+  return storageRef.on('state_changed', (snapshot) => { }, (error) => {
     console.log(error);
   }, () => {
     firebase.storage().ref('images').child(imagenFile.name).getDownloadURL()
@@ -273,7 +273,22 @@ export const updateProfileImage = (url, id) => {
   return firebase.firestore().collection('usuarios').doc(id).update({
     photoUrl: url,
   });
+};
 
+// Seteamos cada actividad a registrar, en orden debe estar el estado previo, el tipo, el mensaje, el título, el color (good, bad) del titulo y el id
+export const setActivity = (type, message, title, color, id) => {
+  const timeElapsed = new Date();
+  const data = {
+    type,
+    message,
+    title,
+    color,
+    time: timeElapsed,
+  };
+  console.log('Si fui llamado, los datos son: ', data);
+  return firebase.firestore().collection('usuarios').doc(id).update({
+    activity: firebase.firestore.FieldValue.arrayUnion(data),
+  });
 };
 export const addBadgeProfile = (id, insignia) => {
   return firebase.firestore().collection('usuarios').doc(id).update({
