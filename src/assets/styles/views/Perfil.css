@@ -139,6 +139,8 @@ a#controlled-tab-example-tab-eventos i::before {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border-top: 1px solid rgb(145, 145, 145);
+  padding-top: 1rem;
 }
 
 .redes-user {
@@ -152,6 +154,7 @@ a#controlled-tab-example-tab-eventos i::before {
   align-items: center;
 }
 
+
 @media (max-width: 768px) {
   .box-perfil {
     flex-direction: column;
@@ -163,7 +166,9 @@ a#controlled-tab-example-tab-eventos i::before {
   }
   .box-centro {
     width: 100%;
+    padding: 0rem;
     margin: 0;
+    margin: 1rem auto
   }
   a#controlled-tab-example-tab-insignia span,
   a#controlled-tab-example-tab-perfil span,

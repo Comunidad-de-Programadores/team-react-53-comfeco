@@ -19,7 +19,7 @@ nav {
 }
 .navbar-nav a:hover{
   color:#380f63;
-  padding: 0 1.5rem;
+  /* padding: 0 1.5rem; */
   font-weight: 900;
 }
 .navbar-nav .active{
@@ -79,6 +79,23 @@ a#basic-nav-dropdown\ {
   font-size: 1.2rem;
 }
 
+
+@media  (max-width: 992px){
+
+  .nickname {
+    margin-left: 0rem;
+    padding-left: 3.5rem;
+  }
+  .foto-user{
+    display: none;
+  }
+  .notification{
+    display: none;
+    
+  }
+}
+
+
 @media (max-width: 768px) {
 
   .navbar-collapse {
@@ -105,11 +122,9 @@ a#basic-nav-dropdown\ {
     z-index: 999!important;
     top: 0!important;
   }
-}
-
-
-@media (min-width: 500px) and (max-width: 500px){
-
+  .user-select{
+    margin: 0;
+  }
 }
 
 
