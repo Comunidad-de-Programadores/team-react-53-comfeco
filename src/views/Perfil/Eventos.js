@@ -37,7 +37,7 @@ const Eventos = () => {
   }, []);
 
   return (
-    <div className='container my-5'>
+    <div className='fade-in animated container my-5'>
       <div className='d-flex justify-content-between'>
         <h2>Eventos</h2>
         <button type='button' onClick={handleOpen} className='btn d-inline-block btn-outline-secondary btn-evento'>Nuevo Evento</button>

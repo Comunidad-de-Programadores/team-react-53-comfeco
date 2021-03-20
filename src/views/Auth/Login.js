@@ -145,7 +145,7 @@ const Login = () => {
   };
 
   return (
-    <div className='view-login container-comfeco'>
+    <div className='fade-in animated view-login container-comfeco'>
       <div className='box-login-img'>
         <div className='box-login'>
           <div className='Login'>

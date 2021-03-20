@@ -3,7 +3,7 @@ import logo from "../../assets/img/logo3.png";
 
 const Workshop = () => {
   return (
-    <div className="container-comfeco">
+    <div className="fade-in animated container-comfeco">
       <div className="box-building title">
         <figure className="logo-build">
           <img src={logo} className="w-100" />

@@ -197,10 +197,11 @@ const Register = () => {
       });
   };
   return (
-    <div className="bg-img">
+    <div className="fade-in animated bg-img">
       <div className="Recovery container-comfeco">
+      <div className="box-middle">
         <div className="Recovery__container">
-          <div className="">
+         
             <div className="Login">
               <h1 className="Login__title">
                 <span className="title__message title mt-4">

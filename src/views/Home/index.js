@@ -133,7 +133,7 @@ const Home = () => {
   // }
 
   return (
-    <div className='container-comfeco'>
+    <div className='fade-in animated container-comfeco'>
       <div className='container__home'>
         <div className='home__communities'>
           <Communities />

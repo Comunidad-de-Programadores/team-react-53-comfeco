@@ -113,6 +113,10 @@
   }
   .box-filter form {
     width: 100% !important;
+    padding-top: 1rem;
+  }
+  .box-filter .form-select{
+    margin-top: 1rem;
   }
 }
 
@@ -121,6 +125,8 @@
     flex-direction: row;
   }
 }
+
+
 
 @media (min-width: 500px) and (max-width: 767px) {
   .row-cols-2 > * {
@@ -131,4 +137,5 @@
   .card-img{
       height: 15rem;
   }
+
 }

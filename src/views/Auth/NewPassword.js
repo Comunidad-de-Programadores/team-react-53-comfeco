@@ -69,7 +69,10 @@ const NewPassword = () => {
     setNewPass(e.target.value);
   };
   return (
-    <div className="Recovery container-comfeco">
+    <div className="fade-in animated Recovery container-comfeco">
+      <div className="box-middle">
+
+     
       <div className="Recovery__container ">
         <h1 className="Recovery__title">
           <span className="title_hola_rc">Establecer nueva contraseña</span>
@@ -103,6 +106,7 @@ const NewPassword = () => {
           si ya recordaste tu cuenta, ingresa
           <a href='/login'> aquí.</a>
         </p>
+      </div>
       </div>
     </div>
   );

@@ -12,6 +12,8 @@
 }
 .logo-footer{
     width: 30%;
+    display: block;
+    margin: auto;
 }
 
 .box-redes{

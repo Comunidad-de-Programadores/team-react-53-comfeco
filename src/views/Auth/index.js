@@ -11,7 +11,7 @@ const Auth = () => {
   console.log(autenticado);
   return (
     <>
-      <div className='Auth'>
+      <div className='fade-in animated Auth'>
         <div className='Auth__container'>
           {showLogin && <Login changePage={setShowLogin} />}
           {!showLogin && <Register changePage={setShowLogin} />}

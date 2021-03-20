@@ -140,6 +140,21 @@ a#controlled-tab-example-tab-eventos i::before {
   align-items: center;
 }
 
+.box-centro-actividad {
+  
+  /* box-shadow: 0px 4px 24px -1px #63636341; */
+  /* border-radius: 1.5rem; */
+  padding: 1rem;
+}
+
+.emoticon{
+  font-size: .5rem;
+}
+
+.box-activities{
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .box-perfil {
     flex-direction: column;
