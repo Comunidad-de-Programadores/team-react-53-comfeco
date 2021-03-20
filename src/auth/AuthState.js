@@ -16,6 +16,7 @@ import {
   updatePasword,
   db,
   storage,
+  updateStatusprofile,
 } from '../firebase/client';
 
 import {
@@ -70,6 +71,7 @@ const AuthState = ({ children }) => {
         group: '',
         badge: [],
         createdAt: dateCreateUserProfile(),
+        state: 'Conectado',
         activity: [],
       })
         .then(() => {
@@ -114,6 +116,7 @@ const AuthState = ({ children }) => {
                 group: dbUser.group,
                 badge: dbUser.badge,
                 createdAt: dbUser.createdAt,
+                state: dbUser.state,
                 activity: dbUser.activity,
               },
             });
@@ -340,10 +343,12 @@ const AuthState = ({ children }) => {
   };
   //Cierra la sesión del usuario
   const cerrarSesion = () => {
-    logOut();
-    dispatch({
-      type: CERRAR_SESION,
+    logOut().then(() => {
+      dispatch({
+        type: CERRAR_SESION,
+      });
     });
+
   };
   return (
     <AuthContext.Provider

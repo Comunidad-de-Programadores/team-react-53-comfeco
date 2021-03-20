@@ -61,14 +61,6 @@ export const loginWithFacebook = () => {
   // });
 };
 
-export const logOut = () => {
-  return firebase.auth().signOut().then(() => {
-    console.log('Signed Out');
-  }).catch((error) => {
-    console.error('Sign Out Error', error);
-  });
-};
-
 export const createUserProfile = (uid, data) => {
   return firebase.firestore().collection('usuarios').doc(uid).set(data);
 };
@@ -318,4 +310,12 @@ export const getGroupsFilterLanguage = (valueLanguage, groupList) => {
       groupList(listGroupsLanguage);
     });
 };
+export const updateStatusprofile = (id, state) => {
+  return firebase.firestore().collection('usuarios').doc(id).update({
+    state,
+  });
+};
 
+export const logOut = () => {
+  return firebase.auth().signOut();
+};
