@@ -6,7 +6,7 @@ import ExitEvent from '../Portals/ExitEvent';
 import EnterEvent from '../Portals/EnterEvent';
 import trash from '../../assets/img/icon/trash.svg';
 
-const ButtonEvent = ({ enrolled, banned, id, creator }) => {
+const ButtonEvent = ({ enrolled, banned, id, creator, name }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenExit, setIsOpenExit] = useState(false);
   const [isOpenEnter, setIsOpenEnter] = useState(false);
@@ -53,7 +53,7 @@ const ButtonEvent = ({ enrolled, banned, id, creator }) => {
       <>
         <button type='button' onClick={handleOpenExit} className='btn btn-danger float-end'>Salir del evento</button>
         <Modal isOpen={isOpenExit} onClose={handleCloseExit}>
-          <ExitEvent id={id} enrolled={enrolled} banned={banned} user={usuario.uid} onClose={handleCloseExit} />
+          <ExitEvent id={id} enrolled={enrolled} banned={banned} user={usuario.uid} name={name} onClose={handleCloseExit} />
         </Modal>
       </>
     );
@@ -69,7 +69,7 @@ const ButtonEvent = ({ enrolled, banned, id, creator }) => {
     <>
       <button type='button' onClick={handleOpenEnter} className='btn btn-success float-end btn-morado'>¡Me anoto!</button>
       <Modal isOpen={isOpenEnter} onClose={handleCloseEnter}>
-        <EnterEvent id={id} enrolled={enrolled} user={usuario.uid} onClose={handleCloseEnter} />
+        <EnterEvent id={id} enrolled={enrolled} user={usuario.uid} name={name} onClose={handleCloseEnter} />
       </Modal>
 
     </>

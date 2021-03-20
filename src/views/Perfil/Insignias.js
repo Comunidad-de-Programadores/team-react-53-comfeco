@@ -25,7 +25,7 @@ const Insignias = () => {
   }, []);
 
   return (
-    <div className='container__badge'>
+    <div className='fade-in animated container__badge'>
       <h2 className='container__badge-title'>Insignias</h2>
       <Container>
         <Row>

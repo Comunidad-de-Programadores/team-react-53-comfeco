@@ -127,9 +127,9 @@ class LoginForm extends React.Component {
     return (
       <div className="bg-login">
         <div className="Login">
-          <h1 className="Login__title">
-            <span className="title_hola">Hola</span>
-            <span className="title__message">Inicia Sesión!</span>
+          <h1 className="Login__title title">
+            <span className="title_hola title">Hola</span>
+            <span className="title__message title">Inicia Sesión!</span>
           </h1>
           <form className="Login__form" onSubmit={this.handleSubmit}>
             <div className="form__group">

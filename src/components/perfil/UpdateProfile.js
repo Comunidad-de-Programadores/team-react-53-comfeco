@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { uploadProfilePicture,
   updateProfile,
-  updateProfileImage, addBadgeProfile } from '../../firebase/client';
+  updateProfileImage, addBadgeProfile, setActivity } from '../../firebase/client';
 
 const UpdateProfile = () => {
   const { usuario, mensaje, updatePasswordFirebase, hideUpdateProfile, showUpdateProfile } = useContext(AuthContext);
@@ -38,10 +38,8 @@ const UpdateProfile = () => {
   const updatePassword = (e) => {
     e.preventDefault();
     if (newPassword === repeatNewPassword) { updatePasswordFirebase(newPassword); }
-    // validateCurrentPassword(usuario.email, currentPassword);
-
   };
-  const updateAllProfile = (e) => {
+  const updateAllProfile = async (e) => {
     e.preventDefault();
     if (!selectedFile.imgProfile) {
       if (usuario.badge.length === 0 && dataEditProfile.gender.trim() !== '' && dataEditProfile.birth.trim() !== '' && dataEditProfile.country.trim() !== '' && dataEditProfile.area.trim() !== '' && dataEditProfile.facebook.trim() !== '' && dataEditProfile.github.trim() !== '' && dataEditProfile.linkedin.trim() !== '' && dataEditProfile.bibliography.trim() !== '' && (dataEditProfile.photoUrl.trim() !== '' || selectedFile.imgProfile)) {
@@ -60,7 +58,13 @@ const UpdateProfile = () => {
               rgba(47, 47, 116, 0.301)
             `,
           });
+          setActivity('perfil',
+            'Has editado todo tu perfil, es la mejor manera de que todos tus amigos te conozcan.',
+            'Acabas de editar los datos de tu perfil',
+            'success',
+            usuario.uid);
           showUpdateProfile();
+
         });
       } else {
         updateProfile(dataEditProfile, usuario.uid).then(() => {
@@ -70,10 +74,14 @@ const UpdateProfile = () => {
             showConfirmButton: false,
             timer: 2500,
           });
+          setActivity('perfil',
+            'Has editado tu perfil.Asegurate de llenar todos tus datos para obtener tu insignia sociable.',
+            'Acabas de editar los datos de tu perfil',
+            'success',
+            usuario.uid);
           showUpdateProfile();
         });
       }
-
     }
     if (selectedFile.imgProfile) {
       if (usuario.badge.length === 0 && dataEditProfile.gender.trim() !== '' && dataEditProfile.birth.trim() !== '' && dataEditProfile.country.trim() !== '' && dataEditProfile.area.trim() !== '' && dataEditProfile.facebook.trim() !== '' && dataEditProfile.github.trim() !== '' && dataEditProfile.linkedin.trim() !== '' && dataEditProfile.bibliography.trim() !== '' && (dataEditProfile.photoUrl.trim() !== '' || selectedFile.imgProfile)) {
@@ -93,6 +101,11 @@ const UpdateProfile = () => {
               rgba(47, 47, 116, 0.301)
             `,
           });
+          setActivity('perfil',
+            'Has editado todo tu perfil, es la mejor manera de que todos tus amigos te conozcan.',
+            'Acabas de editar los datos de tu perfil',
+            'success',
+            usuario.uid);
         });
       } else {
         uploadProfilePicture(selectedFile.imgProfile, updateProfileImage, usuario.uid);
@@ -103,6 +116,11 @@ const UpdateProfile = () => {
             showConfirmButton: false,
             timer: 2500,
           });
+          setActivity('perfil',
+            'Has editado tu perfil.Asegurate de llenar todos tus datos para obtener tu insignia sociable.',
+            'Acabas de editar los datos de tu perfil',
+            'success',
+            usuario.uid);
         });
       }
     }
@@ -284,13 +302,6 @@ const UpdateProfile = () => {
             Correo electrónico:
           </label>
           <div>{usuario.email}</div>
-          {/* <input
-            type='password'
-            name='actualPassword'
-            placeholder='Contraseña Actual'
-            onChange={(e) => setCurrentPassword(e.target.value)}
-            value={currentPassword}
-          /> */}
           <div className='container__updateProfile-flex'>
             <div>
               <label htmlFor='newPassword' className='form__label'>

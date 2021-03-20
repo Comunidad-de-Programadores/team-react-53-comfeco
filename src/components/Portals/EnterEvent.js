@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import AuthContext from '../../auth/AuthContext';
 import { db, setActivity } from '../../firebase/client';
 
-const EnterEvent = ({ id, onClose, enrolled, user }) => {
+const EnterEvent = ({ id, onClose, enrolled, user, name }) => {
   const { usuario } = useContext(AuthContext);
 
   const updateData = async (e) => {
@@ -12,10 +12,9 @@ const EnterEvent = ({ id, onClose, enrolled, user }) => {
 
   const handleInfo = async () => {
     await setActivity(
-      usuario.activity,
       'evento',
       'Has entrado a un evento, ¡disfruta mucho de esta experiencia!',
-      'Ingresaste a Evento',
+      `Ingresaste al evento ${name}`,
       'success',
       usuario.uid,
     );

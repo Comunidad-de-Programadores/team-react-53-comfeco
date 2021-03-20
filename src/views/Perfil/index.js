@@ -12,7 +12,7 @@ import "../../assets/styles/views/Perfil.css";
 const index = () => {
   const [key, setKey] = useState("perfil");
   return (
-    <div className="container-comfeco">
+    <div className="fade-in animated container-comfeco">
       <div className="submenu">
         <Tabs
           justify

@@ -23,13 +23,16 @@ const Perfil = () => {
   }, []);
 
   return (
-    <div className='container-comfeco'>
+    <div className=' fade-in animated container-comfeco'>
       <div className='box-perfil'>
         {updateProfile === false ? (
           <>
             <div className='box-user bg-user'>
               <div className='box-info-user'>
-                <a className='link-editar link-ancor' onClick={showUpdateProfile}>
+                <a
+                  className='link-editar link-ancor'
+                  onClick={showUpdateProfile}
+                >
                   Editar Perfil
                 </a>
                 <div className='circle-user'>
@@ -106,16 +109,33 @@ const Perfil = () => {
                 )}
               </div>
               <div className='box-centro-actividad'>
-                <h5> Actividad reciente</h5>
+                <h4 className='user-name'> Actividad reciente</h4>
                 <div className='box-all-activity'>
                   {usuario.activity.length > 0 ? (
                     usuario.activity.map((item) => {
-                      return <Activity type={item.type} title={item.title} message={item.message} color={item.color} time={item.time} />;
+                      return (
+                        <Activity
+                          type={item.type}
+                          title={item.title}
+                          message={item.message}
+                          color={item.color}
+                          time={item.time}
+                        />
+                      );
                     })
                   ) : (
                     <div className='no-activites'>
-                      <i className='far fa-frown-open fa-5x' />
-                      <h3>Lastimosamente aún no tienes actividad, ¿qué tal si navegas un poco?</h3>
+                      <div className='box-activities'>
+                        {' '}
+                        <span className='emoticon'>
+                          {' '}
+                          <i className='far fa-frown-open fa-5x' />
+                        </span>
+                        <p>
+                          Lastimosamente aún no tienes actividad, ¿qué tal si
+                          navegas un poco?
+                        </p>
+                      </div>
                     </div>
                   )}
                 </div>

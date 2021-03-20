@@ -42,7 +42,7 @@ const Grupos = () => {
   };
 
   return (
-    <div className='container__badge'>
+    <div className='fade-in animated container__badge'>
       <h2 className='container__badge-title'>Grupos</h2>
       <div className='box-group'>
         <div className='box-1'>
