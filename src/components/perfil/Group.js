@@ -53,7 +53,7 @@ const Group = ({ name, lang, img, desc, id }) => {
             <CanJoin img={img} id={id} lang={lang} name={name} desc={desc} onClose={onCloseCan} />
           </Modal>
           <Modal isOpen={isOpenCantJoin} onClose={onCloseCant}>
-            <CantJoin />
+            <CantJoin onClose={onCloseCant} />
           </Modal>
         </div>
       </div>
