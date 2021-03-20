@@ -1,0 +1,26 @@
+.activity {
+    margin: 12px;
+}
+
+.titulo-actividad.warning {
+    color: #860505;
+}
+
+.titulo-actividad.success {
+    color: #8A178C;
+}
+
+.activity-type {
+    background-color: white;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.activity_icon {
+    max-height: 30px;
+}

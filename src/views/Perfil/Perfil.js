@@ -10,9 +10,9 @@ const Perfil = () => {
   const { usuario, updateProfile, showUpdateProfile } = useContext(AuthContext);
   const [listBadge, setListBadge] = useState([]);
 
-  const handleActivity = () => {
-    setActivity('event', 'soy un mensaje', 'soy un titulo', 'red', usuario.uid);
-  };
+  // const handleActivity = () => {
+  //   setActivity('event', 'soy un mensaje', 'soy un titulo', 'red', usuario.uid);
+  // };
   console.log(usuario);
   useEffect(() => {
     if (usuario.badge.indexOf('insignia_1') >= 0) {
@@ -52,44 +52,44 @@ const Perfil = () => {
                 usuario.github !== '' ||
                 usuario.linkedin !== '' ||
                 usuario.twitter !== '' ? (
-                  <div className='box-redes-user'>
-                      {usuario.facebook !== '' && (
-                    <a
-                          href={`https://www.facebook.com/${usuario.facebook}`}
-                          className='redes-user'
-                          target='_blank'
-                        >
-                          <i className='fab fa-facebook-f' />
-                        </a>
+                    <div className='box-redes-user'>
+                    {usuario.facebook !== '' && (
+                        <a
+                      href={`https://www.facebook.com/${usuario.facebook}`}
+                      className='redes-user'
+                      target='_blank'
+                    >
+                      <i className='fab fa-facebook-f' />
+                    </a>
                       )}
-                      {usuario.github !== '' && (
-                    <a
-                          href={`https://github.com/${usuario.github}`}
-                          className='redes-user'
-                          target='_blank'
-                        >
-                          <i className='fab fa-github' />
-                        </a>
+                    {usuario.github !== '' && (
+                        <a
+                      href={`https://github.com/${usuario.github}`}
+                      className='redes-user'
+                      target='_blank'
+                    >
+                      <i className='fab fa-github' />
+                    </a>
                       )}
-                      {usuario.linkedin !== '' && (
-                    <a
-                          href={`https://www.linkedin.com/in/${usuario.linkedin}`}
-                          className='redes-user'
-                          target='_blank'
-                        >
-                          <i className='fab fa-linkedin-in' />
-                        </a>
+                    {usuario.linkedin !== '' && (
+                        <a
+                      href={`https://www.linkedin.com/in/${usuario.linkedin}`}
+                      className='redes-user'
+                      target='_blank'
+                    >
+                      <i className='fab fa-linkedin-in' />
+                    </a>
                       )}
-                      {usuario.twitter !== '' && (
-                    <a
-                          href={`https://twitter.com/${usuario.twitter}`}
-                          className='redes-user'
-                          target='_blank'
-                        >
-                          <i className='fab fa-twitter' />
-                        </a>
+                    {usuario.twitter !== '' && (
+                        <a
+                      href={`https://twitter.com/${usuario.twitter}`}
+                      className='redes-user'
+                      target='_blank'
+                    >
+                      <i className='fab fa-twitter' />
+                    </a>
                       )}
-                    </div>
+                  </div>
                   ) : (
                     <></>
                   )}
@@ -115,12 +115,13 @@ const Perfil = () => {
                 <div className='box-all-activity'>
                   {console.log('La actividad del usuario es: ', usuario.activity)}
                   {usuario.activity.length > 0 ? (
-                    usuario.activity.splice(0, 5).map((item) => {
+                    usuario.activity.map((item) => {
                       return <Activity type={item.type} title={item.title} message={item.message} color={item.color} time={item.time} />;
                     })
                   ) : (
                     <div className='no-activites'>
-                      <button onClick={handleActivity}>click me</button>
+                      <i className='far fa-frown-open fa-5x' />
+                      <h3>Lastimosamente aún no tienes actividad, ¿qué tal si navegas un poco?</h3>
                     </div>
                   )}
                 </div>

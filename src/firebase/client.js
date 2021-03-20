@@ -283,9 +283,9 @@ export const setActivity = async (activity, type, message, title, color, id) => 
     message,
     title,
     color,
-    time: timeElapsed,
+    time: timeElapsed.getTime(),
   };
-  const doc = await db.collection('usuarios').doc(id)
+  const doc = await db.collection('usuarios').doc(id);
   await doc.update({
     activity: firebase.firestore.FieldValue.arrayUnion(data),
   });

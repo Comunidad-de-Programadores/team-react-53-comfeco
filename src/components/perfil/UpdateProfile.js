@@ -146,7 +146,7 @@ const UpdateProfile = () => {
   return (
     <div className='container__profile'>
       <div className='container__updateProfile'>
-        <a  className="link-atras" onClick={hideUpdateProfile}>atrás</a>
+        <a className='link-atras' onClick={hideUpdateProfile}>atrás</a>
         <h2>Editar perfil</h2>
         <form className='updateProfile__form' onSubmit={updateAllProfile}>
           <div className='container__updateProfileImg-flex'>

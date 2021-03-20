@@ -1,14 +1,23 @@
-import React from 'react';
-import { db } from '../../firebase/client';
+import React, { useContext } from 'react';
+import AuthContext from '../../auth/AuthContext';
+import { db, setActivity } from '../../firebase/client';
 
 const EnterEvent = ({ id, onClose, enrolled, user }) => {
-
+  const { usuario } = useContext(AuthContext);
   const updateData = async (e) => {
     await db.collection('eventos').doc(id).update(e);
     onClose();
   };
 
   const handleInfo = async () => {
+    await setActivity(
+      usuario.activity,
+      'evento',
+      'Has entrado a un evento, ¡disfruta mucho de esta experiencia!',
+      'Ingresaste a Evento',
+      'success',
+      usuario.uid,
+    );
     // Se toma toda la info de la base de datos del evento en cuestión
     const doc = await db.collection('eventos').doc(id).get();
     // Se agrega al usuario a la lista de "Inscritos"

@@ -1,14 +1,23 @@
-import React from 'react';
-import { db } from '../../firebase/client';
+import React, { useContext } from 'react';
+import AuthContext from '../../auth/AuthContext';
+import { db, setActivity } from '../../firebase/client';
 
 const ExitEvent = ({ id, onClose, enrolled, banned, user }) => {
-
+  const { usuario } = useContext(AuthContext);
   const updateData = async (e) => {
     await db.collection('eventos').doc(id).update(e);
     onClose();
   };
 
   const handleInfo = async () => {
+    await setActivity(
+      usuario.activity,
+      'evento',
+      'Has salido de un evento, ahora estarás vetado de él',
+      'Saliste de Evento',
+      'warning',
+      usuario.uid,
+    );
     // Se toma toda la info de la base de datos del evento en cuestión
     const doc = await db.collection('eventos').doc(id).get();
     // Se agrega al usuario a la lista de "Vetados"
