@@ -4,6 +4,7 @@ import { db, setActivity } from '../../firebase/client';
 
 const EnterEvent = ({ id, onClose, enrolled, user }) => {
   const { usuario } = useContext(AuthContext);
+
   const updateData = async (e) => {
     await db.collection('eventos').doc(id).update(e);
     onClose();

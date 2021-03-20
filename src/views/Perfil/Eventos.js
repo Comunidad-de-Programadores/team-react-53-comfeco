@@ -11,7 +11,6 @@ const Eventos = () => {
   const [events, setEvents] = useState([]);
   const addEvent = async (e) => {
     await db.collection('eventos').doc().set(e);
-    console.log('nueva tarea agregada');
   };
 
   const handleOpen = () => {

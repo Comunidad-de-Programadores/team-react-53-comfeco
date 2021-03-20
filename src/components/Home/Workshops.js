@@ -54,7 +54,6 @@ const Workshops = () => {
   const endCurrentDay = new Date(years, month, date, 23, 59, 59);
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-    console.log(selectedOption.value);
   };
 
   useEffect(() => {

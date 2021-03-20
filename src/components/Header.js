@@ -27,7 +27,6 @@ const Header = () => {
     cerrarSesion();
     history.replace("/login");
   };
-  console.log("naaaaaaardada", usuario);
 
   return (
     <div className="container-comfeco">

@@ -3,23 +3,18 @@ import AuthContext from '../../auth/AuthContext';
 import Avatar from '../../components/Avatar';
 import UpdateProfile from '../../components/perfil/UpdateProfile';
 import EventsProfile from '../../components/perfil/EventsProfile';
-import { getBadgeSpecific, setActivity } from '../../firebase/client';
+import { getBadgeSpecific } from '../../firebase/client';
 import Activity from '../../components/perfil/Activity';
 
 const Perfil = () => {
   const { usuario, updateProfile, showUpdateProfile } = useContext(AuthContext);
   const [listBadge, setListBadge] = useState([]);
 
-  // const handleActivity = () => {
-  //   setActivity('event', 'soy un mensaje', 'soy un titulo', 'red', usuario.uid);
-  // };
-  console.log(usuario);
   useEffect(() => {
     if (usuario.badge.indexOf('insignia_1') >= 0) {
       getBadgeSpecific('insignia_1')
         .then((res) => {
           setListBadge(res);
-          console.log(res, 'cuales osn los valores');
         })
         .catch((error) => {
           console.log(error, 'error al mostrar insignias');
@@ -49,50 +44,50 @@ const Perfil = () => {
                 <span />
                 <p>{usuario.bibliography}</p>
                 {usuario.facebook !== '' ||
-                usuario.github !== '' ||
-                usuario.linkedin !== '' ||
-                usuario.twitter !== '' ? (
-                    <div className='box-redes-user'>
+                  usuario.github !== '' ||
+                  usuario.linkedin !== '' ||
+                  usuario.twitter !== '' ? (
+                  <div className='box-redes-user'>
                     {usuario.facebook !== '' && (
-                        <a
-                      href={`https://www.facebook.com/${usuario.facebook}`}
-                      className='redes-user'
-                      target='_blank'
-                    >
-                      <i className='fab fa-facebook-f' />
-                    </a>
-                      )}
+                      <a
+                        href={`https://www.facebook.com/${usuario.facebook}`}
+                        className='redes-user'
+                        target='_blank'
+                      >
+                        <i className='fab fa-facebook-f' />
+                      </a>
+                    )}
                     {usuario.github !== '' && (
-                        <a
-                      href={`https://github.com/${usuario.github}`}
-                      className='redes-user'
-                      target='_blank'
-                    >
-                      <i className='fab fa-github' />
-                    </a>
-                      )}
+                      <a
+                        href={`https://github.com/${usuario.github}`}
+                        className='redes-user'
+                        target='_blank'
+                      >
+                        <i className='fab fa-github' />
+                      </a>
+                    )}
                     {usuario.linkedin !== '' && (
-                        <a
-                      href={`https://www.linkedin.com/in/${usuario.linkedin}`}
-                      className='redes-user'
-                      target='_blank'
-                    >
-                      <i className='fab fa-linkedin-in' />
-                    </a>
-                      )}
+                      <a
+                        href={`https://www.linkedin.com/in/${usuario.linkedin}`}
+                        className='redes-user'
+                        target='_blank'
+                      >
+                        <i className='fab fa-linkedin-in' />
+                      </a>
+                    )}
                     {usuario.twitter !== '' && (
-                        <a
-                      href={`https://twitter.com/${usuario.twitter}`}
-                      className='redes-user'
-                      target='_blank'
-                    >
-                      <i className='fab fa-twitter' />
-                    </a>
-                      )}
+                      <a
+                        href={`https://twitter.com/${usuario.twitter}`}
+                        className='redes-user'
+                        target='_blank'
+                      >
+                        <i className='fab fa-twitter' />
+                      </a>
+                    )}
                   </div>
-                  ) : (
-                    <></>
-                  )}
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
             <div className='box-centro'>
@@ -113,7 +108,6 @@ const Perfil = () => {
               <div className='box-centro-actividad'>
                 <h5> Actividad reciente</h5>
                 <div className='box-all-activity'>
-                  {console.log('La actividad del usuario es: ', usuario.activity)}
                   {usuario.activity.length > 0 ? (
                     usuario.activity.map((item) => {
                       return <Activity type={item.type} title={item.title} message={item.message} color={item.color} time={item.time} />;

@@ -45,7 +45,6 @@ const UpdateProfile = () => {
     e.preventDefault();
     if (!selectedFile.imgProfile) {
       if (usuario.badge.length === 0 && dataEditProfile.gender.trim() !== '' && dataEditProfile.birth.trim() !== '' && dataEditProfile.country.trim() !== '' && dataEditProfile.area.trim() !== '' && dataEditProfile.facebook.trim() !== '' && dataEditProfile.github.trim() !== '' && dataEditProfile.linkedin.trim() !== '' && dataEditProfile.bibliography.trim() !== '' && (dataEditProfile.photoUrl.trim() !== '' || selectedFile.imgProfile)) {
-        console.log('completado todoooooo');
         updateProfile(dataEditProfile, usuario.uid).then(() => {
           addBadgeProfile(usuario.uid, 'insignia_1');
           MySwal.fire({
@@ -78,7 +77,6 @@ const UpdateProfile = () => {
     }
     if (selectedFile.imgProfile) {
       if (usuario.badge.length === 0 && dataEditProfile.gender.trim() !== '' && dataEditProfile.birth.trim() !== '' && dataEditProfile.country.trim() !== '' && dataEditProfile.area.trim() !== '' && dataEditProfile.facebook.trim() !== '' && dataEditProfile.github.trim() !== '' && dataEditProfile.linkedin.trim() !== '' && dataEditProfile.bibliography.trim() !== '' && (dataEditProfile.photoUrl.trim() !== '' || selectedFile.imgProfile)) {
-        console.log('completado todoooooo');
         uploadProfilePicture(selectedFile.imgProfile, updateProfileImage, usuario.uid);
         updateProfile(dataEditProfile, usuario.uid).then(() => {
           addBadgeProfile(usuario.uid, 'insignia_1');
@@ -113,13 +111,11 @@ const UpdateProfile = () => {
   const handleFileChange = (event) => {
     event.preventDefault();
     const input = event.target;
-    console.log(input.files, 'input');
     if (input.files && input.files[0]) {
       const sizeByte = input.files[0].size;
       const sizeMegaByte = parseFloat(sizeByte / (1024 * 1024)).toFixed(2);
       const reader = new FileReader();
       reader.onload = (e) => {
-        console.log(e.target.result, 'resutl');
         if (sizeMegaByte > 1) {
           // setAlertError('El tamaño máximo es de 1mb');
         } else {

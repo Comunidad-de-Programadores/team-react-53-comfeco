@@ -51,23 +51,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .my-group-name {
-  background-color: rgb(2, 80, 80);
+  background-color: cornflowerblue;
   color: #fff;
   padding: 0.5rem 0.5rem;
 }
 
 .box-all-integrants {
-  display: flex;
-  flex-direction: column;
   margin: 2rem auto;
 }
 
 .box-one-integrants {
-  display: flex;
-  border-bottom: 1px solid green;
+  border-bottom: 1px solid cornflowerblue;
   justify-content: space-around;
   padding-bottom: 1.2rem;
 }
@@ -75,9 +73,15 @@
 .box-integrant-photo {
   width: 3rem;
   height: 3rem;
-  border-radius: 50%;
-  background-color: red;
 }
+
+.box-integrant-photo img {
+  width: 50px;
+  border-radius: 50%;
+  height: 50px;
+  object-fit: cover;
+}
+
 .card-img {
   height: 10rem;
   width: 100%;
@@ -131,4 +135,14 @@
   .card-img{
       height: 15rem;
   }
+}
+
+
+.Nogroup {
+  text-align: center;
+}
+
+.Nogroup i {
+  color: #646464;
+  margin: 2rem auto;
 }
