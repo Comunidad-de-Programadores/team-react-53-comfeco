@@ -3,6 +3,7 @@ import "../../assets/styles/views/RecoveryPass.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { sendRecoverPassword } from "../../firebase/client";
+import calm from "../../assets/img/calm.svg"
 
 const RecoveryPass = () => {
   const [email, setEmail] = useState("");
@@ -58,9 +59,15 @@ const RecoveryPass = () => {
   return (
     <div className="Recovery container-comfeco">
       <div className="Recovery__container">
+        <img src={calm} className="img-calm"/>
         <h1 className="Recovery__title">
-          <span className=" title title_hola_rc">Calma,</span>
-          <span className=" title title__message_rc"> recuperaremos tu clave!</span>
+          <span className=" title title_hola_rc">
+            <i class="far fa-smile-beam"></i> Calma,
+          </span>
+          <span className=" title title__message_rc">
+            {" "}
+            recuperaremos tu clave!
+          </span>
         </h1>
         <form className="Recovery__form" onSubmit={recoverPassword}>
           <div className="form__group_rc">

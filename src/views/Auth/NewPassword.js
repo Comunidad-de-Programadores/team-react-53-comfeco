@@ -79,7 +79,7 @@ const NewPassword = () => {
   };
   return (
     <div className="Recovery container-comfeco">
-      <div className="Recovery__container">
+      <div className="Recovery__container ">
         <h1 className="Recovery__title">
           <span className="title_hola_rc">Establecer nueva contraseña</span>
         </h1>
