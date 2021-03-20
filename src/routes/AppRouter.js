@@ -21,6 +21,8 @@ import Perfil from "../views/Perfil";
 import Workshop from "../views/Workshop/Workshop";
 import Comunities from "../views/Comunities/Comunities";
 import Creators from "../views/Creators/Creators";
+import TerminosYcondiciones from "../views/TerminosYCondiciones/TerminosYcondiciones";
+import PoliticasPrivacidad from "../views/PoliticasPrivacidad/PoliticasPrivacidad";
 
 // import CarouselContainer from '../views/Home/CarouselContainer';
 
@@ -48,6 +50,9 @@ const AppRouter = () => {
           path="/creadores-de-contenido"
           component={Creators}
         />
+         <RutaPublica exact path="/terminos-y-condiciones" component={TerminosYcondiciones} />
+         <RutaPublica exact path="/politicas-de-privacidad" component={PoliticasPrivacidad} />
+
         {/* <Route exact path="/caru" component={CarouselContainer} /> */}
       </Switch>
       <Footer />

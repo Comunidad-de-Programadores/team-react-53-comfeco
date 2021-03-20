@@ -37,6 +37,8 @@
   justify-content: space-around;
   padding: 1rem 0rem;
 }
+
+
 @media screen and (min-width: 401px) {
   .Auth__container {
     width: 400px;

@@ -144,9 +144,13 @@ html {
 }
 
 
-.box-middle{
-
+.box-terminos{
+  width: 60%;
+  margin:  auto;
+  padding: 3rem;
+  text-align: justify;
 }
+
 
 
 @media (max-width: 768px) {
@@ -160,6 +164,12 @@ html {
 
   .title {
     font-size: 2rem;
+  }
+  .box-terminos{
+    width: 95%;
+    margin:  auto;
+    padding: 3rem;
+    text-align: justify;
   }
 }
 

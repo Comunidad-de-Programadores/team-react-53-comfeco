@@ -236,9 +236,9 @@ const Register = () => {
                 <div className='form__check'>
                   <span className='form__check_s'>
                     Al registrarte estas aceptando los
-                    <Link to='#'>Términos y Condiciones</Link>
+                    <Link to='/terminos-y-condiciones'>Términos y Condiciones</Link>
                     y la
-                    <Link to='#'>
+                    <Link to='/politicas-de-privacidad'>
                       {' '}
                       Política de privacidad y protección de datos
                     </Link>
