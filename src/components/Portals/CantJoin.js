@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CatnJoin = () => {
+const CantJoin = ({ onClose }) => {
   return (
     <div>
       <div className='modal-header'>
@@ -17,4 +17,4 @@ const CatnJoin = () => {
   );
 };
 
-export default CatnJoin;
+export default CantJoin;
