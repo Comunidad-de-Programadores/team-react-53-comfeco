@@ -100,8 +100,8 @@ const Perfil = () => {
                   <p>Actualmente no cuentas con ninguna insignia</p>
                 ) : (
                   <div className="box-all-insignias">
-                    {listBadge.map((badge) => (
-                      <div className="box-insignia">
+                    {listBadge.map((badge, key) => (
+                      <div className="box-insignia" key={key}>
                         <img src={badge.image} className="insignia-img" />
                       </div>
                     ))}
@@ -112,9 +112,10 @@ const Perfil = () => {
                 <h4 className="user-name"> Actividad reciente</h4>
                 <div className="box-all-activity">
                   {usuario.activity.length > 0 ? (
-                    usuario.activity.map((item) => {
+                    usuario.activity.map((item, key) => {
                       return (
                         <Activity
+                          key={key}
                           type={item.type}
                           title={item.title}
                           message={item.message}

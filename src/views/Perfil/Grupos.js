@@ -59,7 +59,7 @@ const Grupos = () => {
                 value=''
                 onChange={selectLanguage}
               >
-                <option selected>Selecciona un lenguaje de programación</option>
+                <option defaultValue>Selecciona un lenguaje de programación</option>
                 <option value='Typescript'>Typescript</option>
                 <option value='PHP'>PHP</option>
                 <option value='Python'>Python</option>

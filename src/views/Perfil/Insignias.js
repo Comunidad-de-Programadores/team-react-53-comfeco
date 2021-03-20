@@ -31,20 +31,20 @@ const Insignias = () => {
         <Row>
           {
             listBadge.map((badge) => (
-              <Col xs={12} sm={6} md={4} lg={3} xl={3}>
+              <Col xs={12} sm={6} md={4} lg={3} xl={3} key={badge.id}>
                 <Card>
                   <Card.Img variant='top' src={badge.image} />
                   <Card.Body>
                     <Card.Title>
                       {badge.name}
                     </Card.Title>
+                    <h5 className='text-center'>Descripción</h5>
                     <Card.Text>
-                      <h5>Descripción</h5>
                       {badge.description}
                     </Card.Text>
                     <hr />
+                    <h5 className='text-center'>¿Como ganarla?</h5>
                     <Card.Text>
-                      <h5>¿Como ganarla?</h5>
                       {badge.instructions}
                     </Card.Text>
                   </Card.Body>

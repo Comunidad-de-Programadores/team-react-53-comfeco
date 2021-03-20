@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase/client';
 import Modal from '../Portals/Modal';
 import Unsubscribe from '../Portals/Unsubscribe';
+import SeeGroup from '../Portals/SeeGroup';
 
 const MyGroup = (id) => {
 
   const [group, setGroup] = useState(false);
+  const [members, setMembers] = useState([]);
   const [unsubscribe, setUnsubscribe] = useState(false);
+  const [seeGroup, setSeeGroup] = useState(false);
+
+  console.log(members);
+
+  useEffect(() => {
+    const arrayOfMembers = [];
+    db.collection('usuarios').where('group', '==', id.id).get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        arrayOfMembers.push(doc.data());
+      });
+      setMembers(arrayOfMembers);
+    });
+  }, []);
 
   if (id.id !== '' && !group) {
     const docRef = db.collection('grupos').doc(id.id);
@@ -30,13 +45,24 @@ const MyGroup = (id) => {
     setUnsubscribe(false);
   };
 
+  const onCloseGroup = () => {
+    setSeeGroup(false);
+  };
+
+  const handleGroup = () => {
+    setSeeGroup(true);
+  };
+
   if (group !== false && id !== '') {
     return (
       <>
         <div className='my-group'>
           <div className='My-group-title'>
             <h5>Mi Equipo</h5>
-            <a className='btn btn-outline-primary btn-sm'>ver grupo</a>
+            <button type='button' className='btn btn-outline-primary btn-sm' onClick={handleGroup}>ver grupo</button>
+            <Modal isOpen={seeGroup} onClose={onCloseGroup}>
+              <SeeGroup members={members} group={group} />
+            </Modal>
           </div>
           <div className='row'>
             <div className='box-integrant-photo col-4'>
@@ -53,7 +79,7 @@ const MyGroup = (id) => {
                 <p>{group.description}</p>
               </div>
               <div>
-                <button className='btn d-inline-block btn-outline-secondary btn-evento' onClick={handleUnsubscribe}>Salir del grupo</button>
+                <button type='button' className='btn d-inline-block btn-outline-secondary btn-evento' onClick={handleUnsubscribe}>Salir del grupo</button>
                 <Modal isOpen={unsubscribe} onClose={onClose}>
                   <Unsubscribe onClose={onClose} />
                 </Modal>
