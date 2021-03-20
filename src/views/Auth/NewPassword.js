@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import '../../assets/styles/views/RecoveryPass.css';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -13,6 +13,7 @@ const NewPassword = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const code = urlParams.get('oobCode');
+  const autoFocus = useCallback((el) => (el ? el.focus() : null), []);
 
   const newPassword = (e) => {
     e.preventDefault();
@@ -69,44 +70,45 @@ const NewPassword = () => {
     setNewPass(e.target.value);
   };
   return (
-    <div className="fade-in animated Recovery container-comfeco">
-      <div className="box-middle">
+    <div className='fade-in animated Recovery container-comfeco'>
+      <div className='box-middle'>
 
-     
-      <div className="Recovery__container ">
-        <h1 className="Recovery__title">
-          <span className="title_hola_rc">Establecer nueva contraseña</span>
-        </h1>
-        {
-          !verifyCode ?
-            <p className='Recovery__error'>{codeErrorMessage}</p> : (
-              <form className='Recovery__form' onSubmit={newPassword}>
-                <div className='form__group_rc'>
-                  <label htmlFor='email' className='form__label_rc'>
-                    Ingresa tu nueva contraseña:
-                  </label>
-                  <input
-                    name='password'
-                    value={newPass}
-                    type='password'
-                    className='form__input_rc'
-                    onChange={handleInputChange}
-                  />
-                </div>
+        <div className='Recovery__container '>
+          <h1 className='Recovery__title'>
+            <span className='title_hola_rc'>Establecer nueva contraseña</span>
+          </h1>
+          {
+            !verifyCode ?
+              <p className='Recovery__error'>{codeErrorMessage}</p> : (
+                <form className='Recovery__form' onSubmit={newPassword}>
+                  <div className='form__group_rc'>
+                    <label htmlFor='email' className='form__label_rc'>
+                      Ingresa tu nueva contraseña:
+                    </label>
+                    <input
+                      name='password'
+                      value={newPass}
+                      type='password'
+                      className='form__input_rc'
+                      onChange={handleInputChange}
+                      ref={autoFocus}
+                      required
+                    />
+                  </div>
 
-                <div className='form__group_rc'>
-                  <button type='submit' className='form__button_rc' disabled={newPass === ''}>
-                    Establecer nueva contraseña
-                  </button>
-                </div>
-              </form>
-            )
-        }
-        <p className='form__relogin_rc'>
-          si ya recordaste tu cuenta, ingresa
-          <a href='/login'> aquí.</a>
-        </p>
-      </div>
+                  <div className='form__group_rc'>
+                    <button type='submit' className='form__button_rc'>
+                      Establecer nueva contraseña
+                    </button>
+                  </div>
+                </form>
+              )
+          }
+          <p className='form__relogin_rc'>
+            si ya recordaste tu cuenta, ingresa
+            <a href='/login'> aquí.</a>
+          </p>
+        </div>
       </div>
     </div>
   );

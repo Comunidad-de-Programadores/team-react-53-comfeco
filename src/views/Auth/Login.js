@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { loginWithGoogle, loginWithFacebook } from '../../firebase/client';
 import AuthContext from '../../auth/AuthContext';
@@ -24,25 +24,15 @@ const Login = () => {
     email: '',
     password: '',
   });
-  const [formValid, setFormValid] = useState({
-    email: false,
-    password: false,
-  });
-  const initialErrorMessageState = {
-    mesage: '',
-    type: '',
-  };
 
   const history = useHistory();
-
+  const autoFocus = useCallback((el) => (el ? el.focus() : null), []);
   //Extraer de usuario
   const { email, password } = user;
 
   //En caso de que el password o usuario no exista
   useEffect(() => {
-    // if (autenticado) {
-    //   history.replace('/');
-    // }
+
     if (mensaje) {
       setErrorMessage({
         message: mensaje,
@@ -78,66 +68,24 @@ const Login = () => {
     });
   };
 
-  const validateEmail = (email) => {
-    const EMAIL_REGEX = new RegExp(
-      /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-    );
-    const emailIsValid = EMAIL_REGEX.test(email);
-    if (emailIsValid) {
-      setFormValid({
-        ...formValid,
-        email: true,
-      });
-      setErrorMessage({ ...initialErrorMessageState });
-    } else {
-      setErrorMessage({
-        message:
-          'Su email es incorrecto. Por favor incluya una @ en el correo electrónico',
-        type: 'email',
-      });
-      setFormValid({
-        ...formValid,
-        email: false,
-      });
-    }
-  };
-
-  const handleBlur = (e) => {
-    const { target } = e;
-    const { value, name } = target;
-    console.log(value, 'yo');
-    if (value.length === 0) {
-      if (name === 'email') {
-        setFormValid({
-          ...formValid,
-          email: false,
-        });
-      } else {
-        setFormValid({
-          ...formValid,
-          password: false,
-        });
-      }
-      return setErrorMessage({
-        message: `Ingrese su ${name}`,
-        type: name,
-      });
-    }
-    if (name === 'password') {
-      setFormValid({
-        ...formValid,
-        password: true,
-      });
-      setErrorMessage({ ...initialErrorMessageState });
-    }
-    if (name === 'email') {
-      validateEmail(value);
-      setErrorMessage({ ...initialErrorMessageState });
-    }
-  };
-
   const Login = (e) => {
     e.preventDefault();
+    if (!email.trim()) {
+      setErrorMessage({
+        message:
+          'Es necesario que ingrese su email',
+        type: 'email',
+      });
+      return;
+    }
+    if (!password.trim()) {
+      setErrorMessage({
+        message:
+          'Es necesario que ingrese su password',
+        type: 'password',
+      });
+      return;
+    }
     iniciarSesion({
       email,
       password,
@@ -168,8 +116,8 @@ const Login = () => {
                   value={user.email}
                   className='form__input'
                   onChange={handleInputChange}
-                  onBlur={handleBlur}
                   autoComplete='new-password'
+                  ref={autoFocus}
                   className={errorMessage.type === 'email' ? 'error' : ''}
                 />
               </div>
@@ -183,7 +131,6 @@ const Login = () => {
                   value={user.password}
                   className='form__input'
                   onChange={handleInputChange}
-                  onBlur={handleBlur}
                   autoComplete='new-password'
                   className={errorMessage.type === 'password' ? 'error' : ''}
                 />
@@ -201,7 +148,7 @@ const Login = () => {
                 <button
                   type='submit'
                   className='form__button'
-                  disabled={formValid.email === false && formValid.password === false}
+
                 >
                   Entrar
                 </button>
