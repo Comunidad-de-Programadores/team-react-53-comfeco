@@ -276,7 +276,7 @@ export const updateProfileImage = (url, id) => {
 };
 
 // Seteamos cada actividad a registrar, en orden debe estar el estado previo, el tipo, el mensaje, el título, el color (good, bad) del titulo y el id
-export const setActivity = async (activity, type, message, title, color, id) => {
+export const setActivity = async (type, message, title, color, id) => {
   const timeElapsed = new Date();
   const data = {
     type,

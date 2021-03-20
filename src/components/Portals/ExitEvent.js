@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import AuthContext from '../../auth/AuthContext';
 import { db, setActivity } from '../../firebase/client';
 
-const ExitEvent = ({ id, onClose, enrolled, banned, user }) => {
+const ExitEvent = ({ id, onClose, enrolled, banned, user, name }) => {
   const { usuario } = useContext(AuthContext);
   const updateData = async (e) => {
     await db.collection('eventos').doc(id).update(e);
@@ -11,10 +11,9 @@ const ExitEvent = ({ id, onClose, enrolled, banned, user }) => {
 
   const handleInfo = async () => {
     await setActivity(
-      usuario.activity,
       'evento',
       'Has salido de un evento, ahora estarás vetado de él',
-      'Saliste de Evento',
+      `Saliste del evento ${name}`,
       'warning',
       usuario.uid,
     );

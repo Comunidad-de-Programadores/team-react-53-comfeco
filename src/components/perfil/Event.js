@@ -50,7 +50,7 @@ const Event = ({ eventInfo }) => {
           </Modal>
         </div>
         <div className='card-footer'>
-          <ButtonEvent enrolled={eventInfo.enrolled} creator={eventInfo.createdBy} id={eventInfo.id} banned={eventInfo.banned} className='btn-evento' />
+          <ButtonEvent enrolled={eventInfo.enrolled} creator={eventInfo.createdBy} id={eventInfo.id} banned={eventInfo.banned} name={eventInfo.name} className='btn-evento' />
         </div>
       </div>
     </div>
