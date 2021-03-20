@@ -4,7 +4,7 @@ const TerminosYcondiciones = () => {
   return (
     <div className="container-comfeco">
       <div className="box-terminos">
-        <h3 className="title">Términos y Condiciones</h3>
+        <h3 className="title title text-center">Términos y Condiciones</h3>
         <ol className="pt-3">
           <li>
             <h5 className="">ALCANCE </h5>
