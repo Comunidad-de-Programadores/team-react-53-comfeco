@@ -52,7 +52,6 @@ const AuthState = ({ children }) => {
   const addUserCollection = async (datos) => {
     const user = await userActive();
     const { email, uid, displayName, photoURL } = user;
-    console.log(user, 'google');
     if (user) {
       await createUserProfile(user.uid, {
         name: !displayName ? datos.name : displayName,
@@ -68,13 +67,13 @@ const AuthState = ({ children }) => {
         linkedin: '',
         twitter: '',
         bibliography: '',
+        group: '',
         badge: [],
-        activity: [],
         createdAt: dateCreateUserProfile(),
         activity: [],
       })
         .then(() => {
-          console.log('Document successfully written! Judith');
+          console.log('Document successfully written!');
         })
         .catch((error) => {
           console.error('Error writing document: ', error);
@@ -94,7 +93,6 @@ const AuthState = ({ children }) => {
       if (user) {
         return db.collection('usuarios').doc(user.uid)
           .onSnapshot((snapshot) => {
-            console.log(snapshot.data(), 'ojitos');
             // Add the new post to the posts list
             const dbUser = snapshot.data();
             dispatch({
@@ -113,8 +111,8 @@ const AuthState = ({ children }) => {
                 linkedin: dbUser.linkedin,
                 twitter: dbUser.twitter,
                 bibliography: dbUser.bibliography,
+                group: dbUser.group,
                 badge: dbUser.badge,
-                activity: dbUser.activity,
                 createdAt: dbUser.createdAt,
                 activity: dbUser.activity,
               },
@@ -261,10 +259,8 @@ const AuthState = ({ children }) => {
   const loginGoogle = async () => {
     await loginWithGoogle()
       .then((user) => {
-        console.log(user, 'logueado con google');
         if (user.additionalUserInfo.isNewUser === true) {
-          //Crear la colección de usuarios
-          console.log('hola estoy primera vez logueado,  "agrega collecion');
+          //Crear la colección de usuarios;
           addUserCollection();
         }
         //Obtener el usuario
@@ -286,7 +282,6 @@ const AuthState = ({ children }) => {
   const loginFacebook = async () => {
     await loginWithFacebook()
       .then((user) => {
-        console.log(user);
         dispatch({
           type: REGISTRO_EXITOSO,
         });

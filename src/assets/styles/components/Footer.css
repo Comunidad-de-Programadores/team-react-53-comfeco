@@ -7,9 +7,7 @@
     color:#fff
 
 }
-.footer div{
-    padding-top: 2rem;
-}
+
 .logo-footer{
     width: 30%;
     display: block;
@@ -34,5 +32,8 @@ font-size: 2.5rem;
         background-color: #2E2E2E;
         flex-direction: column;
         text-align: center;
+    }
+    .footer div{
+        padding-top: 2rem;
     }
 }

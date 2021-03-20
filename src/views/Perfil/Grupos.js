@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../../assets/styles/components/Grupos.css';
+import AuthContext from '../../auth/AuthContext';
+import Group from '../../components/perfil/Group';
+import MyGroup from '../../components/perfil/MyGroup';
 import { getGroup, getGroupsFilterLanguage } from '../../firebase/client';
 
 const Grupos = () => {
+  const { usuario } = useContext(AuthContext);
   const [groupList, setGroupList] = useState([]);
   // const [valueSelectLanguage, setValueSelectLanguaje] = useState('');
   const [valueSearch, setValueSearch] = useState('');
@@ -43,27 +47,7 @@ const Grupos = () => {
       <div className='box-group'>
         <div className='box-1'>
           <div className='box-my-group'>
-            <div className='my-group'>
-              <div className='My-group-title'>
-                <h5>Mi Grupo</h5>
-                <a>Ir al grupo</a>
-              </div>
-              <div className='my-group-name'>Crazy Techs</div>
-            </div>
-            <div className='box-all-integrants'>
-              <div className='box-one-integrants'>
-                <div className='box-integrant-photo'>foto</div>
-                <div className='box-integrant-name'>
-                  Juan Secu
-                  <br />
-                  {' '}
-                  <b>novato</b>
-                </div>
-                <div>
-                  <b>integrante</b>
-                </div>
-              </div>
-            </div>
+            <MyGroup id={usuario.group} />
           </div>
         </div>
         <div className='box-2'>
@@ -101,30 +85,7 @@ const Grupos = () => {
             <div>
               <div className='row row-cols-2 row-cols-xs-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4  g-4'>
                 {groupList.map((group) => (
-                  <div className='col'>
-                    <div className='card h-100'>
-                      <div className='card-img'>
-                        <img className='h-100 w-100' src={group.image} />
-                      </div>
-                      <div className='card-body'>
-                        <div className='box-lenguaje'>
-                          {group.programmingLanguage}
-                        </div>
-                        <h5 className='card-title text-start'>{group.name}</h5>
-                        <p className='card-text text-start'>
-                          {group.description}
-                        </p>
-                      </div>
-                      <div className='card-footer text-center'>
-                        <button
-                          type='button'
-                          className='btn d-inline-block btn-outline-secondary btn-evento '
-                        >
-                          Unirse
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <Group key={group.id} id={group.id} name={group.name} lang={group.programmingLanguage} img={group.image} desc={group.description} />
                 ))}
               </div>
             </div>

@@ -105,11 +105,13 @@ padding-bottom: 2rem;
   border: solid #380f63;
   border-width: 0 5px 5px 0;
 }
+.list__body p{color: #fff;}
 
 @media (max-width: 768px) {
   .container__home {
     display: flex;
     flex-direction: column;
+    padding: 0rem;
   }
   .home__communities {
     width: 100%;
