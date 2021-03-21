@@ -1,4 +1,5 @@
 {
+  "homepage": "http://Comunidad-de-Programadores.github.io/team-react-53-comfeco",
   "name": "team-react-53-comfeco",
   "version": "1.0.0",
   "description": "Proyecto hecho en ReactJS para la primera edición del COMFECO, realizado por el equipo 53.",
@@ -8,7 +9,7 @@
     "build": "webpack --mode production",
     "build:dll": "webpack --config ./webpack.dll.config.js --mode production",
     "dev": "webpack serve --mode development --env development --config ./webpack-dev.config.js",
-    "deploy":"gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,6 @@
   "bugs": {
     "url": "https://github.com/Comunidad-de-Programadores/team-react-53-comfeco/issues"
   },
-  "homepage": "https://github.com/Comunidad-de-Programadores/team-react-53-comfeco#readme",
   "dependencies": {
     "@babel/runtime": "^7.12.13",
     "@firebase/firestore": "^2.1.7",

@@ -34,7 +34,7 @@ const AppRouter = () => {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={window.location.pathname || ''}>
       <Header />
       <Switch>
         <RutaPrivada exact path="/" component={Home} />
