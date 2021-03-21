@@ -66,7 +66,7 @@ module.exports = {
     new AddAssetHtmlWebpackPlugin({
       filepath: path.resolve(__dirname, 'dist/js/*.dll.js'),
       outputPath: 'js',
-      publicPath: 'http://localhost:3001/js',
+      publicPath: 'https://comunidad-de-programadores.github.io/team-react-53-comfeco/js',
     }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.**'],
