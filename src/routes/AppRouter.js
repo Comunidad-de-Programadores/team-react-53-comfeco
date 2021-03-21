@@ -34,7 +34,7 @@ const AppRouter = () => {
   }, []);
 
   return (
-    <BrowserRouter basename='/team-react-53-comfeco'>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
       <Switch>
         <RutaPrivada exact path="/" component={Home} />
