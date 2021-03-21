@@ -34,7 +34,7 @@ const AppRouter = () => {
   }, []);
 
   return (
-    <BrowserRouter basename={window.location.pathname || ''}>
+    <BrowserRouter basename='/team-react-53-comfeco'>
       <Header />
       <Switch>
         <RutaPrivada exact path="/" component={Home} />
