@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
-    publicPath: 'http://localhost:3001/',
+    publicPath: 'https://comunidad-de-programadores.github.io/team-react-53-comfeco/',
     chunkFilename: 'js/[id].[chunkhash].js',
   },
   optimization: {
