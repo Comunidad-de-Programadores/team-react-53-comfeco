@@ -10,8 +10,7 @@ const Unsubscribe = ({ onClose }) => {
     await db.collection('usuarios').doc(usuario.uid).set({
       group: '',
     }, { merge: true });
-    await setActivity(
-      usuario.activity,
+    setActivity(
       'group',
       'Has salido de tu grupo, siempre puedes ingresar a otro',
       'Saliste de grupo',

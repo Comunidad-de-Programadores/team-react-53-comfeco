@@ -11,7 +11,6 @@ const CanJoin = ({ id, lang, name, desc, img, onClose }) => {
       group: id,
     }, { merge: true });
     await setActivity(
-      usuario.activity,
       'group',
       'Has ingresado en un nuevo grupo ¡Genial!',
       'Entraste a grupo',
